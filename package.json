@@ -1,0 +1,37 @@
+{
+  "name": "next15-w-mui6-mf",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "build:development": "turbo build:development",
+    "build:staging": "turbo build:staging",
+    "build:production": "turbo build:production",
+    "dev": "turbo dev",
+    "dev:development": "turbo dev:development",
+    "dev:staging": "turbo dev:staging",
+    "dev:production": "turbo dev:production",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "type-check": "turbo run type-check",
+    "start": "turbo run start",
+    "start:development": "turbo run start:development",
+    "start:staging": "turbo run start:staging",
+    "start:production": "turbo run start:production",
+    "changeset": "changeset",
+    "release": "turbo run build --filter=main... && changeset publish",
+    "version-packages": "changeset version"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.27.10",
+    "@types/node": "22.10.1",
+    "prettier": "3.4.2",
+    "turbo": "2.3.3",
+    "typescript": "5.7.2"
+  },
+  "packageManager": "pnpm@9.14.4",
+  "engines": {
+    "node": ">=22",
+    "pnpm": "^9.14.2"
+  }
+}

@@ -1,0 +1,12 @@
+**/node_modules
+**/.next
+**/.tsbuildinfo
+**/next-env.d.ts
+**/coverage
+**/build
+**/dist
+**/.turbo
+**/turbo/**
+**/package-lock.json
+**/pnpm-lock.yaml
+**/yarn.lock

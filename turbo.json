@@ -1,0 +1,83 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "clean": {
+      "cache": false
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.localhost"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "build:development": {
+      "dependsOn": ["^build:development"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.development"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "build:staging": {
+      "dependsOn": ["^build:staging"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.staging"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "build:production": {
+      "dependsOn": ["^build:production"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.production"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^dev"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.localhost"]
+    },
+    "dev:development": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^dev:development"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.development"]
+    },
+    "dev:staging": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^dev:staging"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.staging"]
+    },
+    "dev:production": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["^dev:production"],
+      "inputs": ["$TURBO_DEFAULT$", "**/env/.env.production"]
+    },
+    "start": {
+      "cache": false,
+      "dependsOn": ["^start"]
+    },
+    "start:development": {
+      "cache": false,
+      "dependsOn": ["^start:development"]
+    },
+    "start:staging": {
+      "cache": false,
+      "dependsOn": ["^start:staging"]
+    },
+    "start:production": {
+      "cache": false,
+      "dependsOn": ["^start:production"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "type-check": {
+      "dependsOn": ["^build"],
+      "outputs": ["**/node_modules/.cache/tsbuildinfo.json"]
+    }
+  }
+}

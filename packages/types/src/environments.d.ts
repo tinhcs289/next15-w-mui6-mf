@@ -1,0 +1,1 @@
+export type EnvironmentName = "localhost" | "development" | "staging" | "production";
