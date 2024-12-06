@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import { createContext, useContext, useRef } from "react";
 import { createStore, useStore } from "zustand";
 
+type BaseStates = { [x: string]: any };
+
 /**
  * Zustand with context, this function let you duplicate a store by multiple instances
  * and make them become independent according to each provider.
@@ -54,12 +56,12 @@ import { createStore, useStore } from "zustand";
     }
  *
  */
-export function createZustandStoreContext<States extends { [x: string]: any } = { [x: string]: any }>(
+export function createZustandStoreContext<States extends BaseStates = BaseStates>(
   ...createStoreParams: Parameters<typeof createStore<States, []>>
 ) {
   const Context = createContext(null);
   function StoreProvider({ children }: { children?: ReactNode }) {
-    const storeRef = useRef<ReturnType<typeof createStore<States, []>>>();
+    const storeRef = useRef<ReturnType<typeof createStore<States, []>>>(null);
     if (!storeRef.current) {
       storeRef.current = createStore<States, []>(...createStoreParams);
     }
@@ -83,3 +85,9 @@ export function createZustandStoreContext<States extends { [x: string]: any } = 
     useStoreContext,
   };
 }
+
+export type CreateZustandStoreContext<StateValues extends BaseStates = BaseStates> =
+  ReturnType<typeof createZustandStoreContext<StateValues>>;
+
+export type UseStoreContext<StateValues extends BaseStates = BaseStates> =
+CreateZustandStoreContext<StateValues>["useStoreContext"];

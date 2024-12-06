@@ -3,7 +3,7 @@
 import { useCallback, useRef } from "react";
 
 export function useFormRef() {
-  const formRef = useRef<HTMLFormElement>();
+  const formRef = useRef<HTMLFormElement>(null);
 
   /**
    * @default 'default'

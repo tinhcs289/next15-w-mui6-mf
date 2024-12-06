@@ -1,9 +1,7 @@
 "use client";
 
-import type { QueryClientProviderProps } from "react-query";
 import { QueryClient, QueryClientProvider } from "react-query";
-
-export type ReactQueryProviderProps = Omit<QueryClientProviderProps, 'client'>;
+import type { ReactQueryProviderProps } from "./types";
 
 const queryClient = new QueryClient();
 

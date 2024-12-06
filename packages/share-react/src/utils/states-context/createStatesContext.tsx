@@ -178,7 +178,7 @@ export function createStatesContext<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-  function useAction<F extends Function>(
+  function useDefineMethod<F extends Function>(
     actionName: keyof StateValues,
     ...useCallbackParams: Parameters<typeof useCallback<F>>
   ) {
@@ -193,7 +193,7 @@ export function createStatesContext<
     useGetState,
     useSetState,
     useInitState,
-    useAction,
+    useDefineMethod,
   };
 }
 
@@ -209,5 +209,5 @@ export type UseSetState<StateValues extends BaseStates = BaseStates> =
 export type UseInitState<StateValues extends BaseStates = BaseStates> =
   CreateStatesContext<StateValues>["useInitState"];
 
-export type UseAction<StateValues extends BaseStates = BaseStates> =
-  CreateStatesContext<StateValues>["useAction"];
+export type UseDefineMethod<StateValues extends BaseStates = BaseStates> =
+  CreateStatesContext<StateValues>["useDefineMethod"];

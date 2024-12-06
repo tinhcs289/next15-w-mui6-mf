@@ -5,51 +5,35 @@
   "private": true,
   "exports": {
     "./auth": "./src/auth/index.ts",
-    "./components/PrefetchCrossZineLinks": "./src/components/PrefetchCrossZineLinks/index.tsx",
-    "./components/RHFValuesInitializer": "./src/components/RHFValuesInitializer/index.tsx",
-    "./hooks/useFormRef": "./src/hooks/useFormRef/index.ts",
-    "./providers/DateTimeAndNumeralProvider": "./src/providers/DateTimeAndNumeralProvider/index.tsx",
-    "./providers/MUIV6ThemeProvider": "./src/providers/MUIV6ThemeProvider/index.tsx",
-    "./providers/NotiStackProvider": "./src/providers/NotiStackProvider/index.tsx",
-    "./providers/ReactQueryProvider": "./src/providers/ReactQueryProvider/index.tsx",
-    "./utils/next-middleware": "./src/utils/next-middleware/index.ts",
-    "./utils/states-context": "./src/utils/states-context/index.tsx",
-    "./utils/zustand-context": "./src/utils/zustand-context/index.tsx"
+    "./components/form": "./src/components/form/index.ts",
+    "./components/next/*": "./src/components/next/*/index.ts",
+    "./hooks/*": "./src/hooks/*/index.ts",
+    "./permissions": "./src/permissions/index.ts",
+    "./providers/*": "./src/providers/*/index.ts",
+    "./utils/*": "./src/utils/*/index.ts"
   },
   "typesVersions": {
     "*": {
       "auth": [
         "./src/auth/index.ts"
       ],
-      "components/PrefetchCrossZineLinks": [
-        "./src/components/PrefetchCrossZineLinks/index.tsx"
+      "components/form": [
+        "./src/components/form/index.tsx"
       ],
-      "components/RHFValuesInitializer": [
-        "./src/components/RHFValuesInitializer/index.tsx"
+      "components/next/*": [
+        "./src/components/next/*/index.tsx"
       ],
-      "hooks/useFormRef": [
-        "./src/hooks/useFormRef/index.ts"
+      "hooks/*": [
+        "./src/hooks/*/index.ts"
       ],
-      "providers/DateTimeAndNumeralProvider": [
-        "./src/providers/DateTimeAndNumeralProvider/index.tsx"
+      "permissions": [
+        "./src/permissions/index.ts"
       ],
-      "providers/MUIV6ThemeProvider": [
-        "./src/providers/MUIV6ThemeProvider/index.tsx"
+      "providers/*": [
+        "./src/providers/*/index.ts"
       ],
-      "providers/NotiStackProvider": [
-        "./src/providers/NotiStackProvider/index.tsx"
-      ],
-      "providers/ReactQueryProvider": [
-        "./src/providers/ReactQueryProvider/index.tsx"
-      ],
-      "utils/next-middleware": [
-        "./src/utils/next-middleware/index.ts"
-      ],
-      "utils/states-context": [
-        "./src/utils/states-context/index.tsx"
-      ],
-      "utils/zustand-context": [
-        "./src/utils/zustand-context/index.tsx"
+      "utils/*": [
+        "./src/utils/*/index.ts"
       ]
     }
   },
@@ -62,7 +46,28 @@
   },
   "dependencies": {
     "@repo/constants": "workspace:*",
-    "@repo/utils": "workspace:*"
+    "@repo/utils": "workspace:*",
+    "@date-io/moment": "3.0.0",
+    "@emotion/cache": "11.13.5",
+    "@emotion/react": "11.13.5",
+    "@emotion/styled": "11.13.5",
+    "@mui/icons-material": "6.1.10",
+    "@mui/material": "6.1.10",
+    "@mui/material-nextjs": "6.1.9",
+    "@mui/system": "6.1.10",
+    "@mui/x-date-pickers": "7.23.1",
+    "@uidotdev/usehooks": "2.4.1",
+    "lodash": "4.17.21",
+    "moment": "2.30.1",
+    "next": "15.0.4",
+    "notistack": "3.0.1",
+    "numeral": "2.0.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "7.53.2",
+    "react-query": "3.39.3",
+    "react-virtuoso": "4.12.3",
+    "zustand": "5.0.2"
   },
   "devDependencies": {
     "@repo/config-eslint": "workspace:*",
@@ -72,32 +77,9 @@
     "@types/node": "22.10.1",
     "@types/numeral": "2.0.5",
     "@types/qs": "6.9.17",
-    "@types/react": "18.3.12",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
     "tsup": "8.3.5",
     "typescript": "5.7.2"
-  },
-  "peerDependencies": {
-    "@date-io/moment": "3.0.0",
-    "@emotion/cache": "11.13.1",
-    "@emotion/react": "11.13.3",
-    "@emotion/styled": "11.13.0",
-    "@mui/icons-material": "6.1.7",
-    "@mui/material": "6.1.7",
-    "@mui/material-nextjs": "6.1.7",
-    "@mui/system": "6.1.7",
-    "@mui/x-date-pickers": "7.22.2",
-    "@uidotdev/usehooks": "2.4.1",
-    "lodash": "4.17.21",
-    "moment": "2.30.1",
-    "next": "15.0.3",
-    "notistack": "3.0.1",
-    "numeral": "2.0.6",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-hook-form": "7.53.2",
-    "react-query": "3.39.3",
-    "react-virtuoso": "4.12.0",
-    "zustand": "5.0.1"
   }
 }

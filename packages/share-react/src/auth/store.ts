@@ -1,6 +1,6 @@
 "use client";
 
-import { createZustandStoreContext } from "@repo/share-react/utils/zustand-context";
+import { createZustandStoreContext } from "@/utils/zustand-context";
 import type { AuthData } from "@repo/types/auth";
 import { authCookie } from "./authCookie";
 import type { AuthStates } from "./types";

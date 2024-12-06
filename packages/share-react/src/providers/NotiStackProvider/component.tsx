@@ -1,10 +1,8 @@
 "use client";
 
 import Slide from "@mui/material/Slide";
-import type { SnackbarProviderProps } from "notistack";
 import { SnackbarProvider } from "notistack";
-
-export type NotiStackProviderProps = SnackbarProviderProps;
+import type { NotiStackProviderProps } from "./types";
 
 export default function NotiStackProvider({
   children,
