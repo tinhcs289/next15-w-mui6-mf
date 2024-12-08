@@ -1,0 +1,86 @@
+{
+  "name": "@repo/utils",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    "./array/*": "./src/array/*.ts",
+    "./async/*": "./src/async/*.ts",
+    "./cookie": "./src/cookie/index.ts",
+    "./crypt/*": "./src/crypt/*.ts",
+    "./data-validate/*": "./src/data-validate/*.ts",
+    "./file/*": "./src/file/*.ts",
+    "./http/*": "./src/http/*.ts",
+    "./local-storage": "./src/local-storage/index.ts",
+    "./moment/*": "./src/moment/*.ts",
+    "./string/*": "./src/string/*.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "array/*": [
+        "./src/array/*.ts"
+      ],
+      "async/*": [
+        "./src/async/*.ts"
+      ],
+      "cookie": [
+        "./src/cookie/index.ts"
+      ],
+      "crypt/aesCrypt": [
+        "./src/crypt/aesCrypt.ts"
+      ],
+      "data-validate/*": [
+        "./src/data-validate/*.ts"
+      ],
+      "file/*": [
+        "./src/file/*.ts"
+      ],
+      "http/*": [
+        "./src/http/*.ts"
+      ],
+      "local-storage": [
+        "./src/local-storage/index.ts"
+      ],
+      "moment/*": [
+        "./src/moment/*.ts"
+      ],
+      "string/*": [
+        "./src/string/*.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/**/index.ts\" --format esm,cjs --dts",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "axios": "1.7.9",
+    "axios-mock-adapter": "2.1.0",
+    "crypto-js": "4.2.0",
+    "js-cookie": "3.0.5",
+    "jsonwebtoken": "9.0.2",
+    "lodash": "4.17.21",
+    "moment": "2.30.1",
+    "numeral": "2.0.6",
+    "qs": "6.13.1",
+    "yup": "1.5.0"
+  },
+  "devDependencies": {
+    "@repo/config-eslint": "workspace:*",
+    "@repo/types": "workspace:*",
+    "@turbo/gen": "2.3.3",
+    "@types/crypto-js": "4.2.2",
+    "@types/js-cookie": "3.0.6",
+    "@types/jsonwebtoken": "9.0.7",
+    "@types/lodash": "4.17.13",
+    "@types/node": "22.10.1",
+    "@types/numeral": "2.0.5",
+    "@types/qs": "6.9.17",
+    "@types/yup": "0.32.0",
+    "tsup": "8.3.5",
+    "typescript": "5.7.2"
+  }
+}

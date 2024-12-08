@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "isolatedModules": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+  },
+  "exclude": ["node_modules", "**/*.stories.tsx", "dist"],
+  "include": ["src"],
+}

@@ -1,0 +1,115 @@
+{
+  "name": "@repo/share-react",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./auth": "./src/auth/index.ts",
+    "./components/box/*": "./src/components/box/*.tsx",
+    "./components/button/*": "./src/components/button/*.tsx",
+    "./components/dialog": "./src/components/dialog/index.tsx",
+    "./components/form": "./src/components/form/index.ts",
+    "./components/input": "./src/components/input/index.ts",
+    "./components/input/*": "./src/components/input/*.tsx",
+    "./components/next/*": "./src/components/next/*.tsx",
+    "./components/typo/*": "./src/components/typo/*.tsx",
+    "./hooks/*": "./src/hooks/*/index.ts",
+    "./permissions": "./src/permissions/index.ts",
+    "./providers/*": "./src/providers/*/index.ts",
+    "./utils/*": "./src/utils/*/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "auth": [
+        "./src/auth/index.ts"
+      ],
+      "components/box/*": [
+        "./src/components/box/*.tsx"
+      ],
+      "components/button/*": [
+        "./src/components/button/*.tsx"
+      ],
+      "components/dialog": [
+        "./src/components/dialog/index.tsx"
+      ],
+      "components/form": [
+        "./src/components/form/index.ts"
+      ],
+      "components/input": [
+        "./src/components/input/index.ts"
+      ],
+      "components/input/*": [
+        "./src/components/input/*.tsx"
+      ],
+      "components/next/*": [
+        "./src/components/next/*.tsx"
+      ],
+      "components/typo/*": [
+        "./src/components/typo/*.tsx"
+      ],
+      "hooks/*": [
+        "./src/hooks/*/index.ts"
+      ],
+      "permissions": [
+        "./src/permissions/index.ts"
+      ],
+      "providers/*": [
+        "./src/providers/*/index.ts"
+      ],
+      "types/*": [
+        "./src/types/*.d.ts"
+      ],
+      "utils/*": [
+        "./src/utils/*/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/**/index.{ts,tsx}\" --format esm,cjs --dts --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@date-io/moment": "3.0.0",
+    "@emotion/cache": "11.13.5",
+    "@emotion/react": "11.13.5",
+    "@emotion/styled": "11.13.5",
+    "@mui/icons-material": "6.1.10",
+    "@mui/material": "6.1.10",
+    "@mui/material-nextjs": "6.1.9",
+    "@mui/system": "6.1.10",
+    "@mui/x-date-pickers": "7.23.1",
+    "@repo/constants": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@uidotdev/usehooks": "2.4.1",
+    "lodash": "4.17.21",
+    "moment": "2.30.1",
+    "next": "15.0.4",
+    "notistack": "3.0.1",
+    "numeral": "2.0.6",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-hook-form": "7.53.2",
+    "react-lazy-load-image-component": "1.6.2",
+    "react-number-format": "5.4.2",
+    "react-query": "3.39.3",
+    "react-virtuoso": "4.12.3",
+    "zustand": "5.0.2"
+  },
+  "devDependencies": {
+    "@repo/config-eslint": "workspace:*",
+    "@repo/types": "workspace:*",
+    "@turbo/gen": "2.3.3",
+    "@types/lodash": "4.17.13",
+    "@types/node": "22.10.1",
+    "@types/numeral": "2.0.5",
+    "@types/qs": "6.9.17",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "@types/react-lazy-load-image-component": "1.6.4",
+    "tsup": "8.3.5",
+    "typescript": "5.7.2"
+  }
+}

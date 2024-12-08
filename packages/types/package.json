@@ -1,0 +1,21 @@
+{
+  "name": "@repo/types",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/*.d.ts"
+      ]
+    }
+  },
+  "dependencies": {
+    "yup": "1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.10.1",
+    "@types/yup": "0.32.0",
+    "typescript": "5.7.2"
+  }
+}

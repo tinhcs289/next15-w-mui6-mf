@@ -1,0 +1,93 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.localhost"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build:development": {
+      "dependsOn": ["^build:development"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.development"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build:staging": {
+      "dependsOn": ["^build:development"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.staging"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build:production": {
+      "dependsOn": ["^build:development"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.production"
+      ],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "start": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.localhost"
+      ],
+      "dependsOn": ["^start"]
+    },
+    "start:development": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.development"
+      ],
+      "dependsOn": ["^start:development"]
+    },
+    "start:staging": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.staging"
+      ],
+      "dependsOn": ["^start:staging"]
+    },
+    "start:production": {
+      "cache": false,
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "env/.env.production"
+      ],
+      "dependsOn": ["^start:production"]
+    },
+    "dev": {
+      "persistent": false,
+      "cache": false,
+      "dependsOn": ["^dev"],
+      "inputs": ["$TURBO_DEFAULT$", "env/.env.localhost"]
+    },
+    "dev:development": {
+      "persistent": false,
+      "cache": false,
+      "dependsOn": ["^dev:development"],
+      "inputs": ["$TURBO_DEFAULT$", "env/.env.development"]
+    },
+    "dev:staging": {
+      "persistent": false,
+      "cache": false,
+      "dependsOn": ["^dev:staging"],
+      "inputs": ["$TURBO_DEFAULT$", "env/.env.staging"]
+    },
+    "dev:production": {
+      "persistent": false,
+      "cache": false,
+      "dependsOn": ["^dev:production"],
+      "inputs": ["$TURBO_DEFAULT$", "env/.env.production"]
+    }
+  }
+}

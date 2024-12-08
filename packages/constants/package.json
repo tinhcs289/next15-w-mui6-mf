@@ -1,0 +1,24 @@
+{
+  "name": "@repo/constants",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/*.ts\" --format esm,cjs --dts",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@repo/types": "workspace:*",
+    "yup": "1.5.0"
+  },
+  "devDependencies": {
+    "@types/yup": "0.32.0",
+    "tsup": "8.3.5",
+    "typescript": "5.7.2"
+  }
+}
