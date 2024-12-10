@@ -14,6 +14,7 @@
     "./components/next/*": "./src/components/next/*.tsx",
     "./components/typo/*": "./src/components/typo/*.tsx",
     "./hooks/*": "./src/hooks/*/index.ts",
+    "./layouts/*": "./src/layouts/*/index.ts",
     "./permissions": "./src/permissions/index.ts",
     "./providers/*": "./src/providers/*/index.ts",
     "./utils/*": "./src/utils/*/index.ts"
@@ -49,6 +50,9 @@
       ],
       "hooks/*": [
         "./src/hooks/*/index.ts"
+      ],
+      "layouts/*": [
+        "./src/layouts/*/index.ts"
       ],
       "permissions": [
         "./src/permissions/index.ts"

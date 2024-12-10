@@ -1,3 +1,5 @@
+export const ZONE_PATH = "docs";
+
 const PATHS = {
   main: "/",
   login: "/login",
