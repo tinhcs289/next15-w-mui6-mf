@@ -4,10 +4,11 @@ const withNextInlt = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // basePath: "/docs",
   assetPrefix: "/docs-static",
   async rewrites() {
     return {

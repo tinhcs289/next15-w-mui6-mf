@@ -1,7 +1,7 @@
 import { ALL_LOCALE } from "@repo/constants/locale";
 import type { AppLocale } from "@repo/types/locale";
 import { getRequestConfig } from 'next-intl/server';
-import { DEFAULT_LOCALE, LOCALE_KEYS } from "./config";
+import { LOCALE_KEYS } from "./config";
 import { getUserLocale } from "./server-actions";
 
 export default getRequestConfig(async ({ requestLocale }) => {
@@ -9,7 +9,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
     if (!locale || !ALL_LOCALE.includes(locale as AppLocale)) {
         locale = await getUserLocale();
-        if (!locale) locale = DEFAULT_LOCALE;
     }
 
     const messages: { [x: string]: any } = {};
