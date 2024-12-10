@@ -1,4 +1,4 @@
-import MainView from "@/views/MainView/View";
+import MainView from "@/views/MainView";
 
 export default function Home() {
   return (

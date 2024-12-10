@@ -1,13 +1,9 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { getTranslations } from "next-intl/server";
+import { getUserLocale } from "@/i18n/server-actions";
+import NotFoundView from "@/views/NotFoundView";
 
 export default async function LocaleNotFound() {
-  const t = await getTranslations("notfound")
+  const locale = await getUserLocale();
   return (
-    <Box>
-      <Typography component="h1">{t("page-heading")}</Typography>
-      <Typography variant="body1">{t("page-description")}</Typography>
-    </Box>
+    <NotFoundView locale={locale} />
   );
 }

@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { H1 } from "@repo/share-react/components/typo/h-tags";
+import ConsoleLog from "./ConsoleLog";
 
 export default function View() {
   return (
@@ -8,8 +9,11 @@ export default function View() {
       display="flex"
       justifyContent="center"
       alignItems="center"
+      flexDirection="column"
     >
-      <Typography component="h1">Main view of Docs</Typography>
+      <H1>Main view of Docs</H1>
+      <br />
+      <ConsoleLog />
     </Box>
   );
 }

@@ -1,14 +1,14 @@
-import { FONT_CLASS_NAMES } from "@/app/fonts";
-import { STATIC_MEDIA } from '@/constants/media';
-import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStoreProvider } from "@repo/share-react/auth";
-import DateTimeAndNumeralProvider from "@repo/share-react/providers/DateTimeAndNumeralProvider";
-import MUIV6ThemeProvider from "@repo/share-react/providers/MUIV6ThemeProvider";
-import NotiStackProvider from "@repo/share-react/providers/NotiStackProvider";
-import ReactQueryProvider from "@repo/share-react/providers/ReactQueryProvider";
+import DocumentBody from "@/components/layout/DocumentBody";
+import MainLayout from "@/components/layout/MainLayout";
+import { ZONE_NAME } from "@/constants/zone";
+import { getUserLocale } from "@/i18n/server-actions";
+import { ALL_LOCALE } from "@repo/constants/locale";
+import type { AppLocale } from "@repo/types/locale";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
+
+import { NextIntlClientProvider } from 'next-intl';
 
 type Params = Promise<{ locale: string }>
 
@@ -20,7 +20,7 @@ type LocaleLayoutProps = {
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
- 
+
   return {
     title: t("title"),
     description: t("description"),
@@ -28,24 +28,19 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 }
 
 export default async function RootLayout({ children, params }: LocaleLayoutProps) {
-  const { locale } = await params;
+  let { locale } = await params;
+
+  if (!ALL_LOCALE.includes(locale as AppLocale)) {
+    locale = await getUserLocale();
+  }
+
   return (
-    <html lang={locale}>
-      <head>
-        <link rel="icon" href={STATIC_MEDIA.favicon} sizes="any" />
-      </head>
-      <ReactQueryProvider>
-        <MUIV6ThemeProvider locale={locale}>
-          <DateTimeAndNumeralProvider locale={locale}>
-            <NotiStackProvider>
-              <AuthStoreProvider>
-                <body className={`${FONT_CLASS_NAMES}`}>{children}</body>
-              </AuthStoreProvider>
-            </NotiStackProvider>
-          </DateTimeAndNumeralProvider>
-        </MUIV6ThemeProvider>
-      </ReactQueryProvider>
-      <GoogleAnalytics gaId="YOUR GAID GOES HERE" />
-    </html>
+    <NextIntlClientProvider locale={locale}>
+      <DocumentBody locale={locale}>
+        <MainLayout locale={locale} zoneName={ZONE_NAME}>
+          {children}
+        </MainLayout>
+      </DocumentBody>
+    </NextIntlClientProvider>
   );
 }

@@ -1,7 +1,7 @@
 import type { AppRouterCacheProviderProps } from '@mui/material-nextjs/v15-appRouter';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import type { ReactNode } from 'react';
-import MuiV6Theme from './MuiV6Theme';
+import ClientSideProvider from './ClientSideProvider';
 
 export type MUIV6ThemeProviderProps = {
   children?: ReactNode;
@@ -19,7 +19,7 @@ export default function MUIV6ThemeProvider({
       {...cacheProviderProps}
       options={{ ...cacheProviderProps?.options, enableCssLayer: true }}
     >
-      <MuiV6Theme locale={locale}>{children}</MuiV6Theme>
+      <ClientSideProvider locale={locale}>{children}</ClientSideProvider>
     </AppRouterCacheProvider>
   );
 }
