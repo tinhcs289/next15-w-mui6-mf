@@ -39,7 +39,6 @@ export default async function AuthGuardServerSide({
   WhenUnauthenticated = Fragment,
 }: AuthGuardServerSideProps) {
   const authData = await useAuthCookieServerSide();
-  console.log(`auth`, authData);
   const isAuthenticated = !!authData;
 
   const redirectUrlWithReturnUri = await useBuildReturnUrlServerSide(

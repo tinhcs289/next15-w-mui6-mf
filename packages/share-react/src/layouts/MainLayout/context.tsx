@@ -7,6 +7,8 @@ import { createStatesContext } from "../../utils/states-context";
 export type MainLayoutStates = {
   locale?: AppLocale;
   openAppbarDrawer?: boolean;
+  currentUrl?: string;
+  zoneName?: string;
 }
 
 export const {
@@ -19,5 +21,15 @@ export const {
 
 export function LocaleInitializer({ locale }: Pick<MainLayoutStates, 'locale'>) {
   useInitMainLayoutState("locale", locale, { when: "whenever-value-changes" });
+  return null as unknown as JSX.Element;
+}
+
+export function CurrentUrlInitializer({ currentUrl }: Pick<MainLayoutStates, 'currentUrl'>) {
+  useInitMainLayoutState("currentUrl", currentUrl, { when: "whenever-value-changes" });
+  return null as unknown as JSX.Element;
+}
+
+export function ZoneNameInitializer({ zoneName }: Pick<MainLayoutStates, 'zoneName'>) {
+  useInitMainLayoutState("zoneName", zoneName, { when: "whenever-value-changes" });
   return null as unknown as JSX.Element;
 }

@@ -113,3 +113,44 @@ pnpm build:production
 ```
 If you change some environment names, please update all the ```turbo.json``` files, also the ```scripts``` section in all the ```package.json```.
 
+<br />
+<br />
+
+## Add new application
+### Step 1: Create a new directory within `apps` directory
+the name of the folder and the prefix path of the application should be the same.
+
+### Step 2: Create `turbo.json` file
+create a `turbo.json` file within application's folder. The file should include the `build`, `dev` and `start` commands. the number of variants of each command depends on the enviroments.
+### Step 3: Define scripts in `package.json` file
+in the `scripts` section in the `package.json`, you need to defined `build`, `dev`, `start` and `clean` scripts at least.
+### Step 4: Config multi-zones
+add a new key into .env.* files `main` application. you can find these file in `apps/main/env/...` folder.
+<br />
+The name of key should follow the convention below:
+<br />
+`NEXT_PUBLIC_ZONE_<UNIQUE-NUMBER>`.
+<br />
+The value of the key should follow the convention below:
+<br />
+`"{\"name\":\"<name-of-zone>\",\"domain\":\"<domain-of-zone>\"}"`
+<br />
+<br />
+For example:
+```
+NEXT_PUBLIC_ZONE_4="{\"name\":\"admin\",\"domain\":\"http://localhost:9002\"}"
+```
+
+<br />
+<br />
+
+## Add new package
+### Step 1: Create a new directory within `packages` directory
+the name of the folder and the prefix path of the application should be the same.
+
+### Step 2: create `turbo.json` file
+create a `turbo.json` file within application's folder. The file should include the `build` command. the number of variants of each command depends on the enviroments.
+### Step 3: define scripts in `package.json` file
+in the `scripts` section in the `package.json`, you need to defined `build` and `clean` scripts at least.
+### Step 4: Export whatever you want
+please defined `exports` in the `package.json` file.
