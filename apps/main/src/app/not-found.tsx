@@ -1,4 +1,4 @@
-import { getUserLocale } from "@/i18n/server-actions";
+import getUserLocale from "@/server-actions/getUserLocale";
 import NotFoundView from "@/views/NotFoundView";
 
 export default async function RootNotFound() {

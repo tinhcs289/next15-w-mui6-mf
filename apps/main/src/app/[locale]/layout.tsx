@@ -1,13 +1,14 @@
 import DocumentBody from "@/components/layout/DocumentBody";
 import MainLayout from "@/components/layout/MainLayout";
 import { ZONE_NAME } from "@/constants/zone";
-import { getUserLocale } from "@/i18n/server-actions";
+import getUserLocale from "@/server-actions/getUserLocale";
 import { ALL_LOCALE } from "@repo/constants/locale";
 import type { AppLocale } from "@repo/types/locale";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
+import getRequestUrl from "@/server-actions/getRequestUrl";
 import { NextIntlClientProvider } from 'next-intl';
 
 type Params = Promise<{ locale: string }>
@@ -34,10 +35,16 @@ export default async function RootLayout({ children, params }: LocaleLayoutProps
     locale = await getUserLocale();
   }
 
+  const currentUrl = await getRequestUrl();
+
   return (
     <NextIntlClientProvider locale={locale}>
       <DocumentBody locale={locale}>
-        <MainLayout locale={locale} zoneName={ZONE_NAME}>
+        <MainLayout
+          locale={locale}
+          zoneName={ZONE_NAME}
+          currentUrl={currentUrl}
+        >
           {children}
         </MainLayout>
       </DocumentBody>

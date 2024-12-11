@@ -2,7 +2,7 @@ import { ALL_LOCALE } from "@repo/constants/locale";
 import type { AppLocale } from "@repo/types/locale";
 import { getRequestConfig } from 'next-intl/server';
 import { LOCALE_KEYS } from "./config";
-import { getUserLocale } from "./server-actions";
+import getUserLocale from "@/server-actions/getUserLocale";
 
 export default getRequestConfig(async ({ requestLocale }) => {
     let locale = await requestLocale;

@@ -1,6 +1,6 @@
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { STATIC_MEDIA } from "@/constants/media";
-import { getUserLocale } from "@/i18n/server-actions";
+import getUserLocale from "@/server-actions/getUserLocale";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
