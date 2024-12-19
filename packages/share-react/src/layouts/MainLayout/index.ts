@@ -1,6 +1,6 @@
 import MainLayout from "./MainLayout";
 
-export { useDefineAppbarMethod, useGetMainLayoutState, useInitMainLayoutState, useSetMainLayoutState } from "./context";
+export { useDefineMainLayoutMethod, useGetMainLayoutState, useInitMainLayoutState, useSetMainLayoutState } from "./context";
 
 export type { MainLayoutStates } from "./context";
 

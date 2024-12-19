@@ -1,7 +1,7 @@
 import MainLayout from "@repo/share-react/layouts/MainLayout";
 
 export {
-  useDefineAppbarMethod,
+  useDefineMainLayoutMethod,
   useGetMainLayoutState,
   useInitMainLayoutState,
   useSetMainLayoutState

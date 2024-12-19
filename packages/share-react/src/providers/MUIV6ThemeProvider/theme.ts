@@ -1,9 +1,14 @@
 import { createTheme } from "@mui/material/styles";
-import { dataDisplayCustomizations } from "./customizations/dataDisplay";
-import { feedbackCustomizations } from "./customizations/feedback";
+import { accordionCustomizations } from "./customizations/accordion";
+import { buttonsCustomizations } from "./customizations/buttons";
+import { cardCustomizations } from "./customizations/card";
+import { commonCustomizations } from "./customizations/common";
 import { inputsCustomizations } from "./customizations/inputs";
-import { navigationCustomizations } from "./customizations/navigation";
-import { surfacesCustomizations } from "./customizations/surfaces";
+import { listCustomizations } from "./customizations/lists";
+import { menuCustomizations } from "./customizations/menu";
+import { paginationCustomizations } from "./customizations/pagination";
+import { stepCustomizations } from "./customizations/step";
+import { tabsCustomizations } from "./customizations/tabs";
 import { colorSchemes, shadows, shape, typography } from './customizations/themePrimitives';
 
 const theme = createTheme({
@@ -16,11 +21,20 @@ const theme = createTheme({
     shadows,
     shape,
     components: {
+      ...commonCustomizations,
+      ...paginationCustomizations,
+      ...buttonsCustomizations,
       ...inputsCustomizations,
-      ...dataDisplayCustomizations,
-      ...feedbackCustomizations,
-      ...navigationCustomizations,
-      ...surfacesCustomizations
+      ...listCustomizations,
+      ...menuCustomizations,
+      ...tabsCustomizations,
+      ...stepCustomizations,
+      ...cardCustomizations,
+      //...dataDisplayCustomizations,
+      //...feedbackCustomizations,
+      //...navigationCustomizations,
+      //...surfacesCustomizations,
+      ...accordionCustomizations,
     }
   },
 });
