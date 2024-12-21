@@ -1,5 +1,5 @@
 import type { FunctionInterpolation } from "@emotion/react";
-import type { SvgIconTypeMap, Theme, SxProps } from "@mui/material";
+import type { SvgIconTypeMap, SxProps, Theme } from "@mui/material";
 import type { OverridableComponent } from "@mui/material/OverridableComponent";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { ClassAttributes, ComponentType, HTMLAttributes } from "react";
@@ -19,3 +19,7 @@ export type HtmlElementProps = ClassAttributes<HTMLSpanElement> &
 export type StyleMakerFn = FunctionInterpolation<Theme>;
 
 export type MuiSx = SxProps<Theme>;
+
+export type HOC<Props> = (
+  WrappedComponent: ComponentType<Props>
+) => ComponentType<Props>;

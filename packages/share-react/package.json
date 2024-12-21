@@ -12,6 +12,7 @@
     "./components/input": "./src/components/input/index.ts",
     "./components/input/*": "./src/components/input/*.tsx",
     "./components/next/*": "./src/components/next/*.tsx",
+    "./components/table": "./src/components/table/index.ts",
     "./components/typo/*": "./src/components/typo/*.tsx",
     "./hooks/*": "./src/hooks/*/index.ts",
     "./layouts/*": "./src/layouts/*/index.ts",
@@ -44,6 +45,9 @@
       ],
       "components/next/*": [
         "./src/components/next/*.tsx"
+      ],
+      "components/table": [
+        "./src/components/table/index.ts"
       ],
       "components/typo/*": [
         "./src/components/typo/*.tsx"
