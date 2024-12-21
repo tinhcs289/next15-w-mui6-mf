@@ -9,27 +9,45 @@ export type MainLayoutStates = {
   openAppbarDrawer?: boolean;
   currentUrl?: string;
   zoneName?: string;
-}
+};
 
-export const {
+const {
   StatesProvider: MainLayoutStatesProvider,
   useGetState: useGetMainLayoutState,
-  useDefineMethod: useDefineAppbarMethod,
+  useDefineMethod: useDefineMainLayoutMethod,
   useInitState: useInitMainLayoutState,
   useSetState: useSetMainLayoutState,
 } = createStatesContext<MainLayoutStates>({ openAppbarDrawer: false });
 
-export function LocaleInitializer({ locale }: Pick<MainLayoutStates, 'locale'>) {
+export {
+  MainLayoutStatesProvider,
+  useDefineMainLayoutMethod,
+  useGetMainLayoutState,
+  useInitMainLayoutState,
+  useSetMainLayoutState,
+};
+
+export function LocaleInitializer({
+  locale,
+}: Pick<MainLayoutStates, "locale">) {
   useInitMainLayoutState("locale", locale, { when: "whenever-value-changes" });
   return null as unknown as JSX.Element;
 }
 
-export function CurrentUrlInitializer({ currentUrl }: Pick<MainLayoutStates, 'currentUrl'>) {
-  useInitMainLayoutState("currentUrl", currentUrl, { when: "whenever-value-changes" });
+export function CurrentUrlInitializer({
+  currentUrl,
+}: Pick<MainLayoutStates, "currentUrl">) {
+  useInitMainLayoutState("currentUrl", currentUrl, {
+    when: "whenever-value-changes",
+  });
   return null as unknown as JSX.Element;
 }
 
-export function ZoneNameInitializer({ zoneName }: Pick<MainLayoutStates, 'zoneName'>) {
-  useInitMainLayoutState("zoneName", zoneName, { when: "whenever-value-changes" });
+export function ZoneNameInitializer({
+  zoneName,
+}: Pick<MainLayoutStates, "zoneName">) {
+  useInitMainLayoutState("zoneName", zoneName, {
+    when: "whenever-value-changes",
+  });
   return null as unknown as JSX.Element;
 }

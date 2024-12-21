@@ -15,7 +15,6 @@ function createRewritesForZones() {
   const rewriteConfigs = Object.keys(process.env)
     .filter((k) => k.startsWith("NEXT_PUBLIC_ZONE_"))
     .reduce((configs, k) => {
-      console.log(process.env[k]);
       /**
        * @type {{ name: string, domain: string }}
        */

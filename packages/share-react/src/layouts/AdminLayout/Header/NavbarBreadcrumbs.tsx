@@ -1,0 +1,17 @@
+import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+import Typography from '@mui/material/Typography';
+import StyledBreadcrumbs from "./StyledBreadcrumbs";
+
+export default function NavbarBreadcrumbs() {
+  return (
+    <StyledBreadcrumbs
+      aria-label="breadcrumb"
+      separator={<NavigateNextRoundedIcon fontSize="small" />}
+    >
+      <Typography variant="body1">Dashboard</Typography>
+      <Typography variant="body1" sx={{ color: 'text.primary', fontWeight: 600 }}>
+        Home
+      </Typography>
+    </StyledBreadcrumbs>
+  );
+}
