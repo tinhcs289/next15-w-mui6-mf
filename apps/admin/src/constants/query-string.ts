@@ -1,0 +1,1 @@
+export const QS_RETURN_URL = "return-url";

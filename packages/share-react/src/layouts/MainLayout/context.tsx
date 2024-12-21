@@ -11,13 +11,22 @@ export type MainLayoutStates = {
   zoneName?: string;
 }
 
-export const {
+const {
   StatesProvider: MainLayoutStatesProvider,
   useGetState: useGetMainLayoutState,
-  useDefineMethod: useDefineAppbarMethod,
+  useDefineMethod: useDefineMainLayoutMethod,
   useInitState: useInitMainLayoutState,
   useSetState: useSetMainLayoutState,
 } = createStatesContext<MainLayoutStates>({ openAppbarDrawer: false });
+
+export {
+  MainLayoutStatesProvider,
+  useGetMainLayoutState,
+  useDefineMainLayoutMethod,
+  useInitMainLayoutState,
+  useSetMainLayoutState,
+}
+
 
 export function LocaleInitializer({ locale }: Pick<MainLayoutStates, 'locale'>) {
   useInitMainLayoutState("locale", locale, { when: "whenever-value-changes" });

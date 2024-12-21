@@ -48,13 +48,11 @@ export default async function AuthGuardServerSide({
   const locale = await getLocale();
 
   if (!isAuthenticated && !!redirectUrlWithReturnUri) {
-    console.log(`Unauthenticated! redirect to [${redirectUrlWithReturnUri}]`);
     redirect({ href: redirectUrlWithReturnUri, locale });
     return <></>;
   }
 
   if (!isAuthenticated) {
-    console.log(`Unauthenticated! replacement ui rendered`);
     return <WhenUnauthenticated />;
   }
 
