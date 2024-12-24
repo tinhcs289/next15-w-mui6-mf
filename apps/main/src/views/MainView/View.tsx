@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { H1 } from "@repo/share-react/components/typo/h-tags";
+import { H1 } from "@repo/components/typo/h-tags";
 import ConsoleLog from "./ConsoleLog";
 import DemoTable from "./DemoTable";
 

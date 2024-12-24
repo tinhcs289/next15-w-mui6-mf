@@ -1,6 +1,6 @@
 "use client";
 
-import { Table, defineColumn } from "@repo/share-react/components/table";
+import { Table, defineColumn } from "@repo/components/table";
 import { GUID } from "@repo/utils/string/guid";
 
 type RowData = {
@@ -24,7 +24,19 @@ const columns = [
 export default function DemoTable() {
   return (
     <>
-      <Table data={data} columns={columns} height={500} />
+      <Table
+        rows={data}
+        columns={columns}
+        sx={{ height: "500px" }}
+        columnsReOrder
+        slotProps={{
+          table: {
+            size: "small",
+            padding: "checkbox",
+          },
+        }}
+        emptyDisplay="No data"
+      />
     </>
   );
 }

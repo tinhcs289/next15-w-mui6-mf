@@ -3,8 +3,8 @@
 import useAuthCookieServerSide from "@/hooks/common/useAuthCookieServerSide";
 import useBuildReturnUrlServerSide from "@/hooks/common/useBuildReturnUrlServerSide";
 import { redirect } from "@/i18n/navigation";
-import { AuthStoreProvider } from "@repo/share-react/auth";
-import { getLocale } from 'next-intl/server';
+import { AuthStoreProvider } from "@repo/auth";
+import { getLocale } from "next-intl/server";
 import type { ComponentType, ReactNode } from "react";
 import { Fragment } from "react";
 
@@ -42,9 +42,8 @@ export default async function AuthGuardServerSide({
   const authData = await useAuthCookieServerSide();
   const isAuthenticated = !!authData;
 
-  const redirectUrlWithReturnUri = await useBuildReturnUrlServerSide(
-    redirectUrl
-  );
+  const redirectUrlWithReturnUri =
+    await useBuildReturnUrlServerSide(redirectUrl);
 
   const locale = await getLocale();
 

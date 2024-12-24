@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import { H1 } from "@repo/share-react/components/typo/h-tags";
-import Typo from "@repo/share-react/components/typo/Typo";
+import { H1 } from "@repo/components/typo/h-tags";
+import Typo from "@repo/components/typo/Typo";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 

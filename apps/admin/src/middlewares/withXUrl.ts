@@ -1,5 +1,5 @@
 import { ALL_LOCALE } from "@repo/constants/locale";
-import type { NextMiddlewareFactory } from "@repo/share-react/utils/next-middleware";
+import type { NextMiddlewareFactory } from "@repo/utils-react/next-middleware";
 import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 

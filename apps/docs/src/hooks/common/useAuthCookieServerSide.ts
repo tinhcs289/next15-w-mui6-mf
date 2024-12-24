@@ -1,7 +1,7 @@
 "use server";
 
 import { authDataSchema } from "@repo/constants/auth";
-import { authCookie } from "@repo/share-react/auth";
+import { authCookie } from "@repo/auth";
 import { AuthData } from "@repo/types/auth";
 import matchesSchema from "@repo/utils/data-validate/matchesSchema";
 import { cookies } from "next/headers";

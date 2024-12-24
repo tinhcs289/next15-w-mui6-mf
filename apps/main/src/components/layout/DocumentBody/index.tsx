@@ -1,11 +1,11 @@
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { STATIC_MEDIA } from '@/constants/media';
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStoreProvider } from "@repo/share-react/auth";
-import DateTimeAndNumeralProvider from "@repo/share-react/providers/DateTimeAndNumeralProvider";
-import MUIV6ThemeProvider from "@repo/share-react/providers/MUIV6ThemeProvider";
-import NotiStackProvider from "@repo/share-react/providers/NotiStackProvider";
-import ReactQueryProvider from "@repo/share-react/providers/ReactQueryProvider";
+import { AuthStoreProvider } from "@repo/auth";
+import DateTimeAndNumeralProvider from "@repo/components/provider/DateTimeAndNumeralProvider";
+import MUIV6ThemeProvider from "@repo/components/provider/MUIV6ThemeProvider";
+import NotiStackProvider from "@repo/components/provider/NotiStackProvider";
+import ReactQueryProvider from "@repo/components/provider/ReactQueryProvider";
 import type { ReactNode } from "react";
 
 export type DocumentBodyProps = {
