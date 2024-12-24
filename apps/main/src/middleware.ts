@@ -1,6 +1,6 @@
 import withLocale from "@/middlewares/withLocale";
 import withXUrl from "@/middlewares/withXUrl";
-import { stackNextMiddleware } from "@repo/share-react/utils/next-middleware";
+import { stackNextMiddleware } from "@repo/utils-react/next-middleware";
 
 export default stackNextMiddleware([withXUrl, withLocale]);
 
