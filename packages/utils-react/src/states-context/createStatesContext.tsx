@@ -60,7 +60,7 @@ export type UseSetStateReturns<StateValues extends BaseStates = BaseStates> = (
     someFunctionToCall?.(...);
  */
 export function createStatesContext<
-  StateValues extends BaseStates = BaseStates
+  StateValues extends BaseStates = BaseStates,
 >(initialState?: StateValues) {
   function useContextStatesData(): {
     get: () => StateValues;
@@ -131,7 +131,13 @@ export function createStatesContext<
 
   function useInitState(
     field: keyof StateValues,
-    value?: number | string | boolean | Array<any> | { [x: string]: any },
+    value?:
+      | number
+      | string
+      | boolean
+      | Array<any>
+      | { [x: string]: any }
+      | ReactNode,
     options: {
       when: "once-on-mount" | "whenever-value-changes";
     } = {

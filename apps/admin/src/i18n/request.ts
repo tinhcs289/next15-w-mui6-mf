@@ -1,5 +1,5 @@
-import { ALL_LOCALE } from "@repo/constants/locale";
-import type { AppLocale } from "@repo/types/locale";
+import { ALL_LOCALE } from "@shared/constants/locale";
+import type { AppLocale } from "@shared/types/locale";
 import { getRequestConfig } from 'next-intl/server';
 import { LOCALE_KEYS } from "./config";
 import { getUserLocale } from "./server-actions";

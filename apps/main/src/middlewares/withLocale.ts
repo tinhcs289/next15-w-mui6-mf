@@ -1,8 +1,8 @@
 
 import { ALL_PATHS } from "@/constants/paths";
 import { DEFAULT_LOCALE, INTL_LOCALE_PREFIX, LOCALE_PREFIX_PATH } from "@/i18n/config";
-import { ALL_LOCALE } from "@repo/constants/locale";
-import { NextMiddlewareFactory } from "@repo/utils-react/next-middleware";
+import { ALL_LOCALE } from "@shared/constants/locale";
+import { NextMiddlewareFactory } from "@shared/utils-react/next-middleware";
 import createMiddleware from "next-intl/middleware";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
 

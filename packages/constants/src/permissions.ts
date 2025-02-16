@@ -1,4 +1,4 @@
-import type { PermissionClause } from "@repo/types/auth";
+import type { PermissionClause } from "@shared/types/auth";
 
 export const ALLOWED_TO_USE = {
   /**

@@ -1,4 +1,4 @@
-import { default as MainLayout } from "@repo/layouts/AdminLayout";
+import { default as MainLayout } from "@shared/layouts/AdminLayout";
 
 export default MainLayout;
 
@@ -7,7 +7,7 @@ import {
   useGetAdminLayoutState as useGetMainLayoutState,
   useInitAdminLayoutState as useInitMainLayoutState,
   useSetAdminLayoutState as useSetMainLayoutState,
-} from "@repo/layouts/AdminLayout";
+} from "@shared/layouts/AdminLayout";
 
 export {
   useDefineMainLayoutMethod,
@@ -19,6 +19,6 @@ export {
 export type {
   AdminLayoutProps as MainLayoutProps,
   AdminLayoutStates as MainLayoutStates,
-} from "@repo/layouts/AdminLayout";
+} from "@shared/layouts/AdminLayout";
 
 

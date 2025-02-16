@@ -1,5 +1,5 @@
 {
-  "name": "@repo/types",
+  "name": "@shared/types",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -14,9 +14,9 @@
     "yup": "1.6.1"
   },
   "devDependencies": {
-    "@repo/config-eslint": "workspace:*",
-    "@types/node": "22.10.2",
+    "@shared/config-eslint": "workspace:*",
+    "@types/node": "22.13.4",
     "@types/yup": "0.32.0",
-    "typescript": "5.7.2"
+    "typescript": "5.7.3"
   }
 }

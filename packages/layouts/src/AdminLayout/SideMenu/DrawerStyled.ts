@@ -1,19 +1,22 @@
 "use client";
 
-import MuiDrawer, { drawerClasses } from '@mui/material/Drawer';
-import { styled } from '@mui/material/styles';
+import type { DrawerProps } from "@mui/material/Drawer";
+import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
+import { styled } from "@mui/material/styles";
+import type { ComponentType } from "react";
+import { ASIDE_WIDTH } from "../constants";
 
-const drawerWidth = 240;
+const WIDTH = ASIDE_WIDTH;
 
-const DrawerStyled = styled(MuiDrawer)({
-  width: drawerWidth,
+const DrawerStyled = styled(MuiDrawer)<DrawerProps>(({ theme }) => ({
+  width: WIDTH,
   flexShrink: 0,
-  boxSizing: 'border-box',
+  boxSizing: "border-box",
   mt: 10,
   [`& .${drawerClasses.paper}`]: {
-    width: drawerWidth,
-    boxSizing: 'border-box',
+    width: WIDTH,
+    boxSizing: "border-box",
+    backgroundColor: theme.palette.background.paper,
   },
-}) as typeof MuiDrawer;
-
-export default DrawerStyled; 
+})) as ComponentType<DrawerProps>;
+export default DrawerStyled;

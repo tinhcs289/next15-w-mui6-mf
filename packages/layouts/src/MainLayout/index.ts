@@ -1,9 +1,7 @@
-import MainLayout from "./MainLayout";
+import { MainLayout } from "./component-root";
 
 export { useDefineMainLayoutMethod, useGetMainLayoutState, useInitMainLayoutState, useSetMainLayoutState } from "./context";
 
-export type { MainLayoutStates } from "./context";
-
-export type { MainLayoutProps } from "./MainLayout";
+export type { MainLayoutProps, MainLayoutStates } from "./types";
 
 export default MainLayout;
