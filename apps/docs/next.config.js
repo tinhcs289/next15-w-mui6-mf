@@ -10,6 +10,9 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  compiler: {
+    styledComponents: true,
+  },
   assetPrefix: `/${ZONE_NAME}-static`,
   async rewrites() {
     return {

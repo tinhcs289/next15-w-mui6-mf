@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthStore } from "@repo/auth";
+import { useAuthStore } from "@shared/auth";
 import type { ComponentType, ReactNode } from "react";
 import { Fragment, useEffect, useState } from "react";
 

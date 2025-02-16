@@ -1,4 +1,4 @@
-import { ALL_LOCALE, DEFAULT_LOCALE as DF_LOCALE } from "@repo/constants/locale";
+import { ALL_LOCALE, DEFAULT_LOCALE as DF_LOCALE } from "@shared/constants/locale";
 import type { LocalePrefix } from "next-intl/routing";
 
 export const DEFAULT_LOCALE = DF_LOCALE;

@@ -1,6 +1,6 @@
 'use server';
 
-import { DEFAULT_LOCALE } from "@repo/constants/locale";
+import { DEFAULT_LOCALE } from "@shared/constants/locale";
 import { cookies } from 'next/headers';
 
 export default async function getUserLocale(): Promise<string> {

@@ -1,7 +1,7 @@
 "use server";
 
 import { QS_RETURN_URL } from "@/constants/query-string";
-import aesCrypt from "@repo/utils/crypt/aesCrypt";
+import aesCrypt from "@shared/utils/crypt/aesCrypt";
 import { headers } from "next/headers";
 import { stringify } from "qs";
 

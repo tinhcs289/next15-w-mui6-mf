@@ -1,6 +1,6 @@
 import getRequestUrl from "@/server-actions/getRequestUrl";
 import getRequestUrlUnrewrites from "@/server-actions/getRequestUrlUnrewrites";
-import Typo from "@repo/components/typo/Typo";
+import Text from "@shared/typo/Text";
 
 export default async function ConsoleLog() {
   const currentUrl = await getRequestUrl();
@@ -8,8 +8,8 @@ export default async function ConsoleLog() {
 
   return (
     <>
-      <Typo>Current url: {currentUrl}</Typo>
-      <Typo>Current origin url: {currentUrlOrigin}</Typo>
+      <Text>Current url: {currentUrl}</Text>
+      <Text>Current origin url: {currentUrlOrigin}</Text>
     </>
   );
 }

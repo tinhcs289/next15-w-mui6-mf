@@ -1,6 +1,6 @@
 'use server';
 
-import { AppLocale } from '@repo/types/locale';
+import { AppLocale } from '@shared/types/locale';
 import { cookies } from 'next/headers';
 import { DEFAULT_LOCALE } from './config';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/constants",
+  "name": "@shared/constants",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -13,12 +13,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/types": "workspace:*",
+    "@shared/types": "workspace:*",
     "yup": "1.6.1"
   },
   "devDependencies": {
     "@types/yup": "0.32.0",
-    "tsup": "8.3.5",
-    "typescript": "5.7.2"
+    "tsup": "8.3.6",
+    "typescript": "5.7.3"
   }
 }

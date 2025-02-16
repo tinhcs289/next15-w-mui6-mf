@@ -1,5 +1,5 @@
-import type { AuthData } from "@repo/types/auth";
-import type { YupObjectSchema } from "@repo/types/common";
+import type { AuthData } from "@shared/types/auth";
+import type { YupObjectSchema } from "@shared/types/common";
 import * as yup from "yup";
 
 export const AUTH_PROVIDER = {

@@ -1,4 +1,4 @@
-import type { AnyObject } from "@repo/types/common";
+import type { AnyObject } from "@shared/types/common";
 import type { ReactElement } from "react";
 import type {
   Control,

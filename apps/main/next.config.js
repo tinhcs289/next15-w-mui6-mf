@@ -27,7 +27,9 @@ function createRewritesForZones() {
           destination: !locale ? `${zone.domain}` : `${zone.domain}/${locale}`,
         })),
         ...locales.map((locale) => ({
-          source: !locale ? `/${zone.name}/:path*` : `/${locale}/${zone.name}/:path*`,
+          source: !locale
+            ? `/${zone.name}/:path*`
+            : `/${locale}/${zone.name}/:path*`,
           destination: !locale
             ? `${zone.domain}/:path*`
             : `${zone.domain}/${locale}/:path*`,
@@ -46,12 +48,13 @@ function createRewritesForZones() {
 const nextConfig = {
   reactStrictMode: false,
   eslint: {
-      ignoreDuringBuilds: true
+    ignoreDuringBuilds: true,
+  },
+  compiler: {
+    styledComponents: true,
   },
   async rewrites() {
-    return [
-      ...createRewritesForZones(),
-    ];
+    return [...createRewritesForZones()];
   },
 };
 

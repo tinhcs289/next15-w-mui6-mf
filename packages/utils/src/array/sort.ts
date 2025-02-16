@@ -199,7 +199,7 @@ export const by = {
 
 /**
  * @example
-  import { inTheFollowingOrders, by } from "@repo/utils/array/sort"
+  import { inTheFollowingOrders, by } from "@shared/utils/array/sort"
 
   const sortedUsers = user.sort(inTheFollowingOrders(
     by.alphabet.asc(u => `${u.firstName} ${u.lastName}`),

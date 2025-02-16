@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { H1 } from "@repo/components/typo/h-tags";
+import { H1 } from "@shared/typo/HTags";
 import ConsoleLog from "./ConsoleLog";
 
 export default function View() {

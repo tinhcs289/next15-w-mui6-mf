@@ -1,0 +1,38 @@
+{
+  "name": "@shared/navigation",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@shared/constants": "workspace:*",
+    "next": "15.1.7",
+    "next-intl": "3.26.3",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@shared/config-eslint": "workspace:*",
+    "@turbo/gen": "2.4.2",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "tsup": "8.3.6",
+    "typescript": "5.7.3"
+  }
+}

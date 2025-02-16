@@ -1,4 +1,4 @@
-import type { AuthData } from "@repo/types/auth";
+import type { AuthData } from "@shared/types/auth";
 import type { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 import Axios from "axios";
 
