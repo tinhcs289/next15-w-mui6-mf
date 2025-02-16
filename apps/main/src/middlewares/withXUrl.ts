@@ -1,4 +1,4 @@
-import type { NextMiddlewareFactory } from "@repo/utils-react/next-middleware";
+import type { NextMiddlewareFactory } from "@shared/utils-react/next-middleware";
 import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 

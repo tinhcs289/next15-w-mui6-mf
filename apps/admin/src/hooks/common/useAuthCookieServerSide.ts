@@ -1,9 +1,9 @@
 "use server";
 
-import { authDataSchema } from "@repo/constants/auth";
-import { authCookie } from "@repo/auth";
-import { AuthData } from "@repo/types/auth";
-import matchesSchema from "@repo/utils/data-validate/matchesSchema";
+import { authDataSchema } from "@shared/constants/auth";
+import { authCookie } from "@shared/auth";
+import { AuthData } from "@shared/types/auth";
+import matchesSchema from "@shared/utils/data-validate/matchesSchema";
 import { cookies } from "next/headers";
 
 function parseAuthCookie(value?: string): AuthData | null {

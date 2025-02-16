@@ -1,63 +1,31 @@
 {
-  "name": "@repo/components",
+  "name": "@shared/components",
   "version": "0.0.0",
   "type": "module",
   "private": true,
   "exports": {
-    "./box/*": "./src/box/*.tsx",
-    "./button/*": "./src/button/*.tsx",
-    "./dialog": "./src/dialog/index.tsx",
-    "./form": "./src/form/index.ts",
-    "./input": "./src/input/index.ts",
-    "./input/*": "./src/input/*.tsx",
-    "./next/*": "./src/next/*.tsx",
-    "./provider/*": "./src/provider/*/index.ts",
-    "./table": "./src/table/index.ts",
-    "./typo/*": "./src/typo/*.tsx"
+    "./box/*": "./src/box/*/index.ts",
+    "./button/*": "./src/button/*/index.ts"
   },
   "typesVersions": {
     "*": {
       "box/*": [
-        "./src/box/*.tsx"
+        "./src/box/*/index.ts"
       ],
       "button/*": [
-        "./src/button/*.tsx"
-      ],
-      "dialog": [
-        "./src/dialog/index.tsx"
-      ],
-      "form": [
-        "./src/form/index.ts"
-      ],
-      "input": [
-        "./src/input/index.ts"
-      ],
-      "input/*": [
-        "./src/input/*.tsx"
-      ],
-      "next/*": [
-        "./src/next/*.tsx"
-      ],
-      "provider/*": [
-        "./src/provider/*/index.ts"
-      ],
-      "table": [
-        "./src/table/index.ts"
-      ],
-      "typo/*": [
-        "./src/typo/*.tsx"
+        "./src/button/*/index.ts"
       ]
     }
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/**/index.{ts,tsx}\" --format esm,cjs --dts --external react",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --external react",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/utils-react": "workspace:*",
+    "@shared/utils-react": "workspace:*",
     "@date-io/moment": "3.2.0",
     "@dnd-kit/core": "6.3.1",
     "@dnd-kit/sortable": "10.0.0",
@@ -65,41 +33,38 @@
     "@emotion/cache": "11.14.0",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.0",
-    "@mui/icons-material": "6.3.0",
-    "@mui/material": "6.3.0",
-    "@mui/material-nextjs": "6.3.0",
-    "@mui/system": "6.3.0",
-    "@mui/x-date-pickers": "7.23.3",
-    "@repo/constants": "workspace:*",
-    "@repo/utils": "workspace:*",
+    "@mui/icons-material": "6.4.4",
+    "@mui/material": "6.4.4",
+    "@mui/material-nextjs": "6.4.3",
+    "@mui/system": "6.4.3",
+    "@mui/utils": "6.4.3",
+    "@mui/x-date-pickers": "7.26.0",
+    "@shared/constants": "workspace:*",
+    "@shared/utils": "workspace:*",
     "@uidotdev/usehooks": "2.4.1",
     "lodash": "4.17.21",
     "moment": "2.30.1",
-    "next": "15.1.2",
-    "notistack": "3.0.1",
+    "next": "15.1.7",
     "numeral": "2.0.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-hook-form": "7.54.2",
     "react-lazy-load-image-component": "1.6.3",
-    "react-number-format": "5.4.2",
-    "react-query": "3.39.3",
-    "react-virtuoso": "4.12.3",
-    "zustand": "5.0.2"
+    "react-number-format": "5.4.3",
+    "react-virtuoso": "4.12.5"
   },
   "devDependencies": {
-    "@repo/config-eslint": "workspace:*",
-    "@repo/types": "workspace:*",
-    "@repo/types-react": "workspace:*",
-    "@turbo/gen": "2.3.3",
-    "@types/lodash": "4.17.13",
-    "@types/node": "22.10.2",
+    "@shared/config-eslint": "workspace:*",
+    "@shared/types": "workspace:*",
+    "@shared/types-react": "workspace:*",
+    "@turbo/gen": "2.4.2",
+    "@types/lodash": "4.17.15",
+    "@types/node": "22.13.4",
     "@types/numeral": "2.0.5",
-    "@types/qs": "6.9.17",
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
     "@types/react-lazy-load-image-component": "1.6.4",
-    "tsup": "8.3.5",
-    "typescript": "5.7.2"
+    "tsup": "8.3.6",
+    "typescript": "5.7.3"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/utils-react",
+  "name": "@shared/utils-react",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -15,34 +15,37 @@
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/**/index.{ts,tsx}\" --format esm,cjs --dts --external react",
+    "build": "tsup \"src/*/index.ts\" --format esm,cjs --dts --external react",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/constants": "workspace:*",
-    "@repo/utils": "workspace:*",
+    "@shared/constants": "workspace:*",
+    "@shared/utils": "workspace:*",
     "@uidotdev/usehooks": "2.4.1",
+    "aos": "2.3.4",
     "lodash": "4.17.21",
     "moment": "2.30.1",
-    "next": "15.1.2",
+    "next": "15.1.7",
     "numeral": "2.0.6",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "zustand": "5.0.2"
+    "react-query": "3.39.3",
+    "zustand": "5.0.3"
   },
   "devDependencies": {
-    "@repo/config-eslint": "workspace:*",
-    "@repo/types": "workspace:*",
-    "@turbo/gen": "2.3.3",
-    "@types/lodash": "4.17.13",
-    "@types/node": "22.10.2",
+    "@shared/config-eslint": "workspace:*",
+    "@shared/types": "workspace:*",
+    "@turbo/gen": "2.4.2",
+    "@types/aos": "3.0.7",
+    "@types/lodash": "4.17.15",
+    "@types/node": "22.13.4",
     "@types/numeral": "2.0.5",
-    "@types/qs": "6.9.17",
-    "@types/react": "19.0.2",
-    "@types/react-dom": "19.0.2",
-    "tsup": "8.3.5",
-    "typescript": "5.7.2"
+    "@types/qs": "6.9.18",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "tsup": "8.3.6",
+    "typescript": "5.7.3"
   }
 }

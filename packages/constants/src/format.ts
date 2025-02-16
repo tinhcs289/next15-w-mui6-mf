@@ -1,5 +1,5 @@
 import { CN, EN, VI } from "./locale";
-import type { AppFormat } from "@repo/types/format";
+import type { AppFormat } from "@shared/types/format";
 
 // read more: http://numeraljs.com/#format
 

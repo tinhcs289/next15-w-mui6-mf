@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import { H1 } from "@repo/components/typo/h-tags";
-import Typo from "@repo/components/typo/Typo";
+import { H1 } from "@shared/typo/HTags";
+import Text from "@shared/typo/Text";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";
 
@@ -23,9 +23,9 @@ export default async function View({ locale }: { locale: string }) {
     >
       <H1>{t("page-heading")}</H1>
       <br />
-      <Typo variant="body1">{`url: ${url}`}</Typo>
+      <Text variant="body1">{`url: ${url}`}</Text>
       <br />
-      <Typo variant="body1">{t("page-description")}</Typo>
+      <Text variant="body1">{t("page-description")}</Text>
     </Box>
   );
 }

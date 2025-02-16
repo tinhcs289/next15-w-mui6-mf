@@ -1,11 +1,11 @@
 import { FONT_CLASS_NAMES } from "@/app/fonts";
-import { STATIC_MEDIA } from '@/constants/media';
+import { STATIC_MEDIA } from "@/constants/media";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStoreProvider } from "@repo/auth";
-import DateTimeAndNumeralProvider from "@repo/components/provider/DateTimeAndNumeralProvider";
-import MUIV6ThemeProvider from "@repo/components/provider/MUIV6ThemeProvider";
-import NotiStackProvider from "@repo/components/provider/NotiStackProvider";
-import ReactQueryProvider from "@repo/components/provider/ReactQueryProvider";
+import { AuthStoreProvider } from "@shared/auth";
+import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
+import MUIV6ThemeProvider, { InitColorScheme } from "@shared/providers/MUIV6ThemeProvider";
+import NotiStackProvider from "@shared/providers/NotiStackProvider";
+import ReactQueryProvider from "@shared/providers/ReactQueryProvider";
 import type { ReactNode } from "react";
 
 type DocumentBodyProps = {
@@ -15,8 +15,13 @@ type DocumentBodyProps = {
 
 export default function DocumentBody({ children, locale }: DocumentBodyProps) {
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1"
+        />
         <link rel="icon" href={STATIC_MEDIA.favicon} sizes="any" />
       </head>
 
@@ -25,7 +30,10 @@ export default function DocumentBody({ children, locale }: DocumentBodyProps) {
           <DateTimeAndNumeralProvider locale={locale}>
             <NotiStackProvider>
               <AuthStoreProvider>
-                <body className={`${FONT_CLASS_NAMES}`}>{children}</body>
+                <body className={`${FONT_CLASS_NAMES}`}>
+                  <InitColorScheme />
+                  {children}
+                </body>
               </AuthStoreProvider>
             </NotiStackProvider>
           </DateTimeAndNumeralProvider>
