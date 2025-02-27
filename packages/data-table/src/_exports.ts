@@ -1,9 +1,8 @@
+
+import ColumnDndHandle from "./components/ColumnDndHandle";
 export { DataTable } from "./component-root";
-export {
-  DragHandle,
-  useHeaderDraggable
-} from "./components-virtuoso/create-table-header-draggable";
 export { createTableStateHooks } from "./context";
+export { useHeaderDndHandle } from "./context-dnd-column";
 export { column } from "./define-column";
 export type {
   ColumnDef,
@@ -13,4 +12,7 @@ export type {
   TableRowHOC,
   TableStates
 } from "./types";
+export {
+  ColumnDndHandle
+};
 

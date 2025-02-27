@@ -1,7 +1,7 @@
 import type { ComponentType } from "react";
 import { forwardRef } from "react";
 import { Any, DataTableProps } from "../types";
-import { StatesProvider } from "./context";
+import { StatesProvider } from "./context-states";
 import {
   ColumnDefsInitializer,
   ColumnsReOrderInitializer,

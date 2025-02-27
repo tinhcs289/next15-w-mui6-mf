@@ -1,13 +1,30 @@
 "use client";
 
+import { last } from "lodash";
 import type { JSX } from "react";
 import { memo, useMemo } from "react";
 import type { Any, ColumnDef, ColumnVisibility, TableStates } from "../types";
-import { useGetState, useInitState } from "./context";
+import { useGetState, useInitState } from "./context-states";
 
 export const ColumnDefsInitializer = memo(
   ({ state }: { state?: ColumnDef[] }) => {
-    useInitState("columns", state, { when: "whenever-value-changes" });
+
+    const cols = useMemo(() => {
+      if (!state?.length) return [];
+      const hasLast = last(state)?.field === "@last";
+      if (hasLast) return state;
+      return [
+        ...state,
+        {
+          field: "@last",
+          id: "00000000-0000-0000-0000-000000000000",
+          width: 2,
+          head: "",
+        },
+      ];
+    }, [state]);
+
+    useInitState("columns", cols, { when: "whenever-value-changes" });
     return null as unknown as JSX.Element;
   }
 ) as <RowData extends Any = Any>({

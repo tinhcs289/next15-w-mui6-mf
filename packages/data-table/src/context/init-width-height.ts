@@ -2,7 +2,7 @@
 
 import type { JSX } from "react";
 import { memo } from "react";
-import { useInitState } from "./context";
+import { useInitState } from "./context-states";
 
 export const WidthInitializer = memo(({ state = 0 }: { state?: number }) => {
   useInitState("tableWidth", state, { when: "whenever-value-changes" });

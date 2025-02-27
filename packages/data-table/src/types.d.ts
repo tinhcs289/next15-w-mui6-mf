@@ -10,6 +10,11 @@ import type { TableVirtuosoProps } from "react-virtuoso";
 
 export type Any = { [x: string]: any };
 
+export type VirtuosoComponents<
+  RowData extends Any = Any,
+  ContextData extends Any = Any,
+> = Required<TableVirtuosoProps<RowData, ContextData>>["components"];
+
 type CustomSlotParams<RowData extends Any = Any> = {
   row?: RowData;
   rowIndex?: number;

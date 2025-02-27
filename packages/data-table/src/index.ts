@@ -1,10 +1,7 @@
 import { DataTable } from "./component-root";
+import ColumnDndHandle from "./components/ColumnDndHandle";
 export default DataTable;
-export {
-  DragHandle,
-  useHeaderDraggable
-} from "./components-virtuoso/create-table-header-draggable";
-export { createTableStateHooks } from "./context";
+export { createTableStateHooks, useHeaderDndHandle } from "./context";
 export { column } from "./define-column";
 export type {
   ColumnDef,
@@ -14,4 +11,7 @@ export type {
   TableRowHOC,
   TableStates
 } from "./types";
+export {
+  ColumnDndHandle
+};
 

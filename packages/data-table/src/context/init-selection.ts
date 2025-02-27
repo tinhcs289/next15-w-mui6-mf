@@ -4,7 +4,7 @@ import get from "lodash/get";
 import type { JSX } from "react";
 import { memo, useCallback, useEffect, useRef } from "react";
 import type { Any, DataTableProps } from "../types";
-import { useGetState, useInitState, useSetState } from "./context";
+import { useGetState, useInitState, useSetState } from "./context-states";
 
 function concatArray<T>(...arrs: T[][]) {
   let result = [] as T[];

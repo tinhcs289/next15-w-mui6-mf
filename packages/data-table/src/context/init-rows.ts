@@ -2,7 +2,7 @@
 
 import type { JSX } from "react";
 import { memo } from "react";
-import { useInitState } from "./context";
+import { useInitState } from "./context-states";
 import { Any, TableStates } from "../types";
 
 export const RowsInitializer = memo(

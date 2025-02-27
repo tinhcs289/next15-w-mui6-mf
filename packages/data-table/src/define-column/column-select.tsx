@@ -2,8 +2,8 @@ import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import type { ChangeEvent } from "react";
 import { useCallback, useMemo } from "react";
-import S from "../components";
-import { DragHandle } from "../components-virtuoso/create-table-header-draggable";
+import S from "../components/Slots";
+import ColumnDndHandle from "../components/ColumnDndHandle";
 import { useGetState } from "../context";
 import type { CustomSlot, Slot } from "../types";
 import { defineBaseColumn } from "./column-base";
@@ -24,7 +24,7 @@ const SelectAll: Slot["headCellContent"] = (props) => {
 
   return (
     <S.HeadCellContent {...props}>
-      <DragHandle />
+      <ColumnDndHandle />
       <Checkbox checked={checked} onChange={handleSelect} disabled={disabled} />
     </S.HeadCellContent>
   );

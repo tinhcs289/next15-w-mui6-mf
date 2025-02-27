@@ -2,7 +2,7 @@
 
 import type { JSX } from "react";
 import { memo } from "react";
-import { useInitState } from "./context";
+import { useInitState } from "./context-states";
 
 export const LoadingInitializer = memo(({ state }: { state?: boolean }) => {
   useInitState("loading", state, { when: "whenever-value-changes" });

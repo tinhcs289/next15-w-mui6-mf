@@ -3,7 +3,7 @@
 import type { JSX } from "react";
 import { memo } from "react";
 import type { Any, TableStates } from "../types";
-import { useInitState } from "./context";
+import { useInitState } from "./context-states";
 
 export const SlotsInitializer = memo(
   ({ state }: { state?: TableStates["slots"] }) => {

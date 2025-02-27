@@ -4,12 +4,12 @@ import Box from "@mui/material/Box";
 import type { JSX } from "react";
 import { forwardRef, useImperativeHandle, useMemo } from "react";
 import { TableVirtuoso } from "react-virtuoso";
-import { components, fixedHeaderContent, itemContent } from "./components-virtuoso";
 import { HeightInitializer, WidthInitializer, withStates } from "./context";
 import { useBlockScrollingWhileDraggingElement } from "./hooks/use-block-scroll-while-dragging-element";
 import { useDetectIsScrolling } from "./hooks/use-detect-is-scrolling";
 import { useWatchElementWidthHeight } from "./hooks/use-watch-element-width-height";
 import type { Any, DataTableProps } from "./types";
+import { components, fixedHeaderContent, itemContent } from "./virtuoso";
 
 const DataTable = withStates(
   forwardRef<HTMLDivElement, DataTableProps>(

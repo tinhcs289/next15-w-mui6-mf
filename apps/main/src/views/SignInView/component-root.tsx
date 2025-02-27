@@ -3,7 +3,7 @@
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid2";
 import ButtonSubmit from "@shared/components/button/ButtonSubmit";
-import FormGrid from "@shared/form/FormGrid";
+import { FormGrid } from "@shared/form";
 import { AuthContentCard, AuthContentHeading } from "@shared/layouts/AuthLayout";
 import FieldEmail from "./components/FieldEmail";
 import FieldKeepMeSigned from "./components/FieldKeepMeSigned";

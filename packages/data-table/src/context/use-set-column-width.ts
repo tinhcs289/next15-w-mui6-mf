@@ -3,7 +3,7 @@
 import cloneDeep from "lodash/cloneDeep";
 import { useCallback } from "react";
 import type { TableStates } from "../types";
-import { useSetState } from "./context";
+import { useSetState } from "./context-states";
 
 export function useSetColumnWidth() {
   const setState = useSetState();

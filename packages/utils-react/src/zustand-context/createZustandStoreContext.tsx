@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { createContext, useContext, useRef } from "react";
 import { createStore, useStore } from "zustand";
 
-type BaseStates = { [x: string]: any };
+type AnyStates = { [x: string]: any };
 
 /**
  * Zustand with context, this function let you duplicate a store by multiple instances
@@ -56,7 +56,7 @@ type BaseStates = { [x: string]: any };
     }
  *
  */
-export function createZustandStoreContext<States extends BaseStates = BaseStates>(
+export function createZustandStoreContext<States extends AnyStates = AnyStates>(
   ...createStoreParams: Parameters<typeof createStore<States, []>>
 ) {
   const Context = createContext(null);
@@ -86,8 +86,8 @@ export function createZustandStoreContext<States extends BaseStates = BaseStates
   };
 }
 
-export type CreateZustandStoreContext<StateValues extends BaseStates = BaseStates> =
+export type CreateZustandStoreContext<StateValues extends AnyStates = AnyStates> =
   ReturnType<typeof createZustandStoreContext<StateValues>>;
 
-export type UseStoreContext<StateValues extends BaseStates = BaseStates> =
+export type UseStoreContext<StateValues extends AnyStates = AnyStates> =
 CreateZustandStoreContext<StateValues>["useStoreContext"];

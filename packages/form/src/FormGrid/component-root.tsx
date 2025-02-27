@@ -1,8 +1,8 @@
 "use client";
 
 import Grid from "@mui/material/Grid2";
-import type { FormEventHandler } from "react";
-import { useCallback } from "react";
+import type { FormEventHandler, JSX } from "react";
+import { forwardRef, useCallback, useImperativeHandle } from "react";
 import type { DefaultValues } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
 import { DEFAULT_SUBMIT_REASON } from "./constants";
@@ -50,7 +50,7 @@ import { useFormRef } from "./use-form-ref";
  * For building form input components, please reference to the react-hook-form Controller pattern.
  * read more https://react-hook-form.com/docs/usecontroller/controller
  */
-export function FormGrid<Values extends Any = Any>({
+export const FormGrid = forwardRef<HTMLFormElement, FormGridProps>(({
   formType,
   fieldNamePrefix = "",
   values,
@@ -59,12 +59,13 @@ export function FormGrid<Values extends Any = Any>({
   formOptions,
   children,
   ...gridProps
-}: FormGridProps<Values>) {
+}, ref) => {
   const { dispatchSubmit, formRef, submitReasonRef } = useFormRef();
+  useImperativeHandle(ref, () => formRef.current!, []);
 
-  const form = useForm<Values>({
+  const form = useForm<Any>({
     ...formOptions,
-    defaultValues: defaultValues as DefaultValues<Values>,
+    defaultValues: defaultValues as DefaultValues<Any>,
   });
 
   const handleSubmitIntercept: FormEventHandler<HTMLFormElement> = useCallback(
@@ -100,10 +101,12 @@ export function FormGrid<Values extends Any = Any>({
         container
         component="form"
         onSubmit={handleSubmitIntercept}
-        ref={formRef as any}
+        ref={formRef}
       >
         {children}
       </Grid>
     </FormProvider>
   );
-}
+}) as <Values extends Any = Any>(props: FormGridProps<Values>) => JSX.Element;
+// @ts-ignore
+FormGrid.displayName = "FormGrid";

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { Any, ColumnVisibility } from "../types";
-import { useGetState } from "./context";
+import { useGetState } from "./context-states";
 
 export function useGetColumnVisibility<RowData extends Any = Any>(
   fieldOrId?: string

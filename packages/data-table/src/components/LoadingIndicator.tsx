@@ -12,7 +12,10 @@ const BoxLoading = styled(Box)<BoxProps<"div">>(({ theme }) => ({
   left: 0,
   width: "100%",
   height: "100%",
-  background: alpha(theme.palette.grey[400], 0.5),
+  background:
+    theme.palette.mode === "light"
+      ? alpha(theme.palette.grey[400], 0.5)
+      : alpha(theme.palette.grey[900], 0.85),
   margin: "0 auto",
   padding: theme.spacing(8),
   zIndex: 4,

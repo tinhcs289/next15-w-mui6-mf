@@ -3,7 +3,7 @@
 import type { JSX } from "react";
 import { memo, useEffect, useRef } from "react";
 import type { Any, DataTableProps } from "../types";
-import { useGetState } from "./context";
+import { useGetState } from "./context-states";
 
 export const OnSortInitializer = memo(
   ({ callback }: { callback?: DataTableProps["onSort"] }) => {
