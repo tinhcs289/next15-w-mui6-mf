@@ -6,7 +6,7 @@ import type { AuthLayoutStates } from "../types";
 const {
   StatesProvider: AuthLayoutStatesProvider,
   useGetState: useGetAuthLayoutState,
-  useDefineMethod: useDefineAuthLayoutMethod,
+  useCallbackState: useDefineAuthLayoutMethod,
   useInitState: useInitAuthLayoutState,
   useSetState: useSetAuthLayoutState,
 } = createStatesContext<AuthLayoutStates>();

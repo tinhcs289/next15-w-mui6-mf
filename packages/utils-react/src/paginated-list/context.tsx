@@ -1,7 +1,7 @@
 "use client";
 
 import type {
-  UseDefineMethod,
+  UseCallbackState,
   UseGetState,
   UseInitState,
   UseSetState,
@@ -17,7 +17,7 @@ const {
   useGetState,
   useInitState,
   useSetState,
-  useDefineMethod,
+  useCallbackState,
 } = createStatesContext<PaginatedListStates>({
   initialized: {
     states: false,
@@ -56,7 +56,7 @@ function createStateHooks<
     useInitPaginatedListState: useInitState as UseInitState<
       PaginatedListStates<Item, Filter, ExtendedStates>
     >,
-    usePaginatedListMethod: useDefineMethod as UseDefineMethod<
+    usePaginatedListMethod: useCallbackState as UseCallbackState<
       PaginatedListStates<Item, Filter, ExtendedStates>
     >,
   };
@@ -68,7 +68,7 @@ export {
   useGetState,
   useInitState,
   useSetState,
-  useDefineMethod,
+  useCallbackState,
 };
 
 

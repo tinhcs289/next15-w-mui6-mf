@@ -24,16 +24,13 @@ export type UseSetStateReturns<StateValues extends BaseStates = BaseStates> = (
 /**
  * Super tiny helper for state management base on React Context API
  * @example
-    // Step 1: create a context which provides functions
-    const { Provider, useGetState, useSetState, useInitState } = createFastContext<{ backgroundColor: string }>();
+    // Step 1: create context provider and hooks in generic type of states
+    const { Provider, useGetState, useSetState, useInitState, useCallbackState } = createFastContext<{ backgroundColor?: string }>();
 
     // Step 2: Wrap Components inside the `<Provider />` component
     <Provider>
       <YourComponents />
     </Provider>
-
-    // How to init default value for a state
-    useInitState('backgroundColor', 'red');
 
     // How to get a state from store
     const backgroundColor = useGetState((store) => store.backgroundColor);
@@ -41,23 +38,34 @@ export type UseSetStateReturns<StateValues extends BaseStates = BaseStates> = (
     // How to update a state in store
     const setState = useSetState();
     ...
-    setState({ backgroundColor: 'blue' })}
+    setState({ backgroundColor: 'blue' });
+    // or
+    setState(states => ({ ...states, backgroundColor: 'yellow' }));
 
-    // How to add a action to store
-    // option 1: the original way
-    const { ... } = createStatesContext<{ ..., someFunctionToCall: (params: ...) => void }>();
-    ....
-    const someFunctionToCall = useCallback((params: ...) => { ... }, [...]);
-    useInitState('someFunctionToCall', someFunctionToCall, { when: 'whenever-value-changes' });
-    // option 1: the shorter way
-    const { ..., useAction } = createStatesContext<{ ..., someFunctionToCall: (params: ...) => void } }>();
-    ....
-    const someFunctionToCall = useAction('someFunctionToCall',(params: ...) => { ... }, [...]);
+    // How to init default value for a state
+    useInitState('backgroundColor', 'red');
 
+    // How to synchronize state with a dynamic state or value
+    useInitState('backgroundColor', color, { when: 'whenever-value-changes' });
+
+    // How to add a callback function to store
+    // option 1: use `useInitState` hook
+    const { ... } = createStatesContext<{ ..., someCallbackFunction: (params: ...) => void }>();
+    ....
+    const someCallbackFunction = useCallback((params: ...) => { ... }, [...]);
+
+    useInitState('someCallbackFunction', someCallbackFunction, { when: 'whenever-value-changes' });
+
+
+    // option 1: use `useCallbackState` hook
+    const { ..., useCallbackState } = createStatesContext<{ ..., someCallbackFunction: (params: ...) => void } }>();
+    ....
+    const someCallbackFunction = useCallbackState('someCallbackFunction',(params: ...) => { ... }, [...]);
+    
     // How to use a function which has been added to store.
-    const someFunctionToCall = useGetState((store) => store.someFunctionToCall);
+    const someCallbackFunction = useGetState((store) => store.someCallbackFunction);
     ...
-    someFunctionToCall?.(...);
+    someCallbackFunction?.(...);
  */
 export function createStatesContext<
   StateValues extends BaseStates = BaseStates,
@@ -185,12 +193,12 @@ export function createStatesContext<
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   function useCallbackState<F extends Function>(
-    actionName: keyof StateValues,
+    callbackName: keyof StateValues,
     ...useCallbackParams: Parameters<typeof useCallback<F>>
   ) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const callback = useCallback<F>(...useCallbackParams);
-    useInitState(actionName, callback, { when: "whenever-value-changes" });
+    useInitState(callbackName, callback, { when: "whenever-value-changes" });
     return callback;
   }
 
