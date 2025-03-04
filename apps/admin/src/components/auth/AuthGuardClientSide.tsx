@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuthStore } from "@shared/auth";
+import { useGetAuthState } from "@shared/auth";
 import type { ComponentType, ReactNode } from "react";
 import { Fragment, useEffect, useState } from "react";
 
@@ -26,7 +26,7 @@ export default function AuthGuardClientSide({
 }: AuthGuardClientSideProps) {
   const [shouldShow, setShouldShow] = useState(false);
 
-  const accessToken = useAuthStore((s) => s?.auth?.accessToken);
+  const accessToken = useGetAuthState((s) => s?.auth?.accessToken);
 
   useEffect(() => {
     // TODO: should implment more to verify auth info

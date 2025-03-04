@@ -10,11 +10,39 @@ export const AUTH_PROVIDER = {
   OKTA: "okta",
 };
 
+// export type AuthData = {
+//   // type of authentication logic
+//   provider: AuthProvider;
+//   ssoAccessToken?: string | null;
+//   // standard jwt properties
+//   accessToken: string;
+//   refreshToken?: string | null;
+//   expiredTimeInSecond?: number | null;
+//   // extended properties
+//   issuedAt_timestamp?: number | null;
+//   issuedAt?: Moment | null;
+//   expired_timestamp?: number | null;
+//   expiredAt?: Moment | null;
+// };
+
+// @ts-ignore
 export const authDataSchema: YupObjectSchema<AuthData> = yup.object().shape({
-  provider: yup.string().required(),
+  provider: yup.mixed().oneOf<string>([
+    "credentials",
+    "facebook",
+    "google",
+    "okta",
+    "keycloak",
+    "azure",
+    "aws",
+    "firebase",
+  ]),
+  ssoAccessToken: yup.string().nullable(),
   accessToken: yup.string().required(),
   refreshToken: yup.string().nullable(),
   expiredTimeInSecond: yup.number().nullable(),
-  expiredIn: yup.number().nullable(),
-  ssoAccessToken: yup.string().nullable(),
+  issuedAt: yup.object().nullable(),
+  issuedAt_timestamp: yup.number().nullable(),
+  expiredAt: yup.object().nullable(),
+  expired_timestamp: yup.number().nullable(),
 });

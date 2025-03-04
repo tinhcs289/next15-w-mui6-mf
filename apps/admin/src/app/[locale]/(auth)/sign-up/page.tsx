@@ -1,10 +1,13 @@
+import type { PageParams, PageSearchParams } from "@/types/next-page";
+import View from "@/views/SignUpView";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: string }>;
+  params: PageParams;
+  searchParams: PageSearchParams;
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
@@ -15,8 +18,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Signup() {
+export default function SignupPage() {
   return (
-    <>Sign up main</>
+    <View />
   );
 }

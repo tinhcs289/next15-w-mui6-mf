@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { useAuthStore } from "../store";
+import { useGetAuthState } from "../store";
 import { FEATURE_MAP } from "./constants";
 import type { AppFeatureKey } from "./types";
 import { isAllowedIf } from "./utils";
@@ -16,7 +16,7 @@ import { isAllowedIf } from "./utils";
    // do something with `isAllowed`
  */
 export function usePermissions(featureKey: AppFeatureKey) {
-  const permissions = useAuthStore((s) => s?.permissions);
+  const permissions = useGetAuthState((s) => s?.permissions);
 
   const isAllowed = useMemo(() => {
     const clause = FEATURE_MAP[featureKey];

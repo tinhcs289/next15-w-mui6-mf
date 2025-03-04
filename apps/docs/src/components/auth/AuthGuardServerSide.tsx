@@ -3,7 +3,7 @@
 import useAuthCookieServerSide from "@/hooks/common/useAuthCookieServerSide";
 import useBuildReturnUrlServerSide from "@/hooks/common/useBuildReturnUrlServerSide";
 import { redirect } from "@/i18n/navigation";
-import { AuthStoreProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@shared/auth";
 import { getLocale } from 'next-intl/server';
 import type { ComponentType, ReactNode } from "react";
 import { Fragment } from "react";
@@ -56,5 +56,5 @@ export default async function AuthGuardServerSide({
     return <WhenUnauthenticated />;
   }
 
-  return <AuthStoreProvider>{children}</AuthStoreProvider>;
+  return <AuthStatesProvider>{children}</AuthStatesProvider>;
 }

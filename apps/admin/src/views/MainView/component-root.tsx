@@ -10,6 +10,8 @@ export default function View() {
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
+        boxShadow="var(--template-shadows-10)"
+        borderRadius="4px"
       >
         <TableShopeeProduct />
       </AdminPageBody>

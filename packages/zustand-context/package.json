@@ -1,0 +1,33 @@
+{
+  "name": "@shared/zustand-context",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "19.0.0",
+    "zustand": "5.0.3"
+  },
+  "devDependencies": {
+    "@shared/config-eslint": "workspace:*",
+    "@types/react": "19.0.10",
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
+  }
+}

@@ -1,8 +1,6 @@
 "use client";
 
-import { useFormContext } from "@shared/form/FormGrid";
-import { RHFCheckWithLabel } from "@shared/form/InputCheckWithLabel";
-import { required } from "@shared/form/rhf-rules";
+import { RHFCheckWithLabel, required, useFormContext } from "@shared/form";
 import type { FormSignInValues } from "../types";
 
 export default function FieldKeepMeSigned() {

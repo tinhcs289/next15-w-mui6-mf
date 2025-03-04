@@ -1,6 +1,10 @@
 "use client";
 
-import PaginatedList, { createStateHooks, ListStatesInitializer, ReactQueryInitializer } from "@shared/utils-react/paginated-list";
+import PaginatedList, {
+  createStateHooks,
+  ListStatesInitializer,
+  ReactQueryInitializer,
+} from "@shared/paginated-list";
 import type { ReactNode } from "react";
 import { queryFn } from "./services";
 import type { RowData } from "./types";
@@ -16,10 +20,14 @@ export {
   useGetPaginatedListState,
   useInitPaginatedListState,
   usePaginatedListMethod,
-  useSetPaginatedListState
+  useSetPaginatedListState,
 };
 
-export function ShopeeProductListProvider({ children }: { children?: ReactNode }) {
+export function ShopeeProductListProvider({
+  children,
+}: {
+  children?: ReactNode;
+}) {
   return (
     <PaginatedList>
       <ListStatesInitializer idField="itemid" pageSize={60} />
