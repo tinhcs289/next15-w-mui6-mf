@@ -1,0 +1,44 @@
+{
+  "name": "@shared/http-client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@shared/auth": "workspace:*",
+    "axios": "1.8.3",
+    "axios-mock-adapter": "2.1.0",
+    "crypto-js": "4.2.0",
+    "jsonwebtoken": "9.0.2",
+    "lodash": "4.17.21",
+    "qs": "6.14.0"
+  },
+  "devDependencies": {
+    "@shared/config-eslint": "workspace:*",
+    "@shared/types": "workspace:*",
+    "@turbo/gen": "2.4.4",
+    "@types/crypto-js": "4.2.2",
+    "@types/jsonwebtoken": "9.0.9",
+    "@types/lodash": "4.17.16",
+    "@types/node": "22.13.10",
+    "@types/qs": "6.9.18",
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
+  }
+}

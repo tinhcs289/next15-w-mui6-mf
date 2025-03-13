@@ -1,24 +1,26 @@
 import DocumentBody from "@/components/layout/DocumentBody";
 import MainLayout from "@/components/layout/MainLayout";
 import { ZONE_NAME } from "@/constants/zone";
-import getUserLocale from "@/server-actions/getUserLocale";
 import { ALL_LOCALE } from "@shared/constants/locale";
+import { getRequestUrl, getUserLocale } from "@shared/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import type { Metadata } from "next";
+import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import getRequestUrl from "@/server-actions/getRequestUrl";
-import { NextIntlClientProvider } from 'next-intl';
-
-type Params = Promise<{ locale: string }>
+type Params = Promise<{ locale: string }>;
 
 type LocaleLayoutProps = {
   children: ReactNode;
   params: Params;
 };
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
 
@@ -28,7 +30,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function RootLayout({ children, params }: LocaleLayoutProps) {
+export default async function RootLayout({
+  children,
+  params,
+}: LocaleLayoutProps) {
   let { locale } = await params;
 
   if (!ALL_LOCALE.includes(locale as AppLocale)) {

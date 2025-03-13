@@ -22,17 +22,17 @@
   },
   "dependencies": {
     "@shared/constants": "workspace:*",
-    "next": "15.1.7",
-    "next-intl": "3.26.3",
+    "next": "15.2.2",
+    "next-intl": "4.0.1",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@shared/config-eslint": "workspace:*",
-    "@turbo/gen": "2.4.2",
-    "@types/react": "19.0.8",
-    "@types/react-dom": "19.0.3",
-    "tsup": "8.3.6",
-    "typescript": "5.7.3"
+    "@turbo/gen": "2.4.4",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
   }
 }

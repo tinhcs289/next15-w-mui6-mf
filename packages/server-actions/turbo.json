@@ -1,0 +1,17 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "build:development": {
+      "dependsOn": ["^build"]
+    },
+    "build:staging": {
+      "dependsOn": ["^build"]
+    },
+    "build:production": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

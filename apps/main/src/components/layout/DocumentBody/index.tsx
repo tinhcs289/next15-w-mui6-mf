@@ -1,7 +1,7 @@
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { STATIC_MEDIA } from "@/constants/media";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStoreProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@shared/auth";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, { InitColorScheme } from "@shared/providers/MUIV6ThemeProvider";
 import NotiStackProvider from "@shared/providers/NotiStackProvider";
@@ -24,12 +24,12 @@ export default function DocumentBody({ children, locale }: DocumentBodyProps) {
         <MUIV6ThemeProvider locale={locale}>
           <DateTimeAndNumeralProvider locale={locale}>
             <NotiStackProvider>
-              <AuthStoreProvider>
+              <AuthStatesProvider>
                 <body className={`${FONT_CLASS_NAMES}`}>
                   <InitColorScheme />
                   {children}
                 </body>
-              </AuthStoreProvider>
+              </AuthStatesProvider>
             </NotiStackProvider>
           </DateTimeAndNumeralProvider>
         </MUIV6ThemeProvider>

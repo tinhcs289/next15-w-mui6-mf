@@ -1,0 +1,44 @@
+{
+  "name": "@shared/browser-storage",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./cookie": "./src/cookie/index.ts",
+    "./local-storage": "./src/local-storage/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ],
+      "cookie": [
+        "./src/cookie/index.ts"
+      ],
+      "local-storage": [
+        "./src/local-storage/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "js-cookie": "3.0.5",
+    "lodash": "4.17.21"
+  },
+  "devDependencies": {
+    "@shared/config-eslint": "workspace:*",
+    "@turbo/gen": "2.4.4",
+    "@types/js-cookie": "3.0.6",
+    "@types/lodash": "4.17.16",
+    "@types/node": "22.13.10",
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
+  }
+}
