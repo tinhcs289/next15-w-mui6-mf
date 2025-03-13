@@ -19,31 +19,44 @@ npm i -g pnpm
 <br />
 <br />
 
-## Turborepo structure
+## Workspace structure
 
 #### Apps
+Next [multi-zones](https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#how-to-define-a-zone) applications
+- `main`: A [Next](https://nextjs.org/) app, this is the default app, you can access the default app via the root url "**/**".
+- `admin`: A [Next](https://nextjs.org/) app, this is the admin site, you can access the default app via the root url "**/admin/**".
+- ...
+- `[...whatever-path]`: others micro [Next](https://nextjs.org/) app. It should be access from the `main` app via the url prefix "**/[...whatever-path]/...**" (same as its folder name) and be rewrited in the `main` app.
 
-- `main`: A [Next.js 15](https://nextjs.org/) app, this is the default app, you can access the default app via the root url "**/**".
-- `admin`: A [Next.js 15](https://nextjs.org/) app, this is the admin site, you can access the default app via the root url "**/admin/**".
-- `docs`: Another app in [Next.js 15](https://nextjs.org/) (for example). It should be access from the default app via the url prefix "**/docs/...**" (same as the folder name) and be rewrited in the default app. For example, we use the name **docs** and , you can rename it or add any web application in any typescript framework. You only need to implement the handling for url prefix to make the app work. For NextJS, see [multi-zones](https://nextjs.org/docs/pages/building-your-application/deploying/multi-zones#how-to-define-a-zone)
+#### Components
+- `@shared/layouts`: This package exports utility functions, hooks, and React components for layouts based on `@mui/material`.
+- `@shared/providers`: This package exports React provider components for global contexts such as: Date-time and numeric format, theme context, zustand store, react-query.
+- `@shared/typo`: This package exports React components for typography based on `@mui/material/Typography`.
+- `@shared/boxes`: This package exports React utility components for based on `@mui/material/Box`.
+- `@shared/buttons`: This package exports React components for various types of button based on `@mui/material/Button`.
+- `@shared/form`: This package exports utility functions, hooks, and React components for form handling and data entries based on `react-hook-form` and `@mui/material`.
+- `@shared/dialog`: This package exports React components for dialog display based on `@mui/material/Dialog`.
+- `@shared/data-table`: This package exports utility functions, hooks, and React components for data-table handling based on `@mui/material/Table`, `react-virtuoso` and `@dnd-kit`.
+- `@shared/paginations`: This package exports React components for various types of pagination based on `@mui/material`.
+- `@shared/paginated-list`: This package exports React components and hooks to control the dynamic data list.
+- `@shared/svg`: This package exports SVG components.
 
 #### Packages
-
+- `@shared/animate-on-scroll`: This package exports base initializer functions for handling animations on scroll based on `aos`.
+- `@shared/auth`: This package exports utility functions, hooks and React components for `authentcation` and `authorization`.
+- `@shared/browser-storage`: This package exports  functions for handling local-storage and cookies in the client side.
 - `@shared/config-eslint`: This package exports base `eslint` configurations.
 - `@shared/constants`: This package exports constant variables and the enums which be used throghout the apps and packages in the workspaces.
+- `@shared/http-client`: This package exports  functions for performing XMLHttpRequest based on `axios`.
+- `@shared/navigation`: This package exports utility functions, hooks, and React components for navigation based on `next/navigation` and `next-intl`.
+- `@shared/stack-next-middleware`: This package exports utility functions for handling factory the middleware for next app.
+- [`@shared/states-context`](./packages/states-context/README.md): This package exports a tool for states managenent based on the `Context API`.
 - `@shared/types`: This package exports types which be used throghout the apps and packages in the workspaces.
+- `@shared/use-watch-element-dimensions`: This package exports a hook function which can watch the dimensions of a HTML element.
 - `@shared/utils`: This package exports utility functions in typscript.
-- `@shared/utils-react`: This package exports utility functions for React such as: contexts, stores, hooks, custom render, etc.
-- `@shared/auth`: This package exports utility functions, hooks and React components for `authentcation` and `authorization`.
-- `@shared/layouts`: This package exports utility functions, hooks, and React components for layouts base on `@mui/material`.
-- `@shared/navigation`: This package exports utility functions, hooks, and React components for navigation base on `next/navigation` and `next-intl`.
-- `@shared/providers`: This package exports React provider components for global contexts such as: Date-time and numeric format, theme context, zustand store, react-query.
-- `@shared/components`: This package exports React UI components which are small, re-usable and should not include any business logic.
-- `@shared/typo`: This package exports React components for typography base on `@mui/material/Typography`.
-- `@shared/form`: This package exports utility functions, hooks, and React components for form handling and data entries base on `react-hook-form` and `@mui/material`.
-- `@shared/data-table`: This package exports utility functions, hooks, and React components for data-table handling base on `@mui/material/Table`, `react-virtuoso` and `@dnd-kit`.
-  <br />
-  <br />
+- [`@shared/zustand-context`](./packages/zustand-context/README.md): This package exports a mixed of `zustand` and `Context API` for handling multiple instances of store.
+
+
 
 ## Pre-added
 
@@ -166,32 +179,139 @@ The name of key should follow the convention below:
 <br />
 The value of the key should follow the convention below:
 <br />
+``` javascript
 `"{\"name\":\"<name-of-zone>\",\"domain\":\"<domain-of-zone>\"}"`
+```
 <br />
 <br />
 For example:
 
-```
+``` json
 NEXT_PUBLIC_ZONE_4="{\"name\":\"admin\",\"domain\":\"http://localhost:9002\"}"
 ```
 
 <br />
 <br />
 
-## Add new package
+## Add new package/component
 
-### Step 1: Create a new directory within `packages` directory
+### Step 1: Create a new directory within `packages` or `components` directory
+the structure of the directory should be like the one below:
+``` bash
+├── src
+│   ├── ...
+│   └── index.ts
+├── eslint.config
+├── package.json
+├── tsconfig.json
+└── turbo.json
+```
+content of `eslint.config` file:
+``` javascript
+import { esLintConfigBase as config } from "@shared/config-eslint/base";
 
-the name of the folder and the prefix path of the application should be the same.
-
-### Step 2: create `turbo.json` file
-
-create a `turbo.json` file within application's folder. The file should include the `build` command. the number of variants of each command depends on the enviroments.
+/** @type {import("eslint").Linter.Config} */
+export default config;
+```
+content of `tsconfig.json` file:
+``` json
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "isolatedModules": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext", "ESNext.Array"],
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
+    "noUncheckedIndexedAccess": true,
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+  },
+  "exclude": ["node_modules", "**/*.stories.tsx", "dist"],
+  "include": ["src"]
+}
+```
+content of `package.json` file:
+``` json
+{
+  "name": "@shared/<same-as-the-directory-name>",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ...
+    ".": "./src/index.ts"
+   
+  },
+  "typesVersions": {
+    "*": {
+      ...
+      "*": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    ...
+  },
+  "devDependencies": {
+    ...
+    "@shared/config-eslint": "workspace:*",
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
+  }
+}
+```
+content of the `turbo.json` file
+``` json
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "build:development": {
+      "dependsOn": ["^build"]
+    },
+    "build:staging": {
+      "dependsOn": ["^build"]
+    },
+    "build:production": {
+      "dependsOn": ["^build"]
+    }
+  }
+}
+```
+### Step 2: edit the `turbo.json` file
+The basic content of `turbo.json` can work well, you can also edit to meet your expectation and it should contains `build` task at least. The variants of each task depends on the enviroments.
 
 ### Step 3: define scripts in `package.json` file
-
 in the `scripts` section in the `package.json`, you need to defined `build` and `clean` scripts at least.
 
-### Step 4: Export whatever you want
+### Step 4: start your code
+start your code within the `src` folder.
 
+### Final step: Export whatever you want
 please defined `exports` in the `package.json` file.

@@ -1,9 +1,8 @@
 "use server";
 
-import useAuthCookieServerSide from "@/hooks/common/useAuthCookieServerSide";
-import useBuildReturnUrlServerSide from "@/hooks/common/useBuildReturnUrlServerSide";
 import { redirect } from "@/i18n/navigation";
-import { AuthStoreProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@shared/auth";
+import { createReturnUrlHash, getAuthCookie } from "@shared/server-actions";
 import { getLocale } from "next-intl/server";
 import type { ComponentType, ReactNode } from "react";
 import { Fragment } from "react";
@@ -26,7 +25,7 @@ export type AuthGuardServerSideProps = {
  * @example
   some-page/page.tsx
 
-  export default function SomePage() {
+  export default async function SomePage() {
     return (
       <AuthGuardServerSide redirect="/login">
         ....
@@ -39,11 +38,10 @@ export default async function AuthGuardServerSide({
   redirect: redirectUrl,
   WhenUnauthenticated = Fragment,
 }: AuthGuardServerSideProps) {
-  const authData = await useAuthCookieServerSide();
+  const authData = await getAuthCookie();
   const isAuthenticated = !!authData;
 
-  const redirectUrlWithReturnUri =
-    await useBuildReturnUrlServerSide(redirectUrl);
+  const redirectUrlWithReturnUri = await createReturnUrlHash(redirectUrl);
 
   const locale = await getLocale();
 
@@ -55,5 +53,5 @@ export default async function AuthGuardServerSide({
     return <WhenUnauthenticated />;
   }
 
-  return <AuthStoreProvider>{children}</AuthStoreProvider>;
+  return <AuthStatesProvider>{children}</AuthStatesProvider>;
 }

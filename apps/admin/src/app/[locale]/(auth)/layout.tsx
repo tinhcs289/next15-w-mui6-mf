@@ -1,14 +1,16 @@
 import AuthLayout from "@/components/layout/AuthLayout";
 import DocumentBody from "@/components/layout/DocumentBody";
 import { ZONE_NAME } from "@/constants/zone";
-import getRequestUrl from "@/server-actions/getRequestUrl";
-import getUserLocale from "@/server-actions/getUserLocale";
 import { ALL_LOCALE } from "@shared/constants/locale";
+import { getRequestUrl, getUserLocale } from "@shared/server-actions";
 import type { AppLocale } from "@shared/types/locale";
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider } from "next-intl";
 import type { ReactNode } from "react";
 
-export default async function AuthPagesLayout({ children, params }: {
+export default async function AuthPagesLayout({
+  children,
+  params,
+}: {
   children: ReactNode;
   params: Promise<{ locale: string }>;
 }) {

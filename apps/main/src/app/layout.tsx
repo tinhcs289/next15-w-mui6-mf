@@ -1,4 +1,4 @@
-import getUserLocale from "@/server-actions/getUserLocale";
+import { getUserLocale } from "@shared/server-actions";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 

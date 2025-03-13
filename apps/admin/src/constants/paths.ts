@@ -2,8 +2,8 @@ export const ZONE_PATH = "docs";
 
 const PATHS = {
   main: "/",
-  login: "/login",
-  logout: "/logout",
+  signIn: "/sign-in",
+  signUp: "/sign-up",
 };
 export default PATHS;
 

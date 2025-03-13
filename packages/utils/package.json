@@ -7,12 +7,9 @@
   "exports": {
     "./array/*": "./src/array/*.ts",
     "./async/*": "./src/async/*.ts",
-    "./cookie": "./src/cookie/index.ts",
     "./crypt/*": "./src/crypt/*.ts",
     "./data-validate/*": "./src/data-validate/*.ts",
     "./file/*": "./src/file/*.ts",
-    "./http/*": "./src/http/*.ts",
-    "./local-storage": "./src/local-storage/index.ts",
     "./moment/*": "./src/moment/*.ts",
     "./string/*": "./src/string/*.ts"
   },
@@ -24,23 +21,14 @@
       "async/*": [
         "./src/async/*.ts"
       ],
-      "cookie": [
-        "./src/cookie/index.ts"
-      ],
-      "crypt/aesCrypt": [
-        "./src/crypt/aesCrypt.ts"
+      "crypt/*": [
+        "./src/crypt/*.ts"
       ],
       "data-validate/*": [
         "./src/data-validate/*.ts"
       ],
       "file/*": [
         "./src/file/*.ts"
-      ],
-      "http/*": [
-        "./src/http/*.ts"
-      ],
-      "local-storage": [
-        "./src/local-storage/index.ts"
       ],
       "moment/*": [
         "./src/moment/*.ts"
@@ -52,12 +40,12 @@
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/**/index.ts\" --format esm,cjs --dts",
+    "build": "tsup \"src/*/*.ts\" --format esm,cjs --dts",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "1.7.9",
+    "axios": "1.8.3",
     "axios-mock-adapter": "2.1.0",
     "crypto-js": "4.2.0",
     "js-cookie": "3.0.5",
@@ -71,16 +59,16 @@
   "devDependencies": {
     "@shared/config-eslint": "workspace:*",
     "@shared/types": "workspace:*",
-    "@turbo/gen": "2.4.2",
+    "@turbo/gen": "2.4.4",
     "@types/crypto-js": "4.2.2",
     "@types/js-cookie": "3.0.6",
-    "@types/jsonwebtoken": "9.0.8",
-    "@types/lodash": "4.17.15",
-    "@types/node": "22.13.4",
+    "@types/jsonwebtoken": "9.0.9",
+    "@types/lodash": "4.17.16",
+    "@types/node": "22.13.10",
     "@types/numeral": "2.0.5",
     "@types/qs": "6.9.18",
     "@types/yup": "0.32.0",
-    "tsup": "8.3.6",
-    "typescript": "5.7.3"
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
   }
 }

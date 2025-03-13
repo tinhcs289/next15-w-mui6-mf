@@ -1,4 +1,4 @@
-import type { Permission, PermissionClause } from "@shared/types/auth";
+import type { Permission, PermissionClause } from "../types";
 
 function comparePermissions(
   clause: PermissionClause,
