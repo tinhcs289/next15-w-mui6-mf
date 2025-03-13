@@ -1,5 +1,5 @@
-import { getUserLocale } from "@/i18n/server-actions";
 import NotFoundView from "@/views/NotFoundView";
+import { getUserLocale } from "@shared/server-actions";
 
 export default async function RootNotFound() {
   const locale = await getUserLocale();

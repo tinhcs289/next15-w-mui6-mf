@@ -1,6 +1,6 @@
 "use client";
 
-import type { FormSubmitCallback } from "@shared/form/FormGrid";
+import type { FormSubmitCallback } from "@shared/form";
 import { useCallback } from "react";
 import type { FormSignInValues } from "../types";
 

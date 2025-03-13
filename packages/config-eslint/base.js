@@ -22,10 +22,10 @@ export const esLintConfigBase = {
       "error",
       {
         name: "@mui/material/Grid",
-        message: "Grid is deprecated in MUI V6, please use Grid2 by using 'import Grid from '@mui/material/Grid2'"
+        message:
+          "Grid is deprecated in MUI V6, please use Grid2 by using \"import Grid from \"@mui/material/Grid2\"",
       },
     ],
     "react-refresh/only-export-components": "off",
   },
 };
-

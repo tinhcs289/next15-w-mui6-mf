@@ -1,0 +1,39 @@
+{
+  "name": "@shared/server-actions",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@shared/utils": "workspace:*",
+    "@shared/auth": "workspace:*",
+    "@shared/constants": "workspace:*",
+    "lodash": "4.17.21",
+    "next": "15.2.2",
+    "qs": "6.14.0"
+  },
+  "devDependencies": {
+    "@shared/config-eslint": "workspace:*",
+    "@shared/types":  "workspace:*",
+    "@types/lodash": "4.17.16",
+    "@types/qs": "6.9.18",
+    "tsup": "8.4.0",
+    "typescript": "5.8.2"
+  }
+}

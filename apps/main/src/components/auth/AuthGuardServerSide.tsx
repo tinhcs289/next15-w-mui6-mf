@@ -1,10 +1,9 @@
 "use server";
 
-import useAuthCookieServerSide from "@/hooks/common/useAuthCookieServerSide";
-import useBuildReturnUrlServerSide from "@/hooks/common/useBuildReturnUrlServerSide";
 import { redirect } from "@/i18n/navigation";
+import { createReturnUrlHash, getAuthCookie } from "@shared/server-actions";
+import { getLocale } from "next-intl/server";
 import type { ComponentType, ReactNode } from "react";
-import {getLocale} from 'next-intl/server';
 import { Fragment } from "react";
 
 export type AuthGuardServerSideProps = {
@@ -38,12 +37,10 @@ export default async function AuthGuardServerSide({
   redirect: redirectUrl,
   WhenUnauthenticated = Fragment,
 }: AuthGuardServerSideProps) {
-  const authData = await useAuthCookieServerSide();
+  const authData = await getAuthCookie();
   const isAuthenticated = !!authData;
 
-  const redirectUrlWithReturnUri = await useBuildReturnUrlServerSide(
-    redirectUrl
-  );
+  const redirectUrlWithReturnUri = await createReturnUrlHash(redirectUrl);
 
   const locale = await getLocale();
 
