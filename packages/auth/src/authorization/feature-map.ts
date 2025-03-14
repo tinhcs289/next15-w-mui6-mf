@@ -10,21 +10,21 @@ export const FEATURE_MAP: FeatureMap = {
     type: "oneOf",
     permissions: [],
   } as PermissionClause,
-  SomeFeature: {
-    type: "oneOf",
-    permissions: [
-      "key1",
-      "key2",
-      {
-        type: "matchAll",
-        permissions: ["key3", "key4"],
-      },
-    ],
-  } as PermissionClause,
-  AnotherFeature: {
-    type: "matchAll",
-    permissions: ["key5", "key6", "key7"],
-  } as PermissionClause,
+  // SomeFeature: {
+  //   type: "oneOf",
+  //   permissions: [
+  //     "key1",
+  //     "key2",
+  //     {
+  //       type: "matchAll",
+  //       permissions: ["key3", "key4"],
+  //     },
+  //   ],
+  // } as PermissionClause,
+  // AnotherFeature: {
+  //   type: "matchAll",
+  //   permissions: ["key5", "key6", "key7"],
+  // } as PermissionClause,
 };
 
 

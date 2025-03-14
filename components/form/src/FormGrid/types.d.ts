@@ -14,7 +14,7 @@ export type FormType =
 export type FormSubmitCallback<Values extends Any = Any> = (
   values: Partial<Values>,
   reason?: string
-) => void;
+) => void | Promise<void>;
 
 type UseFormParams<Values extends Any = Any> = Partial<
   Parameters<typeof useForm<Values>>[0]

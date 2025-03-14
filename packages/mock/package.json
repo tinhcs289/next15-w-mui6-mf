@@ -5,23 +5,22 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    "./*": "./src/*/index.ts"
+    ".": "./src/index.ts"
   },
   "typesVersions": {
     "*": {
       "*": [
-        "./src/*/index.ts"
+        "./src/index.ts"
       ]
     }
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/*/index.ts\" --format esm,cjs --dts",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@shared/auth": "workspace:*",
     "@shared/utils": "workspace:*",
     "axios": "1.8.3",
     "axios-mock-adapter": "2.1.0",
