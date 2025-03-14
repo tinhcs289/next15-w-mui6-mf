@@ -18,8 +18,8 @@
   "devDependencies": {
     "@shared/config-eslint": "workspace:*",
     "@types/jsonwebtoken": "9.0.9",
-    "@types/node": "22.13.10",
+    "@types/node": "22.15.16",
     "@types/yup": "0.32.0",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }

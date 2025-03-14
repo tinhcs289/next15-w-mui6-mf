@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { H1 } from "@shared/typo/HTags";
+import H1 from "@shared/typo/H1";
 import Text from "@shared/typo/Text";
 import { getTranslations } from "next-intl/server";
 import { headers } from "next/headers";

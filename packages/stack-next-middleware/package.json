@@ -15,17 +15,17 @@
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --external react",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --sourcemap --external react",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "15.2.2"
+    "next": "15.3.2"
   },
   "devDependencies": {
     "@shared/config-eslint": "workspace:*",
     "tsup": "8.4.0",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }

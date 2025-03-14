@@ -13,6 +13,10 @@ import { tabsCustomizations } from "./tabs";
 import { colorSchemes, shadows, shape, typography } from "./themePrimitives";
 
 export const theme = createTheme({
+  colorSchemes: {
+    light: true,
+    dark: true,
+  },
   cssVariables: {
     // @ts-ignore
     colorSchemes,

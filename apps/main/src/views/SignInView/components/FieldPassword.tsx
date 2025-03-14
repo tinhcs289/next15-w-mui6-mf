@@ -1,6 +1,7 @@
 "use client";
 
-import { RHFText, required, useFormContext } from "@shared/form";
+import { required, useFormContext } from "@shared/form";
+import { RHFText } from "@shared/form/inputs/text";
 import type { FormSignInValues } from "../types";
 
 export default function FieldPassword() {

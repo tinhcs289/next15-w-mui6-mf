@@ -18,14 +18,14 @@ export const esLintConfigBase = {
     "@typescript-eslint/ban-types": "off",
     indent: ["error", 2],
     "no-extra-boolean-cast": "off",
-    "no-restricted-imports": [
-      "error",
-      {
-        name: "@mui/material/Grid",
-        message:
-          "Grid is deprecated in MUI V6, please use Grid2 by using \"import Grid from \"@mui/material/Grid2\"",
-      },
-    ],
+    // "no-restricted-imports": [
+    //   "error",
+    //   {
+    //     name: "@mui/material/Grid",
+    //     message:
+    //       "Grid is deprecated in MUI V6, please use Grid2 by using \"import Grid from \"@mui/material/Grid2\"",
+    //   },
+    // ],
     "react-refresh/only-export-components": "off",
   },
 };

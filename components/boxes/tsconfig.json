@@ -6,9 +6,9 @@
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react-jsx",
     "incremental": true,
     "isolatedModules": true,
+    "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext", "ESNext.Array"],
     "module": "ESNext",
     "moduleDetection": "force",
@@ -21,6 +21,7 @@
     "resolveJsonModule": true,
     "rootDir": "src",
     "skipLibCheck": true,
+    "sourceMap": true,
     "strict": true,
     "target": "ESNext",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
