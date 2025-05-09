@@ -2,7 +2,7 @@
 
 import { styled } from "@mui/material";
 import DialogActions from "@mui/material/DialogActions";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import type { ComponentType } from "react";
 import { forwardRef } from "react";
 import type { SlotProps } from "../types";

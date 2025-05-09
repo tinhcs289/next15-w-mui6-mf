@@ -9,7 +9,6 @@
     }
   ],
   "files.exclude": {
-    "**/.vscode": true,
     "**/.git": true,
     "**/.gitignore": true,
     "**/.svn": true,
@@ -18,18 +17,10 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true,
     "**/node_modules": true,
-    "**/package-lock.json": true,
-    "**/yarn.lock": true,
-    "**/pnpm-lock.yaml": true,
     "**/dist": true,
     "**/.turbo": true,
     "**/turbo/**": true,
-    "**/tsconfig.tsbuildinfo": true,
-    "**/next-env.d.ts": true,
-    "**/.next": true,
-    "**/.npmrc": true,
-    "**/.hintrc": true,
-    "**/LICENSE": true
+    "**/.next": true
   },
   "typescript.autoClosingTags": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",

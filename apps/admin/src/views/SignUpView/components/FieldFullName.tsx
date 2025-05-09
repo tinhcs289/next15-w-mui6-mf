@@ -1,6 +1,7 @@
 "use client";
 
-import { required, RHFText, useFormContext } from "@shared/form";
+import { required, useFormContext } from "@shared/form";
+import { RHFText } from "@shared/form/inputs/text";
 import type { FormSignUpValues } from "../types";
 
 export default function FieldFullName() {

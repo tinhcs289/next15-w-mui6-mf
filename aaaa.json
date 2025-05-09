@@ -1,0 +1,119 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@shared/boxes/*": [
+        "../../components/boxes/src/*"
+      ],
+      "@shared/buttons/*": [
+        "../../components/buttons/src/*"
+      ],
+      "@shared/data-table/*": [
+        "../../components/data-table/src/*"
+      ],
+      "@shared/dialog/*": [
+        "../../components/dialog/src/*"
+      ],
+      "@shared/form/*": [
+        "../../components/form/src/*"
+      ],
+      "@shared/layouts/*": [
+        "../../components/layouts/src/*"
+      ],
+      "@shared/paginated-list/*": [
+        "../../components/paginated-list/src/*"
+      ],
+      "@shared/paginations/*": [
+        "../../components/paginations/src/*"
+      ],
+      "@shared/providers/*": [
+        "../../components/providers/src/*"
+      ],
+      "@shared/svg/*": [
+        "../../components/svg/src/*"
+      ],
+      "@shared/typo/*": [
+        "../../components/typo/src/*"
+      ],
+      "@shared/animate-on-scroll/*": [
+        "../../packages/animate-on-scroll/src/*"
+      ],
+      "@shared/auth/*": [
+        "../../packages/auth/src/*"
+      ],
+      "@shared/browser-storage/*": [
+        "../../packages/browser-storage/src/*"
+      ],
+      "@shared/constants/*": [
+        "../../packages/constants/src/*"
+      ],
+      "@shared/http-client/*": [
+        "../../packages/http-client/src/*"
+      ],
+      "@shared/mock/*": [
+        "../../packages/mock/src/*"
+      ],
+      "@shared/navigation/*": [
+        "../../packages/navigation/src/*"
+      ],
+      "@shared/server-actions/*": [
+        "../../packages/server-actions/src/*"
+      ],
+      "@shared/stack-next-middleware/*": [
+        "../../packages/stack-next-middleware/src/*"
+      ],
+      "@shared/states-context/*": [
+        "../../packages/states-context/src/*"
+      ],
+      "@shared/use-watch-element-dimensions/*": [
+        "../../packages/use-watch-element-dimensions/src/*"
+      ],
+      "@shared/utils/*": [
+        "../../packages/utils/src/*"
+      ],
+      "@shared/zustand-context/*": [
+        "../../packages/zustand-context/src/*"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "ESNext"
+  },
+  "exclude": [
+    "node_modules",
+    "server.js"
+  ],
+  "include": [
+    "../../apps/**/*",
+    "../../components/**/*",
+    "../../packages/**/*",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ]
+}

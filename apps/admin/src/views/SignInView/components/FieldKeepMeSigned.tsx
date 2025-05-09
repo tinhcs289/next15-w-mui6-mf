@@ -1,6 +1,7 @@
 "use client";
 
-import { RHFCheckWithLabel, useFormContext } from "@shared/form";
+import { useFormContext } from "@shared/form";
+import { RHFCheckWithLabel } from "@shared/form/inputs/check-with-label";
 import type { FormSignInValues } from "../types";
 
 export default function FieldKeepMeSigned() {

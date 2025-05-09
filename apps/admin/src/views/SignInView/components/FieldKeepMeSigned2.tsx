@@ -1,6 +1,7 @@
 "use client";
 
-import { RHFRadioWithLabel, required, useFormContext } from "@shared/form";
+import { required, useFormContext } from "@shared/form";
+import { RHFRadioWithLabel } from "@shared/form/inputs/radio-with-label";
 import type { FormSignInValues } from "../types";
 
 export default function FieldKeepMeSigned2() {

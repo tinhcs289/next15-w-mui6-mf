@@ -1,4 +1,4 @@
-export const ZONE_PATH = "docs";
+export const ZONE_PATH = "blog";
 
 const PATHS = {
   main: "/",

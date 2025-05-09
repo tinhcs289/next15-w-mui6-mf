@@ -1,6 +1,7 @@
 "use client";
 
-import { RHFSwitchWithLabel, required, useFormContext } from "@shared/form";
+import { required, useFormContext } from "@shared/form";
+import { RHFSwitchWithLabel } from "@shared/form/inputs/switch-with-label";
 import type { FormSignInValues } from "../types";
 
 export default function FieldKeepMeSigned3() {

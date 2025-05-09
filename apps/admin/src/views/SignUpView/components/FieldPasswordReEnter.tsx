@@ -1,7 +1,8 @@
 "use client";
 
-import type { RHFTextProps } from "@shared/form";
-import { required, RHFText, useFormContext } from "@shared/form";
+import { required, useFormContext } from "@shared/form";
+import type { RHFTextProps } from "@shared/form/inputs/text";
+import { RHFText } from "@shared/form/inputs/text";
 import { useMemo } from "react";
 import { useWatch } from "react-hook-form";
 import type { FormSignUpValues } from "../types";

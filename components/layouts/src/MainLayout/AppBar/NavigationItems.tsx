@@ -7,7 +7,7 @@ import { useGetMainLayoutState } from "../context";
 
 const items = [
   { text: "Main", url: "/" },
-  { text: "Docs", url: "/docs" },
+  { text: "Blog", url: "/blog" },
 ];
 
 export default function NavigationItems() {

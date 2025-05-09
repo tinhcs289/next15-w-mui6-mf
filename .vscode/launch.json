@@ -1,38 +1,126 @@
 {
   "version": "0.2.0",
-  "configurations": [
+  "compounds": [
     {
-      "name": "Next.js: debug server-side",
-      "type": "node-terminal",
-      "request": "launch",
-      "command": "npm run dev --turbo",
-      "sourceMaps": true,
+      "name": "Debug Main with MSEdge",
+      "configurations": [
+        "Main:Server",
+        "Main:Client"
+      ]
     },
     {
-      "name": "Next.js: debug client-side",
+      "name": "Debug Admin with MSEdge",
+      "configurations": [
+        "Admin:Server",
+        "Admin:Client"
+      ]
+    },
+    {
+      "name": "Debug Blog with MSEdge",
+      "configurations": [
+        "Blog:Server",
+        "Blog:Client"
+      ]
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Main:Server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v22.11.0/bin/pnpm",
+      "runtimeArgs": [
+        "dev",
+        "--filter",
+        "@app/main"
+      ],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/apps/main/env/.env.local",
+      "env": {
+        "NODE_OPTIONS": "--enable-source-maps"
+      },
+      "console": "integratedTerminal",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/apps/main/.next/**/*.js",
+        "${workspaceFolder}/apps/admin/.next/**/*.js",
+        "${workspaceFolder}/apps/blog/.next/**/*.js"
+      ]
+    },
+    {
+      "name": "Main:Client",
       "type": "msedge",
       "request": "launch",
       "url": "http://localhost:8888",
-      "webRoot": "${workspaceFolder}",
+      "webRoot": "${workspaceFolder}/apps/main",
       "sourceMaps": true,
+      "trace": true,
+      "preLaunchTask": "dev:main"
     },
     {
-      "name": "Next.js: debug full stack",
-      "type": "node-terminal",
+      "name": "Admin:Server",
+      "type": "node",
       "request": "launch",
-      "command": "npm run dev --turbo",
-      "skipFiles": ["<node_internals>/**"],
-      "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "/turbopack/[project]/*": "${webRoot}/*"
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v22.11.0/bin/pnpm",
+      "runtimeArgs": [
+        "dev",
+        "--filter",
+        "@app/admin"
+      ],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/apps/admin/env/.env.local",
+      "env": {
+        "NODE_OPTIONS": "--enable-source-maps"
       },
-      "serverReadyAction": {
-        "action": "debugWithEdge",
-        "killOnServerStop": true,
-        "pattern": "- Local:.+(https?://.+)",
-        "uriFormat": "%s",
-        "webRoot": "${workspaceFolder}"
-      }
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/apps/admin/.next/**/*.js"
+      ]
+    },
+    {
+      "name": "Admin:Client",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:8887",
+      "webRoot": "${workspaceFolder}/apps/admin",
+      "sourceMaps": true,
+      "trace": true,
+      "preLaunchTask": "dev:admin"
+    },
+    {
+      "name": "Blog:Server",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "${env:HOME}/.nvm/versions/node/v22.11.0/bin/pnpm",
+      "runtimeArgs": [
+        "dev",
+        "--filter",
+        "@app/blog"
+      ],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/apps/blog/env/.env.local",
+      "env": {
+        "NODE_OPTIONS": "--enable-source-maps"
+      },
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/apps/blog/.next/**/*.js"
+      ]
+    },
+    {
+      "name": "Blog:Client",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:9001",
+      "webRoot": "${workspaceFolder}/apps/blog",
+      "sourceMaps": true,
+      "trace": true,
+      "preLaunchTask": "dev:blog"
     }
   ]
 }

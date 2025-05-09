@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev:main",
+      "type": "shell",
+      "command": "env-cmd",
+      "args": ["-f", "apps/main/env/.env.local", "pnpm", "dev", "--filter", "@app/main"],
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch"
+    },
+    {
+      "label": "dev:admin",
+      "type": "shell",
+      "command": "env-cmd",
+      "args": ["-f", "apps/admin/env/.env.local", "pnpm", "dev", "--filter", "@app/admin"],
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch"
+    },
+    {
+      "label": "dev:blog",
+      "type": "shell",
+      "command": "env-cmd",
+      "args": ["-f", "apps/blog/env/.env.local", "pnpm", "dev", "--filter", "@app/blog"],
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch"
+    }
+  ]
+}

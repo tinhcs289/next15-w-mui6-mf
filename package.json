@@ -19,18 +19,18 @@
     "start:staging": "turbo run start:staging",
     "start:production": "turbo run start:production",
     "changeset": "changeset",
-    "release": "turbo run build --filter=main... && changeset publish",
+    "release": "turbo run build --filter=@app/main... && changeset publish",
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@changesets/cli": "2.28.1",
-    "@types/node": "22.13.10",
-    "npm-check-updates": "17.1.15",
+    "@changesets/cli": "2.29.3",
+    "@types/node": "22.15.16",
+    "npm-check-updates": "18.0.1",
     "prettier": "3.5.3",
-    "turbo": "2.4.4",
-    "typescript": "5.8.2"
+    "turbo": "2.5.3",
+    "typescript": "5.8.3"
   },
-  "packageManager": "pnpm@10.6.2",
+  "packageManager": "pnpm@10.10.0",
   "engines": {
     "node": ">=22",
     "pnpm": ">=9"
