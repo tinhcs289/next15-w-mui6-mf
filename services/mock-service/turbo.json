@@ -1,0 +1,29 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "build:development": {
+      "dependsOn": ["^build"]
+    },
+    "build:staging": {
+      "dependsOn": ["^build"]
+    },
+    "build:production": {
+      "dependsOn": ["^start:debug"]
+    },
+    "dev": {
+      "dependsOn": ["^start:debug"]
+    },
+    "dev:development": {
+      "dependsOn": ["^start:debug"]
+    },
+    "dev:staging": {
+      "dependsOn": ["^start:debug"]
+    },
+    "dev:production": {
+      "dependsOn": ["^start:debug"]
+    }
+  }
+}
