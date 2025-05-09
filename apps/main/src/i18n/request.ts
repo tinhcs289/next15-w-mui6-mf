@@ -17,7 +17,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     LOCALE_KEYS.map((key) =>
       (async () => {
         messages[key] = (
-          await import(`@/i18n/locales/${locale}/${key}.json`)
+          await import(`./locales/${locale}/${key}.json`)
         ).default;
       })()
     )

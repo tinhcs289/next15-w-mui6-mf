@@ -1,4 +1,4 @@
-import { getShopeeProducts } from "@shared/mock/shopee";
+import { getShopeeProducts } from "@shared/mock";
 import type { GetPaginatedList } from "@shared/paginated-list";
 import type { RowData } from "./types";
 

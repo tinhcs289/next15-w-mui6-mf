@@ -1,7 +1,7 @@
 "use client";
 
 import Divider from "@mui/material/Divider";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import ButtonSubmit from "@shared/buttons/ButtonSubmit";
 import { FormGrid } from "@shared/form";
 import { AuthContentCard, AuthContentHeading } from "@shared/layouts/AuthLayout";

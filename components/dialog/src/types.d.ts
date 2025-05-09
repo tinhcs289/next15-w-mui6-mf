@@ -2,7 +2,7 @@ import type { DialogProps } from "@mui/material/Dialog";
 import type { DialogActionsProps } from "@mui/material/DialogActions";
 import type { DialogContentProps } from "@mui/material/DialogContent";
 import type { DialogTitleProps } from "@mui/material/DialogTitle";
-import type { Grid2Props as GridProps } from "@mui/material/Grid2";
+import type { GridProps } from "@mui/material/Grid";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { TypographyProps } from "@mui/material/Typography";
 import type { ComponentType, FormEventHandler } from "react";

@@ -1,6 +1,7 @@
 "use client";
 
-import { required, RHFText, shouldBeEmail, useFormContext } from "@shared/form";
+import { required, shouldBeEmail, useFormContext } from "@shared/form";
+import { RHFText } from "@shared/form/inputs/text";
 import type { FormSignUpValues } from "../types";
 
 export default function FieldEmail() {

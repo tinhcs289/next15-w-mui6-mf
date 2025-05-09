@@ -8,7 +8,7 @@
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/*.ts\" --format esm,cjs --dts",
+    "build": "tsup \"src/*.ts\" --format esm,cjs --dts --sourcemap",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "check-types": "tsc --noEmit"
   },
@@ -19,6 +19,6 @@
   "devDependencies": {
     "@types/yup": "0.32.0",
     "tsup": "8.4.0",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }

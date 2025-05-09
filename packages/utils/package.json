@@ -40,12 +40,12 @@
   },
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
-    "build": "tsup \"src/*/*.ts\" --format esm,cjs --dts",
+    "build": "tsup \"src/*/*.ts\" --format esm,cjs --dts --sourcemap",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "axios": "1.8.3",
+    "axios": "1.9.0",
     "axios-mock-adapter": "2.1.0",
     "crypto-js": "4.2.0",
     "js-cookie": "3.0.5",
@@ -59,16 +59,16 @@
   "devDependencies": {
     "@shared/config-eslint": "workspace:*",
     "@shared/types": "workspace:*",
-    "@turbo/gen": "2.4.4",
+    "@turbo/gen": "2.5.3",
     "@types/crypto-js": "4.2.2",
     "@types/js-cookie": "3.0.6",
     "@types/jsonwebtoken": "9.0.9",
     "@types/lodash": "4.17.16",
-    "@types/node": "22.13.10",
+    "@types/node": "22.15.16",
     "@types/numeral": "2.0.5",
     "@types/qs": "6.9.18",
     "@types/yup": "0.32.0",
     "tsup": "8.4.0",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }
