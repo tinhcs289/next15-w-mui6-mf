@@ -37,7 +37,9 @@ export class ShopeeProductService {
   }
 
   remove(id: number) {
-    const recordIndex = this.listData.findIndex((record) => record.itemid === id);
+    const recordIndex = this.listData.findIndex(
+      (record) => record.itemid === id,
+    );
     if (recordIndex !== -1) {
       const [removedRecord] = this.listData.splice(recordIndex, 1);
       return removedRecord;
