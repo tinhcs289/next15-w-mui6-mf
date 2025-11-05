@@ -45,9 +45,11 @@
       ],
       "sourceMaps": true,
       "outFiles": [
-        "${workspaceFolder}/apps/main/.next/**/*.js",
-        "${workspaceFolder}/apps/admin/.next/**/*.js",
-        "${workspaceFolder}/apps/blog/.next/**/*.js"
+        "${workspaceFolder}/apps/**/.next/**/*.js"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
       ]
     },
     {
@@ -78,7 +80,11 @@
       "console": "integratedTerminal",
       "sourceMaps": true,
       "outFiles": [
-        "${workspaceFolder}/apps/admin/.next/**/*.js"
+        "${workspaceFolder}/apps/**/.next/**/*.js"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
       ]
     },
     {
@@ -109,7 +115,11 @@
       "console": "integratedTerminal",
       "sourceMaps": true,
       "outFiles": [
-        "${workspaceFolder}/apps/blog/.next/**/*.js"
+        "${workspaceFolder}/apps/**/.next/**/*.js"
+      ],
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
       ]
     },
     {

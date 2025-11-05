@@ -1,5 +1,5 @@
-import GoogleIcon from "@/components/icons/GoogleIcon";
 import Button from "@mui/material/Button";
+import GoogleIcon from "@shared/svg/GoogleIcon";
 
 export default function LinkSignInWithGoogle() {
   return (

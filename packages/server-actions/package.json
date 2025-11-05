@@ -25,15 +25,14 @@
     "@shared/auth": "workspace:*",
     "@shared/constants": "workspace:*",
     "lodash": "4.17.21",
-    "next": "15.3.2",
+    "next": "16.0.1",
     "qs": "6.14.0"
   },
   "devDependencies": {
-    "@shared/config-eslint": "workspace:*",
     "@shared/types":  "workspace:*",
-    "@types/lodash": "4.17.16",
-    "@types/qs": "6.9.18",
-    "tsup": "8.4.0",
-    "typescript": "5.8.3"
+    "@types/lodash": "4.17.20",
+    "@types/qs": "6.14.0",
+    "tsup": "8.5.0",
+    "typescript": "5.9.3"
   }
 }

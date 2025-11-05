@@ -1,6 +1,6 @@
 export {
   AdminLayoutStatesProvider,
-  useDefineAdminLayoutMethod,
+  useAdminLayoutCallback,
   useGetAdminLayoutState,
   useInitAdminLayoutState,
   useSetAdminLayoutState

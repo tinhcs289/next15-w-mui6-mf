@@ -10,6 +10,8 @@
     "dev:development": "turbo dev:development",
     "dev:staging": "turbo dev:staging",
     "dev:production": "turbo dev:production",
+    "test": "turbo test",
+    "test:ui": "turbo test:ui",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rm -rf node_modules",
@@ -23,24 +25,27 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.3",
-    "@types/node": "22.15.16",
-    "npm-check-updates": "18.0.1",
-    "prettier": "3.5.3",
-    "turbo": "2.5.3",
-    "typescript": "5.8.3"
+    "@changesets/cli": "2.29.7",
+    "@types/node": "24.9.2",
+    "npm-check-updates": "19.1.2",
+    "prettier": "3.6.2",
+    "turbo": "2.5.8",
+    "typescript": "5.9.3"
   },
-  "packageManager": "pnpm@10.10.0",
+  "packageManager": "pnpm@10.20.0",
   "engines": {
     "node": ">=22",
     "pnpm": ">=9"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "@scarf/scarf",
       "@swc/core",
       "core-js-pure",
       "esbuild",
-      "sharp"
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }

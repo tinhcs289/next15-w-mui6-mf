@@ -3,3 +3,7 @@ export type FormSignInValues = {
   password?: string;
   keepMeSigned?: boolean;
 }
+
+export type SignInViewStates = {
+  submitting?: boolean;
+}

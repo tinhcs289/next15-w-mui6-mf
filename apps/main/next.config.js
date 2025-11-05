@@ -46,15 +46,27 @@ function createRewritesForZones() {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  cacheComponents: true,
   compiler: {
     styledComponents: true,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
+  productionBrowserSourceMaps: true,
+  reactCompiler: true,
+  reactStrictMode: false,
   async rewrites() {
     return [...createRewritesForZones()];
+  },
+  webpack(config, { isServer }) {
+    if (isServer) {
+      config.devtool = "source-map";
+    }
+    return config;
   },
 };
 

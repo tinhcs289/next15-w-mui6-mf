@@ -1,6 +1,6 @@
 export {
   AuthLayoutStatesProvider,
-  useDefineAuthLayoutMethod,
+  useAuthLayoutCallback,
   useGetAuthLayoutState,
   useInitAuthLayoutState,
   useSetAuthLayoutState

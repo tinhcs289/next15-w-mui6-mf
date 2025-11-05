@@ -87,7 +87,7 @@ export function createZustandStoreContext<States extends AnyStates = AnyStates>(
     const store = useContext(Context);
     if (!store) {
       throw new Error("Missing StoreProvider");
-    }    
+    }
     return store;
   }
 

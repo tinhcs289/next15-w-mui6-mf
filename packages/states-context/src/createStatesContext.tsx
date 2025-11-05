@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 "use client";
 
 import type { ReactNode } from "react";
@@ -7,139 +5,76 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useRef,
   useState,
   useSyncExternalStore,
 } from "react";
+import isEqual from "./isEqual";
 
-// #region isEqual
-const isIterable = (obj: object): obj is Iterable<unknown> =>
-  Symbol.iterator in obj;
+type PlainObject = { [x: string]: any };
 
-const hasIterableEntries = (
-  value: Iterable<unknown>
-): value is Iterable<unknown> & {
-  entries(): Iterable<[unknown, unknown]>;
-} =>
-  // HACK: avoid checking entries type
-  "entries" in value;
-
-const compareEntries = (
-  valueA: { entries(): Iterable<[unknown, unknown]> },
-  valueB: { entries(): Iterable<[unknown, unknown]> }
-) => {
-  const mapA = valueA instanceof Map ? valueA : new Map(valueA.entries());
-  const mapB = valueB instanceof Map ? valueB : new Map(valueB.entries());
-  if (mapA.size !== mapB.size) {
-    return false;
-  }
-  for (const [key, value] of mapA) {
-    if (!Object.is(value, mapB.get(key))) {
-      return false;
-    }
-  }
-  return true;
-};
-
-// Ordered iterables
-const compareIterables = (
-  valueA: Iterable<unknown>,
-  valueB: Iterable<unknown>
-) => {
-  const iteratorA = valueA[Symbol.iterator]();
-  const iteratorB = valueB[Symbol.iterator]();
-  let nextA = iteratorA.next();
-  let nextB = iteratorB.next();
-  while (!nextA.done && !nextB.done) {
-    if (!Object.is(nextA.value, nextB.value)) {
-      return false;
-    }
-    nextA = iteratorA.next();
-    nextB = iteratorB.next();
-  }
-  return !!nextA.done && !!nextB.done;
-};
-
-function isEqual<T>(valueA: T, valueB: T): boolean {
-  if (Object.is(valueA, valueB)) {
-    return true;
-  }
-  if (
-    typeof valueA !== "object" ||
-    valueA === null ||
-    typeof valueB !== "object" ||
-    valueB === null
-  ) {
-    return false;
-  }
-  if (!isIterable(valueA) || !isIterable(valueB)) {
-    return compareEntries(
-      { entries: () => Object.entries(valueA) },
-      { entries: () => Object.entries(valueB) }
-    );
-  }
-  if (hasIterableEntries(valueA) && hasIterableEntries(valueB)) {
-    return compareEntries(valueA, valueB);
-  }
-  return compareIterables(valueA, valueB);
-}
-// #endregion
-
-type BaseStates = { [x: string]: any };
-
-export type UseSetStateReturns<StateValues extends BaseStates = BaseStates> = (
-  value: Partial<StateValues> | ((states?: StateValues) => StateValues)
-) => void;
+export type UseSetStateReturns<StateValues extends PlainObject = PlainObject> =
+  (
+    value: Partial<StateValues> | ((states?: StateValues) => StateValues)
+  ) => void;
 
 /**
- * Super tiny helper for state management base on React Context API
+ * A lightweight and flexible state management solution using React Context API.
+ *
+ * This helper lets you create a context store with convenient hooks to:
+ * - Provide and consume global state in your React app.
+ * - Get state slices efficiently with selectors.
+ * - Update state partially or with functional updates.
+ * - Initialize or reset state values on mount or when dependencies change.
+ * - Store and manage callback functions as part of the state.
+ *
+ * @template StateValues The shape of your state object.
+ *
  * @example
-    // Step 1: create context provider and hooks in generic type of states
-    const { Provider, useGetState, useSetState, useInitState, useCallbackState } = createFastContext<{ backgroundColor?: string }>();
-
-    // Step 2: Wrap Components inside the `<Provider />` component
-    <Provider>
-      <YourComponents />
-    </Provider>
-
-    // How to get a state from store
-    const backgroundColor = useGetState((store) => store.backgroundColor);
-
-    // How to update a state in store
-    const setState = useSetState();
-    ...
-    setState({ backgroundColor: 'blue' });
-    // or
-    setState(states => ({ ...states, backgroundColor: 'yellow' }));
-
-    // How to init default value for a state
-    useInitState('backgroundColor', 'red');
-
-    // How to synchronize state with a dynamic state or value
-    useInitState('backgroundColor', color, { when: 'whenever-value-changes' });
-
-    // How to add a callback function to store
-    // option 1: use `useInitState` hook
-    const { ... } = createStatesContext<{ ..., someCallbackFunction: (params: ...) => void }>();
-    ....
-    const someCallbackFunction = useCallback((params: ...) => { ... }, [...]);
-
-    useInitState('someCallbackFunction', someCallbackFunction, { when: 'whenever-value-changes' });
-
-
-    // option 1: use `useCallbackState` hook
-    const { ..., useCallbackState } = createStatesContext<{ ..., someCallbackFunction: (params: ...) => void } }>();
-    ....
-    const someCallbackFunction = useCallbackState('someCallbackFunction',(params: ...) => { ... }, [...]);
-    
-    // How to use a function which has been added to store.
-    const someCallbackFunction = useGetState((store) => store.someCallbackFunction);
-    ...
-    someCallbackFunction?.(...);
+  // Step 1: Create context provider and hooks with your state shape
+  const {
+    StatesProvider,
+    useGetState,
+    useSetState,
+    useInitState,
+    useCallbackState,
+  } = createStatesContext<{ backgroundColor?: string }>();
+ 
+  // Step 2: Wrap your app or components with the Provider
+  <StatesProvider>
+    <YourComponents />
+  </StatesProvider>
+ 
+  // Step 3: Read a state value from the store using a selector function
+  const backgroundColor = useGetState(store => store.backgroundColor);
+ 
+  // Step 4: Update state using the setter returned by useSetState
+  const setState = useSetState();
+  setState({ backgroundColor: "blue" });
+  // Or update based on previous state
+  setState(prev => ({ ...prev, backgroundColor: "yellow" }));
+ 
+  // The following features are independent and can be used as needed:
+ 
+  // Initialize or reset a state value, optionally updating when the value changes
+  useInitState("backgroundColor", "red");
+  useInitState("backgroundColor", dynamicColor, { when: "whenever-value-changes" });
+ 
+  // Store callback functions in the state store:
+  // Option 1: Initialize callback using useInitState
+  const someCallback = useCallback((param) => { ... }, []);
+  useInitState("someCallback", someCallback, { when: "whenever-value-changes" });
+ 
+  // Option 2: Create and store callback directly using useCallbackState
+  const someCallback = useCallbackState("someCallback", (param) => { / ... / }, []);
+ 
+  // Retrieve and call a stored callback function
+  const storedCallback = useGetState(store => store.someCallback);
+  storedCallback?.(args);
  */
 export function createStatesContext<
-  StateValues extends BaseStates = BaseStates,
+  StateValues extends PlainObject = PlainObject,
 >(initialState?: StateValues) {
   function useContextStatesData(): {
     get: () => StateValues;
@@ -182,29 +117,40 @@ export function createStatesContext<
     );
   }
 
+  function useSafeStore(): UseContextStatesDataReturns {
+    const store = useContext(StoreContext);
+    if (!store) throw new Error("Store not found");
+    return store;
+  }
+
   function useGetState<SelectorOutput>(
     selector: (store: StateValues) => SelectorOutput
   ): SelectorOutput {
-    const store = useContext(StoreContext);
+    const store = useSafeStore();
 
-    if (!store) {
-      throw new Error("Store not found");
-    }
+    const previousRef = useRef<SelectorOutput>(undefined);
+    const getSnapshot = () => {
+      const next = selector(store.get());
+      if (isEqual(previousRef.current, next)) {
+        return previousRef.current as SelectorOutput;
+      }
+      previousRef.current = next;
+
+      return next;
+    };
+
+    const getServerSnapshot = () => selector(initialState as StateValues);
 
     const state = useSyncExternalStore(
       store.subscribe,
-      () => selector(store.get()),
-      () => selector(initialState as StateValues)
+      getSnapshot,
+      getServerSnapshot
     );
-
     return state;
   }
 
   function useSetState(): UseSetStateReturns<StateValues> {
-    const store = useContext(StoreContext);
-    if (!store) {
-      throw new Error("Store not found");
-    }
+    const store = useSafeStore();
     return store.set;
   }
 
@@ -229,45 +175,20 @@ export function createStatesContext<
     const state = useGetState((s) => s?.[field]);
     const [init, setInit] = useState(false);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       if (init && !forceUpdate) return;
-      if (
-        (typeof value === "undefined" || value === null || value === "") &&
-        !forceUpdate
-      ) {
-        return;
-      }
-
-      if (value instanceof Array || typeof value === "object") {
-        if (isEqual(value, state)) return;
-        setInit(true);
-        setState({ [field]: value } as any);
-        return;
-      }
-
-      if (typeof value === "function") {
-        setInit(true);
-        setState({ [field]: value } as any);
-        return;
-      }
-
-      if (value === state) return;
-
+      if (isEqual(value, state)) return;
       setInit(true);
       setState({ [field]: value } as any);
-      return;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value]);
+    }, [value, state]);
 
     return init;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
   function useCallbackState<F extends Function>(
     callbackName: keyof StateValues,
     ...useCallbackParams: Parameters<typeof useCallback<F>>
   ) {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const callback = useCallback<F>(...useCallbackParams);
     useInitState(callbackName, callback, { when: "whenever-value-changes" });
     return callback;
@@ -282,17 +203,17 @@ export function createStatesContext<
   };
 }
 
-export type CreateStatesContext<StateValues extends BaseStates = BaseStates> =
+export type CreateStatesContext<StateValues extends PlainObject = PlainObject> =
   ReturnType<typeof createStatesContext<StateValues>>;
 
-export type UseGetState<StateValues extends BaseStates = BaseStates> =
+export type UseGetState<StateValues extends PlainObject = PlainObject> =
   CreateStatesContext<StateValues>["useGetState"];
 
-export type UseSetState<StateValues extends BaseStates = BaseStates> =
+export type UseSetState<StateValues extends PlainObject = PlainObject> =
   CreateStatesContext<StateValues>["useSetState"];
 
-export type UseInitState<StateValues extends BaseStates = BaseStates> =
+export type UseInitState<StateValues extends PlainObject = PlainObject> =
   CreateStatesContext<StateValues>["useInitState"];
 
-export type UseCallbackState<StateValues extends BaseStates = BaseStates> =
+export type UseCallbackState<StateValues extends PlainObject = PlainObject> =
   CreateStatesContext<StateValues>["useCallbackState"];

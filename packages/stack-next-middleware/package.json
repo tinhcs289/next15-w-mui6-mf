@@ -21,11 +21,10 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "15.3.2"
+    "next": "16.0.1"
   },
   "devDependencies": {
-    "@shared/config-eslint": "workspace:*",
-    "tsup": "8.4.0",
-    "typescript": "5.8.3"
+    "tsup": "8.5.0",
+    "typescript": "5.9.3"
   }
 }

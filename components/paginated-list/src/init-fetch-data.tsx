@@ -1,20 +1,22 @@
 "use client";
 
-import type { Any, FetchDataOptions, FetchDataPayload, FetchData, GetPaginatedList, SortOperator } from "./types";
-import type { JSX} from "react";
+import type { ComponentType, JSX } from "react";
 import { memo, useCallback, useEffect } from "react";
-import unionBy from "lodash/unionBy";
-import cloneDeep from "lodash/cloneDeep";
-import omit from "lodash/omit";
-import { useGetState, useSetState, useInitState } from "./context";
+import { useGetState, useInitState, useSetState } from "./context";
+import cloneDeep from "./helpers/cloneDeep";
+import omit from "./helpers/omit";
+import unionBy from "./helpers/unionBy";
+import type {
+  Any,
+  FetchData,
+  FetchDataOptions,
+  FetchDataPayload,
+  GetPaginatedList,
+  SortOperator,
+} from "./types";
 
 function concatArray<T>(...arrs: T[][]) {
-  let result = [] as T[];
-  arrs.forEach((a) => {
-    result = result.concat(a);
-  });
-
-  return result;
+  return arrs.flat();
 }
 
 export type FetchDataInitializerProps<
@@ -48,44 +50,40 @@ export const FetchDataInitializer = memo(
       ): FetchDataPayload & {
         appliedFilter: FetchDataPayload["advanceFilter"];
       } => {
-        const { by = "payload-and-current-states" } = options || {};
+        const by = options?.by ?? "payload-and-current-states";
         const isOverrided = by === "payload-only";
+
+        const mergedSortBy = isOverrided
+          ? (payload?.sortBy ?? [])
+          : unionBy(concatArray(payload?.sortBy ?? [], sortBy ?? []), "by");
+
+        const mergedAdvanceFilter = isOverrided
+          ? { ...payload?.advanceFilter }
+          : { ...advanceFilter, ...payload?.advanceFilter };
+
+        const appliedFilter = isOverrided
+          ? { ...payload?.advanceFilter, ...fixedFilter }
+          : {
+              ...defaultFilter,
+              ...advanceFilter,
+              ...payload?.advanceFilter,
+              ...fixedFilter,
+            };
 
         const args: FetchDataPayload & {
           appliedFilter: FetchDataPayload["advanceFilter"];
         } = {
           pageIndex: isOverrided
-            ? payload?.pageIndex || 1
-            : payload?.pageIndex || pageIndex,
+            ? (payload?.pageIndex ?? 1)
+            : (payload?.pageIndex ?? pageIndex),
           pageSize: isOverrided
             ? payload?.pageSize
-            : payload?.pageSize || pageSize,
-          sortBy: isOverrided
-            ? payload?.sortBy || []
-            : unionBy(
-                concatArray<SortOperator>(payload?.sortBy || [], sortBy || []),
-                (s) => s.by
-              ),
-          advanceFilter: !isOverrided
-            ? {
-                ...advanceFilter,
-                ...payload?.advanceFilter,
-              }
-            : {
-                ...payload?.advanceFilter,
-              },
-          appliedFilter: !isOverrided
-            ? {
-                ...defaultFilter,
-                ...advanceFilter,
-                ...payload?.advanceFilter,
-                ...fixedFilter,
-              }
-            : {
-                ...payload?.advanceFilter,
-                ...fixedFilter,
-              },
+            : (payload?.pageSize ?? pageSize),
+          sortBy: mergedSortBy,
+          advanceFilter: mergedAdvanceFilter,
+          appliedFilter,
         };
+
         return args;
       },
       [pageIndex, pageSize, sortBy, advanceFilter, fixedFilter, defaultFilter]
@@ -98,7 +96,7 @@ export const FetchDataInitializer = memo(
         let [result, totalCount]: [Any[], number] = [[], 0];
         const queryArgs = getQueryArgs(payload, options);
 
-        setTimeout(() => {
+        Promise.resolve().then(() => {
           setState((states) => ({
             ...states,
             pageIndex: queryArgs.pageIndex,
@@ -109,7 +107,7 @@ export const FetchDataInitializer = memo(
               ...payload?.advanceFilter,
             },
           }));
-        }, 0);
+        });
 
         const getListArgs = omit(cloneDeep(queryArgs), "appliedFilter");
         getListArgs.advanceFilter = queryArgs.appliedFilter;
@@ -162,7 +160,6 @@ export const FetchDataInitializer = memo(
       };
 
       fetchOnMount();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [fetchDataOnFirstMount, initialized]);
 
     return null;
@@ -170,5 +167,4 @@ export const FetchDataInitializer = memo(
 ) as <Item extends Any = Any, Filter extends Any = Any>(
   props: FetchDataInitializerProps<Item, Filter>
 ) => JSX.Element;
-// @ts-ignore
-FetchDataInitializer.displayName = "FetchDataInitializer";
+(FetchDataInitializer as ComponentType).displayName = "FetchDataInitializer";

@@ -1,4 +1,4 @@
-import cloneDeep from "lodash/cloneDeep";
+import cloneDeep from "../common/cloneDeep";
 
 const ID = "_id";
 const PARENT_ID = "_parentId";

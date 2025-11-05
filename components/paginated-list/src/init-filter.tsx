@@ -4,7 +4,7 @@ import { memo, useCallback } from "react";
 import { useGetState, useInitState } from "./context";
 import type { ListFilter } from "./types";
 
-export const UpdateFilternitializer = memo(() => {
+export const UpdateFilterInitializer = memo(() => {
   const fetchData = useGetState((s) => s?.fetchData);
 
   const updateFilter = useCallback(
@@ -28,4 +28,4 @@ export const UpdateFilternitializer = memo(() => {
 
   return null;
 });
-UpdateFilternitializer.displayName = "UpdateFilternitializer";
+UpdateFilterInitializer.displayName = "UpdateFilterInitializer";

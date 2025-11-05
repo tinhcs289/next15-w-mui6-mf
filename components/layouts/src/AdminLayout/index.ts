@@ -6,7 +6,7 @@ export default AdminLayout;
 export { AdminPageBody };
 
 export {
-  useDefineAdminLayoutMethod,
+  useAdminLayoutCallback,
   useGetAdminLayoutState,
   useInitAdminLayoutState,
   useSetAdminLayoutState,

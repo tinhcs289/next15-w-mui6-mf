@@ -1,4 +1,4 @@
-import cloneDeep from "lodash/cloneDeep";
+import cloneDeep from "../common/cloneDeep";
 
 /**
  * remove first item in the array which meet some conditions

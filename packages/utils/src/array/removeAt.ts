@@ -1,4 +1,4 @@
-import cloneDeep from "lodash/cloneDeep";
+import cloneDeep from "../common/cloneDeep";
 
 /**
  * remove an item at a specified index of the array

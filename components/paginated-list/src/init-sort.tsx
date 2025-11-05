@@ -1,27 +1,24 @@
 "use client";
 
-import unionBy from "lodash/unionBy";
 import { memo, useCallback } from "react";
 import { useGetState, useInitState } from "./context";
+import unionBy from "./helpers/unionBy";
 import type { SortOperator } from "./types";
 
 export const UpdateSortInitializer = memo(() => {
-  const sortBy = useGetState((s) => s?.sortBy);
+  const currentSortBy = useGetState((s) => s?.sortBy);
   const fetchData = useGetState((s) => s?.fetchData);
 
   const updateSort = useCallback(
     (by: SortOperator[], keepCurrentSorting: boolean = false) => {
       if (!by?.length) return;
-      fetchData?.(
-        {
-          sortBy: !keepCurrentSorting
-            ? by
-            : unionBy([...(sortBy || []), ...by], "by"),
-        },
-        { by: "payload-and-current-states" }
-      );
+      const sortBy = keepCurrentSorting
+        ? unionBy([...(currentSortBy ?? []), ...by], "by")
+        : by;
+
+      fetchData?.({ sortBy }, { by: "payload-and-current-states" });
     },
-    [sortBy, fetchData]
+    [currentSortBy, fetchData]
   );
 
   useInitState("updateSort", updateSort, {
