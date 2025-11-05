@@ -7,9 +7,8 @@ export type AnyObject = {
 export type YupObjectSchema<T extends AnyObject = AnyObject> = ObjectSchema<
   T,
   YupObject,
-  any,
+  {
+    [K in keyof T]: undefined;
+  },
   ""
 >;
-
-export type YupArrayOfObjectsSchema<T extends AnyObject = AnyObject> =
-  ArraySchema<T[] | undefined, YupObject, "", "">;

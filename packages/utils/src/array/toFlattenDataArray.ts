@@ -1,4 +1,4 @@
-import cloneDeep from "lodash/cloneDeep";
+import cloneDeep from "../common/cloneDeep";
 import omit from "lodash/omit";
 
 const ID = "_id";

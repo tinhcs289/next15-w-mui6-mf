@@ -1,20 +1,30 @@
-import DocumentBody from "@/components/layout/DocumentBody";
-import MainLayout from "@/components/layout/MainLayout";
+"use server";
+
+import { FONT_CLASS_NAMES } from "@/app/fonts";
+import { STATIC_MEDIA } from "@/constants/media";
 import { ZONE_NAME } from "@/constants/zone";
 import { ALL_LOCALE } from "@shared/constants/locale";
+import MainLayout from "@shared/layouts/MainLayout";
 import { getRequestUrl, getUserLocale } from "@shared/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import type { ReactNode } from "react";
+import type { PropsWithChildren } from "react";
+// import { GoogleAnalytics } from "@next/third-parties/google";
+import { AuthStatesProvider } from "@shared/auth";
+import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
+import MUIV6ThemeProvider, {
+  InitColorScheme,
+} from "@shared/providers/MUIV6ThemeProvider";
+import NotiStackProvider from "@shared/providers/NotiStackProvider";
+import ReactQueryProvider from "@shared/providers/ReactQueryProvider";
 
 type Params = Promise<{ locale: string }>;
 
-type LocaleLayoutProps = {
-  children: ReactNode;
+type LocaleLayoutProps = PropsWithChildren<{
   params: Params;
-};
+}>;
 
 export async function generateMetadata({
   params,
@@ -43,16 +53,38 @@ export default async function RootLayout({
   const currentUrl = await getRequestUrl();
 
   return (
-    <NextIntlClientProvider locale={locale}>
-      <DocumentBody locale={locale}>
-        <MainLayout
-          locale={locale}
-          zoneName={ZONE_NAME}
-          currentUrl={currentUrl}
-        >
-          {children}
-        </MainLayout>
-      </DocumentBody>
-    </NextIntlClientProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <meta charSet="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1"
+        />
+        <link rel="icon" href={STATIC_MEDIA.favicon} sizes="any" />
+      </head>
+      <body className={`${FONT_CLASS_NAMES}`}>
+        <NextIntlClientProvider locale={locale}>
+          <ReactQueryProvider>
+            <MUIV6ThemeProvider locale={locale}>
+              <DateTimeAndNumeralProvider locale={locale}>
+                <NotiStackProvider>
+                  <AuthStatesProvider>
+                    <InitColorScheme />
+                    <MainLayout
+                      locale={locale}
+                      zoneName={ZONE_NAME}
+                      currentUrl={currentUrl}
+                    >
+                      {children}
+                    </MainLayout>
+                  </AuthStatesProvider>
+                </NotiStackProvider>
+              </DateTimeAndNumeralProvider>
+            </MUIV6ThemeProvider>
+          </ReactQueryProvider>
+        </NextIntlClientProvider>
+        {/* <GoogleAnalytics gaId="YOUR GAID GOES HERE" /> */}
+      </body>
+    </html>
   );
 }

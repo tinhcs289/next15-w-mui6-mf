@@ -5,23 +5,19 @@ import last from "lodash/last";
 import { headers } from "next/headers";
 import { stringify } from "qs";
 
-const QS_RETURN_URL = "return-url";
+export async function createReturnUrlHash(redirectUrl?: string) {
+  if (!redirectUrl) return undefined;
 
-export async function createReturnUrlHash(
-  redirectUrl?: string
-) {
   const heads = await headers();
-  const requestUrl = heads.get("x-url") || "";
-  const hashedUrl = aesCrypt.encrypt(requestUrl);
+  const requestUrl = heads.get("x-url");
+  if (!requestUrl) return undefined;
 
-  const redirectUrlParams = stringify(
-    { [QS_RETURN_URL]: hashedUrl || null },
-    { skipNulls: true }
-  );
+  const operator =
+    redirectUrl.indexOf("?") === -1
+      ? "?"
+      : last(redirectUrl) === "&"
+        ? ""
+        : "&";
 
-  if (!redirectUrl) return redirectUrlParams;
-
-  const operator = redirectUrl.indexOf("?") === -1 ? "?" : last(redirectUrl) === "&" ? "" : "&";
-
-  return `${redirectUrl}${operator}${redirectUrlParams}`;
+  return `${redirectUrl}${operator}${stringify({ ["return-url"]: aesCrypt.encrypt(requestUrl) })}`;
 }

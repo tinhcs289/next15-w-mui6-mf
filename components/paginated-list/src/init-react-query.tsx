@@ -1,11 +1,11 @@
 "use client";
 
-import unionBy from "lodash/unionBy";
+import type { QueryObserverOptions } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import type { JSX } from "react";
 import { memo, useCallback, useEffect, useMemo } from "react";
-import type { QueryObserverOptions } from "react-query";
-import { useQuery } from "react-query";
 import { useGetState, useInitState, useSetState } from "./context";
+import unionBy from "./helpers/unionBy";
 import type {
   Any,
   FetchData,

@@ -6,14 +6,14 @@ import type { MainLayoutStates } from "../types";
 const {
   StatesProvider: MainLayoutStatesProvider,
   useGetState: useGetMainLayoutState,
-  useCallbackState: useDefineMainLayoutMethod,
+  useCallbackState: useMainLayoutCallback,
   useInitState: useInitMainLayoutState,
   useSetState: useSetMainLayoutState,
 } = createStatesContext<MainLayoutStates>({ openAppbarDrawer: false });
 
 export {
   MainLayoutStatesProvider,
-  useDefineMainLayoutMethod,
+  useMainLayoutCallback,
   useGetMainLayoutState,
   useInitMainLayoutState,
   useSetMainLayoutState

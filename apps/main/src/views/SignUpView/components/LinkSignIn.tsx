@@ -1,5 +1,5 @@
-import { Link } from "@/i18n/navigation";
 import Box from "@mui/material/Box";
+import { ZoneLink } from "@shared/navigation";
 import Text from "@shared/typo/Text";
 
 export default function LinkSignIn() {
@@ -7,7 +7,7 @@ export default function LinkSignIn() {
     <Text sx={{ textAlign: "center", width: "100%" }}>
       Already have an account?{" "}
       <Box component="span">
-        <Link
+        <ZoneLink
           href="/sign-in"
           title="sign in"
           style={{
@@ -16,7 +16,7 @@ export default function LinkSignIn() {
           }}
         >
           Sign in
-        </Link>
+        </ZoneLink>
       </Box>
     </Text>
   );

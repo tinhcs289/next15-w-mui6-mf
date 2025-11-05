@@ -1,0 +1,38 @@
+{
+  "name": "@shared/auth-guard",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    "./*": "./src/*/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/*/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/*/index.ts\" --format esm,cjs --dts --sourcemap --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@shared/auth": "workspace:*",
+    "@shared/navigation": "workspace:*",
+    "@shared/server-actions": "workspace:*",
+    "@shared/utils": "workspace:*",
+    "next-intl": "4.4.0",
+    "react": "19.2.0"
+  },
+  "devDependencies": {
+    "@turbo/gen": "2.5.8",
+    "@types/node": "24.9.2",
+    "@types/react": "19.2.2",
+    "tsup": "8.5.0",
+    "typescript": "5.9.3"
+  }
+}

@@ -6,7 +6,7 @@ import type { AdminLayoutStates } from "../types";
 const {
   StatesProvider: AdminLayoutStatesProvider,
   useGetState: useGetAdminLayoutState,
-  useCallbackState: useDefineAdminLayoutMethod,
+  useCallbackState: useAdminLayoutCallback,
   useInitState: useInitAdminLayoutState,
   useSetState: useSetAdminLayoutState,
 } = createStatesContext<AdminLayoutStates>({
@@ -22,6 +22,6 @@ const {
 });
 
 export {
-  AdminLayoutStatesProvider, useDefineAdminLayoutMethod, useGetAdminLayoutState, useInitAdminLayoutState,
+  AdminLayoutStatesProvider, useAdminLayoutCallback, useGetAdminLayoutState, useInitAdminLayoutState,
   useSetAdminLayoutState
 };

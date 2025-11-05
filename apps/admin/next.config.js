@@ -6,14 +6,20 @@ const withNextInlt = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  assetPrefix: `/${ZONE_NAME}-static`,
+  cacheComponents: true,
   compiler: {
     styledComponents: true,
   },
-  assetPrefix: `/${ZONE_NAME}-static`,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
+  productionBrowserSourceMaps: true,
+  reactCompiler: true,
+  reactStrictMode: false,
   async rewrites() {
     return {
       beforeFiles: [
@@ -23,6 +29,12 @@ const nextConfig = {
         },
       ],
     };
+  },
+  webpack(config, { isServer }) {
+    if (isServer) {
+      config.devtool = "source-map";
+    }
+    return config;
   },
 };
 

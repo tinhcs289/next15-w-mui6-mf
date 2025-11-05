@@ -1,3 +1,5 @@
+"use server";
+
 import Box from "@mui/material/Box";
 import H1 from "@shared/typo/H1";
 import Text from "@shared/typo/Text";

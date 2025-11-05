@@ -10,24 +10,57 @@ import Menu from "@mui/material/Menu";
 import MuiMenuItem from "@mui/material/MenuItem";
 import { paperClasses } from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import * as React from "react";
+import { useZoneRouter } from "@shared/navigation";
+import type { MouseEvent } from "react";
+import { useCallback, useState } from "react";
 import MenuButton from "./MenuButton";
 
-const MenuItem = styled(MuiMenuItem)({
+const MenuItemStyled = styled(MuiMenuItem)({
   margin: "2px 0",
 });
+MenuItemStyled.displayName = "MenuItemStyled";
+
+const MenuItemLastStyled = styled(MenuItemStyled)({
+  [`& .${listItemIconClasses.root}`]: {
+    ml: "auto",
+    minWidth: 0,
+  },
+});
+MenuItemLastStyled.displayName = "MenuItemLastStyled";
+
+const MenuStyled = styled(Menu)({
+  [`& .${listClasses.root}`]: {
+    padding: "4px",
+  },
+  [`& .${paperClasses.root}`]: {
+    padding: 0,
+  },
+  [`& .${dividerClasses.root}`]: {
+    margin: "4px -4px",
+  },
+});
+MenuStyled.displayName = "MenuStyled";
 
 export default function OptionsMenu() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const router = useZoneRouter("admin");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const navigateToLogout = useCallback(() => {
+    debugger;
+    router.push("/sign-out");
+  }, [router.push]);
+
   return (
-    <React.Fragment>
+    <>
       <MenuButton
         aria-label="Open menu"
         onClick={handleClick}
@@ -35,47 +68,29 @@ export default function OptionsMenu() {
       >
         <MoreVertRoundedIcon />
       </MenuButton>
-      <Menu
+      <MenuStyled
         anchorEl={anchorEl}
-        id="menu"
         open={open}
         onClose={handleClose}
         onClick={handleClose}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        sx={{
-          [`& .${listClasses.root}`]: {
-            padding: "4px",
-          },
-          [`& .${paperClasses.root}`]: {
-            padding: 0,
-          },
-          [`& .${dividerClasses.root}`]: {
-            margin: "4px -4px",
-          },
-        }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItemStyled onClick={handleClose}>Profile</MenuItemStyled>
+        <MenuItemStyled onClick={handleClose}>My account</MenuItemStyled>
         <Divider />
-        <MenuItem onClick={handleClose}>Add another account</MenuItem>
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
+        <MenuItemStyled onClick={handleClose}>
+          Add another account
+        </MenuItemStyled>
+        <MenuItemStyled onClick={handleClose}>Settings</MenuItemStyled>
         <Divider />
-        <MenuItem
-          onClick={handleClose}
-          sx={{
-            [`& .${listItemIconClasses.root}`]: {
-              ml: "auto",
-              minWidth: 0,
-            },
-          }}
-        >
-          <ListItemText>Logout</ListItemText>
+        <MenuItemLastStyled onClick={navigateToLogout}>
+          <ListItemText>Logout 324324234</ListItemText>
           <ListItemIcon>
             <LogoutRoundedIcon fontSize="small" />
           </ListItemIcon>
-        </MenuItem>
-      </Menu>
-    </React.Fragment>
+        </MenuItemLastStyled>
+      </MenuStyled>
+    </>
   );
 }

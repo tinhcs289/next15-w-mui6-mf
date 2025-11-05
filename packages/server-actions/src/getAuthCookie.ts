@@ -1,6 +1,6 @@
 "use server";
 
-import { AuthPlainData, authCookie, authDataSchema, formatAuth } from "@shared/auth";
+import { AuthPlainData, authCookie, authDataSchema, authDataUtils } from "@shared/auth";
 import matchesSchema from "@shared/utils/data-validate/matchesSchema";
 import { cookies } from "next/headers";
 
@@ -20,5 +20,6 @@ export async function getAuthCookie() {
   const cookie = cookieStore.get(encodeURIComponent(authCookie.key));
   const parsedValue = parseAuthCookie(cookie?.value);
   if (!parsedValue) return null;
-  return formatAuth.get(parsedValue);
+  const authData = authDataUtils.convertToStates(parsedValue);
+  return authData
 }

@@ -14,11 +14,10 @@
   },
   "dependencies": {
     "@shared/types": "workspace:*",
-    "yup": "1.6.1"
+    "yup": "1.7.1"
   },
   "devDependencies": {
-    "@types/yup": "0.32.0",
-    "tsup": "8.4.0",
-    "typescript": "5.8.3"
+    "tsup": "8.5.0",
+    "typescript": "5.9.3"
   }
 }

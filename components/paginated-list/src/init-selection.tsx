@@ -1,8 +1,8 @@
 "use client";
 
-import get from "lodash/get";
 import { memo, useCallback } from "react";
 import { useGetState, useInitState, useSetState } from "./context";
+import get from "./helpers/get";
 import type { Any } from "./types";
 
 function concatArray<T>(...arrs: T[][]) {

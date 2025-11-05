@@ -1,13 +1,13 @@
 [< back](../../README.md)
 
-# Super tiny state management tool
+# Super Tiny State Management Tool
 
-This is a state management tool 100% by React Context API with no dependencies.
+This is a state management tool built 100% using React Context API with no dependencies.
 
 ## The concept
 This is simply a React Context that contains a pub/sub store assigned to a ref variable.
 #### Why ref?
-Because `ref` is not react `state`, it could not make the Provider and its children re-render when the data has changes.
+Because `ref` is not a React `state`, it does not cause the Provider and its children to re-render when the data changes.
 #### Why pub/sub store?
 Because with the pub/sub pattern can make the components can access, update and detect the changes by connecting to the a store. Components can trigger a re-render when a change occurs.
 <br />

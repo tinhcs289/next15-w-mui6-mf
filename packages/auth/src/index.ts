@@ -1,31 +1,21 @@
 export {
   authCookie,
   authDataSchema,
+  authDataUtils,
   authLocalStorage,
-  AuthTypeEnum, decodeAuthData, formatAuth, validateAuthData
-} from "./authentication";
-export {
-  defineFeaturePermisson,
-  FEATURE_MAP,
-  isAllowedIf,
-  matchAll,
-  oneOf,
-  usePermissions,
-  WithPermissions
-} from "./authorization";
-export type { WithPermissionsProps } from "./authorization";
-export {
   AuthStatesProvider,
+  AuthTypeEnum,
   useGetAuthState,
   useInitAuthState,
   useSetAuthState
-} from "./store";
-export type { AuthStates } from "./store";
+} from "./authentication";
 export type {
-  AuthData, AuthDateData,
-  AuthDateWithIntervalData, AuthPlainData,
-  AuthTokenPayload, AuthType, Permission,
-  PermissionClause,
-  Roles
-} from "./types";
+  AuthData,
+  AuthPlainData,
+  AuthStates,
+  AuthTokenPayload,
+  AuthType
+} from "./authentication";
+export { PermissionScope } from "./authorization";
+export type { Permission, PermissionClause, Role } from "./authorization";
 
