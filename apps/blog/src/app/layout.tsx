@@ -1,29 +1,19 @@
-import { DEFAULT_LOCALE } from "@/i18n/config";
-import type { Metadata } from "next";
-import { cookies } from "next/headers";
-import type { ReactNode } from "react";
+import { ZONE_NAME } from "@/constants/zone";
+import AssetPrefixFix from "@shared/layouts/AssetPrefixFix";
+import type { Viewport } from "next";
+import type { PropsWithChildren } from "react";
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: "this is page title",
-    description: "this is meta-description",
-  };
-}
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
+  height: "device-height",
+};
 
-export default async function RootLayout({
-  children,
-} : {
-  children: ReactNode;
-}) {
-  const cookieStore = await cookies();
-  const lang = cookieStore.get("NEXT_LOCALE")?.value || DEFAULT_LOCALE;
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
-    // <html lang={lang}>
-    //   <head>
-    //     <link rel="icon" href={STATIC_MEDIA.favicon} sizes="any" />
-    //   </head>
-    //   <body className={`${FONT_CLASS_NAMES}`}>{children}</body>
-    // </html>
-    <>{children}</>
+    <>
+      <AssetPrefixFix zoneName={ZONE_NAME} />
+      {children}
+    </>
   );
 }

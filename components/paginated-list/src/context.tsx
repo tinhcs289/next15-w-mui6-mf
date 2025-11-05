@@ -56,7 +56,7 @@ function createStateHooks<
     useInitPaginatedListState: useInitState as UseInitState<
       PaginatedListStates<Item, Filter, ExtendedStates>
     >,
-    usePaginatedListMethod: useCallbackState as UseCallbackState<
+    usePaginatedListCallback: useCallbackState as UseCallbackState<
       PaginatedListStates<Item, Filter, ExtendedStates>
     >,
   };

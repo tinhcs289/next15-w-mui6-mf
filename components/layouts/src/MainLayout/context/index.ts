@@ -1,6 +1,6 @@
 export {
   MainLayoutStatesProvider,
-  useDefineMainLayoutMethod,
+  useMainLayoutCallback,
   useGetMainLayoutState,
   useInitMainLayoutState,
   useSetMainLayoutState

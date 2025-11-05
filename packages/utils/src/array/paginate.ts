@@ -1,4 +1,4 @@
-import cloneDeep from "lodash/cloneDeep";
+import cloneDeep from "../common/cloneDeep";
 
 /**
  * paginate in a array.

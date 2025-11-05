@@ -12,14 +12,14 @@ import type { RowData } from "./types";
 const {
   useGetPaginatedListState,
   useInitPaginatedListState,
-  usePaginatedListMethod,
+  usePaginatedListCallback,
   useSetPaginatedListState,
 } = createStateHooks<RowData>();
 
 export {
   useGetPaginatedListState,
   useInitPaginatedListState,
-  usePaginatedListMethod,
+  usePaginatedListCallback,
   useSetPaginatedListState,
 };
 

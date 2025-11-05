@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
     "esModuleInterop": true,
@@ -9,7 +10,12 @@
     "jsx": "react-jsx",
     "incremental": true,
     "isolatedModules": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext", "ESNext.Array"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext",
+      "ESNext.Array"
+    ],
     "module": "esnext",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
@@ -28,6 +34,15 @@
     "target": "ESNext",
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
   },
-  "exclude": ["node_modules", "**/*.stories.tsx", "dist"],
-  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "**/*.stories.tsx",
+    "**/*.test.ts",
+    "dist"
+  ],
+  "include": [
+    "src",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ],
 }

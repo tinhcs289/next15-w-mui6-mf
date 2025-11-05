@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import FacebookIcon from "@/components/icons/FacebookIcon";
+import FacebookIcon from "@shared/svg/FacebookIcon";
 
 export default function LinkSignUpWithFacebook() {
   return (

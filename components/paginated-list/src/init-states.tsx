@@ -1,6 +1,6 @@
 "use client";
 
-import type { JSX } from "react";
+import type { ComponentType, JSX } from "react";
 import { memo, useEffect } from "react";
 import { useInitState, useSetState } from "./context";
 import type { Any, ListFilter, PaginatedListStates } from "./types";
@@ -51,12 +51,12 @@ export const ListStatesInitializer = memo(
     const setState = useSetState();
 
     useEffect(() => {
-      const initialized =
+      const hasUninitialized =
         [init1, init2, init3, init4, init5, init6, init7].findIndex(
           (i) => !i
         ) !== -1;
 
-      if (!initialized) return;
+      if (!hasUninitialized) return;
       setState((states) => ({
         ...states,
         initialized: { ...states?.initialized, states: true },
@@ -68,6 +68,4 @@ export const ListStatesInitializer = memo(
 ) as <Filter extends Any = Any>(
   props: ListStatesInitializerProps<Filter>
 ) => JSX.Element;
-
-// @ts-ignore
-ListStatesInitializer.displayName = "ListStatesInitializer";
+(ListStatesInitializer as ComponentType).displayName = "ListStatesInitializer";

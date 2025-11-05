@@ -1,2 +1,3 @@
 export { setupInterceptors } from "./setup-interceptors";
-export type { AxiosInterceptorsHandler } from "./types";
+export type { AxiosInterceptorsHandler } from "./setup-interceptors";
+

@@ -1,14 +1,9 @@
-import { ALL_LOCALE } from "@shared/constants/locale";
-import { createNavigation } from "next-intl/navigation";
-
-export const {
-  Link,
-  redirect,
-  usePathname,
-  useRouter,
+export {
   getPathname,
   permanentRedirect,
-} = createNavigation({
-  locales: ALL_LOCALE,
-  localePrefix: "always",
-});
+  redirect
+} from "./intl-navigation";
+export { useZonePathname } from "./use-zone-pathname";
+export { useZoneRouter } from "./use-zone-router";
+export { ZoneLink } from "./zone-link";
+

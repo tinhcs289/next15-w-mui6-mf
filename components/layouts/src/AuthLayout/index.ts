@@ -6,6 +6,6 @@ export default AuthLayout;
 
 export { AuthContentCard, AuthContentHeading };
 
-export { useDefineAuthLayoutMethod, useGetAuthLayoutState, useInitAuthLayoutState, useSetAuthLayoutState } from "./context";
+export { useAuthLayoutCallback, useGetAuthLayoutState, useInitAuthLayoutState, useSetAuthLayoutState } from "./context";
 
 export type { AuthLayoutProps, AuthLayoutStates } from "./types";

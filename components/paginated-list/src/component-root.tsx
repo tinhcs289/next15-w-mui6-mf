@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { StatesProvider } from "./context";
-import { UpdateFilternitializer } from "./init-filter";
+import { UpdateFilterInitializer } from "./init-filter";
 import { InteractionInitializer } from "./init-interaction";
 import { UpdatePagingInitializer } from "./init-paging";
 import { SelectAllInitializer, SelectionInitializer } from "./init-selection";
@@ -14,7 +14,7 @@ export function PaginatedList({ children }: { children?: ReactNode }) {
       <InteractionInitializer />
       <UpdatePagingInitializer />
       <UpdateSortInitializer />
-      <UpdateFilternitializer />
+      <UpdateFilterInitializer />
       {children}
     </StatesProvider>
   );

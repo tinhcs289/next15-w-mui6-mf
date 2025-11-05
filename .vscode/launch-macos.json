@@ -42,6 +42,10 @@
       "console": "integratedTerminal",
       "skipFiles": [
         "<node_internals>/**"
+      ],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/apps/**/.next/**/*.js"
       ]
     },
     {
@@ -50,6 +54,8 @@
       "request": "launch",
       "url": "http://localhost:8888",
       "webRoot": "${workspaceFolder}/apps/main",
+      "sourceMaps": true,
+      "trace": true,
       "preLaunchTask": "dev:main"
     },
     {
@@ -67,7 +73,11 @@
       "env": {
         "NODE_OPTIONS": "--enable-source-maps"
       },
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/apps/**/.next/**/*.js"
+      ]
     },
     {
       "name": "Admin:Client",
@@ -75,6 +85,8 @@
       "request": "launch",
       "url": "http://localhost:8887",
       "webRoot": "${workspaceFolder}/apps/admin",
+      "sourceMaps": true,
+      "trace": true,
       "preLaunchTask": "dev:admin"
     },
     {
@@ -92,7 +104,11 @@
       "env": {
         "NODE_OPTIONS": "--enable-source-maps"
       },
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/apps/**/.next/**/*.js"
+      ]
     },
     {
       "name": "Blog:Client",
@@ -100,6 +116,8 @@
       "request": "launch",
       "url": "http://localhost:9001",
       "webRoot": "${workspaceFolder}/apps/blog",
+      "sourceMaps": true,
+      "trace": true,
       "preLaunchTask": "dev:blog"
     }
   ]

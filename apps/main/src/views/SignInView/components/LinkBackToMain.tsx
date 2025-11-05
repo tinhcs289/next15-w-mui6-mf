@@ -1,12 +1,12 @@
-import { Link } from "@/i18n/navigation";
 import Box from "@mui/material/Box";
+import { ZoneLink } from "@shared/navigation";
 import Text from "@shared/typo/Text";
 
 export default function LinkBackToMain() {
   return (
     <Text sx={{ textAlign: "center", width: "100%" }}>
       <Box component="span">
-        <Link
+        <ZoneLink
           href="/"
           title="Back to home page"
           style={{
@@ -15,7 +15,7 @@ export default function LinkBackToMain() {
           }}
         >
           Back to home page
-        </Link>
+        </ZoneLink>
       </Box>
     </Text>
   );

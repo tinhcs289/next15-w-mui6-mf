@@ -17,28 +17,27 @@
   "scripts": {
     "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
     "build": "tsup \"src/index.ts\" --format esm,cjs --dts --sourcemap",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
     "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
     "check-types": "tsc --noEmit"
   },
+  "peerDependencies": {
+    "axios": "^1.3.0"
+  },
   "dependencies": {
-    "@shared/auth": "workspace:*",
-    "axios": "1.9.0",
-    "axios-mock-adapter": "2.1.0",
-    "crypto-js": "4.2.0",
-    "jsonwebtoken": "9.0.2",
-    "lodash": "4.17.21",
-    "qs": "6.14.0"
+    "@shared/auth": "workspace:*"
   },
   "devDependencies": {
-    "@shared/config-eslint": "workspace:*",
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/user-event": "14.6.1",
     "@shared/types": "workspace:*",
-    "@turbo/gen": "2.5.3",
-    "@types/crypto-js": "4.2.2",
-    "@types/jsonwebtoken": "9.0.9",
-    "@types/lodash": "4.17.16",
-    "@types/node": "22.15.16",
-    "@types/qs": "6.9.18",
-    "tsup": "8.4.0",
-    "typescript": "5.8.3"
+    "@turbo/gen": "2.5.8",
+    "@types/node": "24.9.2",
+    "axios": "1.13.1",
+    "axios-mock-adapter": "2.1.0",
+    "tsup": "8.5.0",
+    "typescript": "5.9.3",
+    "vitest": "4.0.5"
   }
 }

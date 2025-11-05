@@ -16,7 +16,7 @@ the structure of the directory should be like the one below:
 ```
 content of `eslint.config` file:
 ``` javascript
-import { esLintConfigBase as config } from "@shared/config-eslint/base";
+import { esLintConfigBase as config } from "../../eslint.config";
 
 /** @type {import("eslint").Linter.Config} */
 export default config;
@@ -99,7 +99,6 @@ content of `package.json` file:
   },
   "devDependencies": {
     ...
-    "@shared/config-eslint": "workspace:*",
     "tsup": "8.4.0",
     "typescript": "5.8.2"
   }

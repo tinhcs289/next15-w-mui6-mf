@@ -1,3 +1,3 @@
-import type { QueryClientProviderProps } from "react-query";
+import type { QueryClientProviderProps } from "@tanstack/react-query";
 
 export type ReactQueryProviderProps = Omit<QueryClientProviderProps, 'client'>;
