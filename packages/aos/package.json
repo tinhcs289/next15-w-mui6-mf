@@ -1,0 +1,34 @@
+{
+  "name": "@packages/aos",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./src/index.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf dist && rm -rf .turbo && rm -rf node_modules",
+    "build": "tsup \"src/index.ts\" --format esm,cjs --dts --sourcemap --external react",
+    "lint": "TIMING=1 eslint \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "generate:component": "turbo gen react-component",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "aos": "2.3.4",
+    "react": "19.2.3"
+  },
+  "devDependencies": {
+    "@turbo/gen": "2.7.1",
+    "@types/aos": "3.0.7",
+    "@types/react": "19.2.7",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3"
+  }
+}

@@ -2,28 +2,29 @@
 
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { STATIC_MEDIA } from "@/constants/media";
-import { ZONE_NAME } from "@/constants/zone";
 import { ALL_LOCALE } from "@shared/constants/locale";
 import AuthLayout from "@shared/layouts/AuthLayout";
-import { getRequestUrl, getUserLocale } from "@shared/server-actions";
+import { getRequestUrl, getUserLocale } from "@packages/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import { NextIntlClientProvider } from "next-intl";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStatesProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@packages/auth";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, {
   InitColorScheme,
 } from "@shared/providers/MUIV6ThemeProvider";
 import NotiStackProvider from "@shared/providers/NotiStackProvider";
 import ReactQueryProvider from "@shared/providers/ReactQueryProvider";
-import type { PropsWithChildren } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 
-export default async function AuthPagesLayout({
+type AuthPagesLayoutProps = PropsWithChildren<{
+  params: Promise<{ locale: string }>;
+}>;
+
+async function AsyncAuthPagesLayout({
   children,
   params,
-}: PropsWithChildren<{
-  params: Promise<{ locale: string }>;
-}>) {
+}: AuthPagesLayoutProps) {
   let { locale } = await params;
 
   if (!ALL_LOCALE.includes(locale as AppLocale)) {
@@ -50,11 +51,7 @@ export default async function AuthPagesLayout({
                 <NotiStackProvider>
                   <AuthStatesProvider>
                     <InitColorScheme />
-                    <AuthLayout
-                      locale={locale}
-                      zoneName={ZONE_NAME}
-                      currentUrl={currentUrl}
-                    >
+                    <AuthLayout locale={locale} currentUrl={currentUrl}>
                       {children}
                     </AuthLayout>
                   </AuthStatesProvider>
@@ -66,5 +63,13 @@ export default async function AuthPagesLayout({
         {/* <GoogleAnalytics gaId="YOUR GAID GOES HERE" /> */}
       </body>
     </html>
+  );
+}
+
+export default async function AuthPagesLayout(props: AuthPagesLayoutProps) {
+  return (
+    <Suspense>
+      <AsyncAuthPagesLayout {...props} />
+    </Suspense>
   );
 }

@@ -3,12 +3,12 @@
 # The auth states context
 The context of auth was contains states of `auth data`, user `roles` and `permissions`.
 <br />
-It was created with the tool from [`@shared/states-context`](../states-context/README.md) and It will only work with CLIENT COMPONENTS
+It was created with the tool from [`@packages/states-context`](../states-context/README.md) and It will only work with CLIENT COMPONENTS
 
 ## Wrap the components inside the provider
 
 ``` typescript
-import { AuthStatesProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@packages/auth";
 ```
 First, wrap all the components or view which can reach the the auth data by the `AuthStatesProvider` component.
 ``` typescript

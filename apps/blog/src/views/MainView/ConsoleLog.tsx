@@ -1,4 +1,4 @@
-import { getRequestUrl, getRequestUrlUnrewrites } from "@shared/server-actions";
+import { getRequestUrl, getRequestUrlUnrewrites } from "@packages/server-actions";
 import Text from "@shared/typo/Text";
 
 export default async function ConsoleLog() {

@@ -1,6 +1,6 @@
 "use client";
 
-import { authLocalStorage } from "@shared/auth";
+import { authLocalStorage } from "@packages/auth";
 import { useLayoutEffect } from "react";
 
 export default function AuthChangeHandler() {

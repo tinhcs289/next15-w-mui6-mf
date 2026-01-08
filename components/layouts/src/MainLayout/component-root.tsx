@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import type { AppLocale } from "@shared/types/locale";
-import { InitAOS } from "@shared/animate-on-scroll";
+import { InitAOS } from "@packages/aos";
 import AppBar from "./AppBar";
 import {
   CurrentUrlInitializer,

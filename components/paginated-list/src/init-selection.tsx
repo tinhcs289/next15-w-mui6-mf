@@ -1,8 +1,9 @@
 "use client";
 
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import { useGetState, useInitState, useSetState } from "./context";
 import get from "./helpers/get";
+import isEqual from "./helpers/isEqual";
 import type { Any } from "./types";
 
 function concatArray<T>(...arrs: T[][]) {
@@ -14,6 +15,19 @@ function concatArray<T>(...arrs: T[][]) {
   return result;
 }
 
+function useGetAllItems() {
+  const selectType = useGetState((s) => s?.typeOfSelection);
+  const allPages = useGetState((s) => s?.items);
+  const onePage = useGetState((s) => s?.itemsInPage);
+
+  const allItems = useMemo(() => {
+    if (!selectType) return [];
+    if (selectType === "only-on-page") return onePage ?? [];
+    if (selectType === "over-all-pages") return allPages ?? [];
+  }, [selectType, allPages, onePage]);
+
+  return allItems;
+}
 
 export const SelectAllInitializer = memo(() => {
   const setState = useSetState();
@@ -24,20 +38,21 @@ export const SelectAllInitializer = memo(() => {
     [idField]
   );
 
-  const dataInPage = useGetState((s) => s.itemsInPage);
   const selectedItems = useGetState((s) => s.selectedItems);
   const isSelectable = useGetState((s) => !!s?.selectable);
+
+  const allItems = useGetAllItems();
 
   const checkAllItems = useCallback(
     (checked: boolean = true) => {
       if (!isSelectable) return;
       setState({ isSelectedAll: checked });
       setTimeout(() => {
-        if (!Array.isArray(dataInPage) || dataInPage.length === 0) return;
+        if (!Array.isArray(allItems) || allItems.length === 0) return;
         if (checked) {
           const selecteds = concatArray(
             selectedItems || [],
-            dataInPage.filter((i) => {
+            allItems.filter((i) => {
               const id = getId(i);
               if (!id) return false;
               return (
@@ -49,7 +64,7 @@ export const SelectAllInitializer = memo(() => {
             selectedItems: selecteds,
           });
         } else {
-          const listUncheckIds = dataInPage.map((i) => getId(i));
+          const listUncheckIds = allItems.map((i) => getId(i));
           const selecteds = (selectedItems || []).filter(
             (i) => !listUncheckIds.includes(getId(i))
           );
@@ -60,7 +75,7 @@ export const SelectAllInitializer = memo(() => {
       }, 0);
       return;
     },
-    [getId, selectedItems, dataInPage, isSelectable, setState]
+    [getId, selectedItems, allItems, isSelectable, setState]
   );
 
   useInitState("checkAllItems", checkAllItems, {
@@ -86,7 +101,6 @@ export const SelectAllInitializer = memo(() => {
 
   return null;
 });
-
 SelectAllInitializer.displayName = "SelectAllInitializer";
 
 export const SelectionInitializer = memo(() => {
@@ -98,9 +112,10 @@ export const SelectionInitializer = memo(() => {
     [idField]
   );
 
-  const dataInPage = useGetState((s) => s.itemsInPage);
   const selectedItems = useGetState((s) => s.selectedItems);
   const isSelectable = useGetState((s) => !!s?.selectable);
+
+  const allItems = useGetAllItems();
 
   const isCheckAll = useCallback(
     (checks: Any[] = [], pageData: Any[] = []) => {
@@ -131,7 +146,7 @@ export const SelectionInitializer = memo(() => {
       const shouldChecked = !hasCheckedBefore;
       if (shouldChecked) {
         const selecteds = concatArray(selectedItems || [], [item]);
-        const shouldCheckAll = isCheckAll(selecteds, dataInPage);
+        const shouldCheckAll = isCheckAll(selecteds, allItems);
         setTimeout(() => {
           setState({ isSelectedAll: shouldCheckAll });
         }, 0);
@@ -143,7 +158,7 @@ export const SelectionInitializer = memo(() => {
         return;
       } else {
         const selecteds = (selectedItems || []).filter((i) => getId(i) !== id);
-        const shouldCheckAll = isCheckAll(selecteds, dataInPage);
+        const shouldCheckAll = isCheckAll(selecteds, allItems);
         setTimeout(() => {
           setState({ isSelectedAll: shouldCheckAll });
         }, 0);
@@ -155,7 +170,7 @@ export const SelectionInitializer = memo(() => {
         return;
       }
     },
-    [getId, selectedItems, dataInPage, isSelectable, isCheckAll, setState]
+    [getId, selectedItems, allItems, isSelectable, isCheckAll, setState]
   );
 
   useInitState("checkOrUnCheckItem", checkOneItem, {
@@ -164,7 +179,40 @@ export const SelectionInitializer = memo(() => {
 
   return null;
 });
-
 SelectionInitializer.displayName = "SelectionInitializer";
 
+export const ClearSelectionWhenPageChanges = memo(() => {
+  const itemsInPage = useGetState((s) => s?.itemsInPage);
+  const selectType = useGetState((s) => s?.typeOfSelection);
+  const setState = useSetState();
 
+  const prevItemsRef = useRef<Any[]>([]);
+
+  useEffect(() => {
+    if (selectType === "only-on-page") {
+      if (!isEqual(prevItemsRef.current, itemsInPage)) {
+        setState({
+          selectedItems: [],
+          isSelectedAll: false,
+        });
+        prevItemsRef.current = itemsInPage as Any[];
+      }
+    } else {
+      prevItemsRef.current = itemsInPage as Any[];
+    }
+  }, [itemsInPage, selectType, setState]);
+
+  const clearSelection = useCallback(() => {
+    setState({
+      selectedItems: [],
+      isSelectedAll: false,
+    })
+  }, [setState])
+
+   useInitState("clearSelection", clearSelection, {
+    when: "whenever-value-changes",
+  });
+
+  return null;
+});
+ClearSelectionWhenPageChanges.displayName = "ClearSelectionWhenPageChanges";

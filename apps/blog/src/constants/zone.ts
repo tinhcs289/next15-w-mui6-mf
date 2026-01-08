@@ -1,1 +1,0 @@
-export const ZONE_NAME = process.env.NEXT_PUBLIC_ZONE_NAME;

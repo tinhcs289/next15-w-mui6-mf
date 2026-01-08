@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { ZoneLink } from "@shared/navigation";
+import { ZoneLink } from "@packages/navigation";
 import Text from "@shared/typo/Text";
 
 export default function LinkBackToMain() {

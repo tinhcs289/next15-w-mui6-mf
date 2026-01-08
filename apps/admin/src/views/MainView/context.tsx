@@ -31,11 +31,7 @@ export function ShopeeProductListProvider({
   return (
     <PaginatedList>
       <ListStatesInitializer idField="itemid" pageSize={60} />
-      <ReactQueryInitializer
-        queryKey="shopee:product-list"
-        queryFn={queryFn}
-        fetchDataOnFirstMount
-      />
+      <ReactQueryInitializer queryKey="shopee:product-list" queryFn={queryFn} />
       {children}
     </PaginatedList>
   );

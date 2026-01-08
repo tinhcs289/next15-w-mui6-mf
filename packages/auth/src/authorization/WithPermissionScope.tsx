@@ -21,7 +21,7 @@ export type WithPermissionScopeProps = PropsWithChildren<{
  * Wrapping a `Component` which is permitted to be visibled by a `PermissionClause` from the object `ALLOWED_TO_USE` in `@/permissions/constants`.
  * If the permissions do not match, a "fallback" Component will be visibled.
  * @example
-    import WithPermissionScope from "@shared/auth/components/WithPermissionScope";
+    import WithPermissionScope from "@packages/auth/components/WithPermissionScope";
     .....
     <WithPermissionScope allowFor="product_management" fallback={NotPermittedComponent}>
       <CreateProductView />

@@ -5,7 +5,7 @@ import {
   UseGetState,
   UseInitState,
   UseSetState,
-} from "@shared/states-context";
+} from "@packages/states-context";
 import type { Any, TableStates } from "../types";
 
 const { StatesProvider, useGetState, useInitState, useSetState } =

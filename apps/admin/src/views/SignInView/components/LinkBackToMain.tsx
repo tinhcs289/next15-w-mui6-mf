@@ -1,6 +1,6 @@
-import { ZONE_NAME } from "@/constants/zone";
+import { ENV_CONFIG } from "@/constants/environment";
 import Box from "@mui/material/Box";
-import { ZoneLink } from "@shared/navigation";
+import { ZoneLink } from "@packages/navigation";
 import Text from "@shared/typo/Text";
 
 export default function LinkBackToMain() {
@@ -8,7 +8,7 @@ export default function LinkBackToMain() {
     <Text sx={{ textAlign: "center", width: "100%" }}>
       <Box component="span">
         <ZoneLink
-          currentZone={ZONE_NAME}
+          currentZone={ENV_CONFIG.zoneName}
           href="/"
           title="Back to home page"
           style={{

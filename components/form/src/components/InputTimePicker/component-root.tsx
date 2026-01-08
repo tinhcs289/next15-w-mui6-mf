@@ -10,7 +10,7 @@ import type { Moment } from "moment";
 import moment from "moment";
 import { ComponentType, forwardRef, Ref, useCallback, useMemo } from "react";
 import { Controller } from "react-hook-form";
-import Text from "../InputText";
+import InputText from "../text/InputText";
 import type { RHFRenderInput } from "../../types";
 import CustomPickerActionBar from "../CustomPickerActionBar";
 import CustomPickerToolbar from "../CustomPickerToolbar";
@@ -65,7 +65,7 @@ export const InputTimePicker = forwardRef<HTMLDivElement, InputTimePickerProps>(
       slots={{
         toolbar: CustomPickerToolbar,
         actionBar: CustomPickerActionBar,
-        textField: Text as any,
+        textField: InputText as any,
         ...slots,
       }}
       slotProps={{

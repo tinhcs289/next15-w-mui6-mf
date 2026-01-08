@@ -46,6 +46,7 @@ describe("cloneDeep", () => {
   });
 
   it("should clone Map and Set", () => {
+    // @ts-ignore
     const map = new Map([
       ["a", 1],
       ["b", { x: 2 }],

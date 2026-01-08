@@ -13,7 +13,7 @@ function createRewritesForZones() {
    * @type {Array<import("next/dist/lib/load-custom-routes").Rewrite>}
    */
   const rewriteConfigs = Object.keys(process.env)
-    .filter((k) => k.startsWith("NEXT_PUBLIC_ZONE_"))
+    .filter((k) => k.startsWith("NEXT_PUBLIC_ZONE_") && k !== "NEXT_PUBLIC_ZONE_NAME")
     .reduce((configs, k) => {
       /**
        * @type {{ name: string, domain: string }}
@@ -50,14 +50,10 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
   productionBrowserSourceMaps: true,
-  reactCompiler: true,
   reactStrictMode: false,
   async rewrites() {
     return [...createRewritesForZones()];
@@ -70,6 +66,6 @@ const nextConfig = {
   },
 };
 
-const withNextInlt = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin();
 
-export default withNextInlt(nextConfig);
+export default withNextIntl(nextConfig);

@@ -2,6 +2,7 @@
 
 import View from "@/views/SignInView";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -15,6 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Signin() {
   return (
-    <View />
+    <Suspense>
+      <View />
+    </Suspense>
   );
 }

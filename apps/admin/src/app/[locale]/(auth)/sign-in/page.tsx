@@ -2,9 +2,10 @@
 
 import { QS_RETURN_URL } from "@/constants/query-string";
 import { PageParams, PageSearchParams } from "@/types/next-page";
-import View from "@/views/SignInView";
-import { decryptReturnUrlHash } from "@shared/server-actions";
+import SignInView from "@/views/SignInView";
+import { decryptReturnUrlHash } from "@packages/server-actions";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -16,12 +17,22 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function Signin({ searchParams }: {
+type SignInPageProps = {
   params: PageParams;
   searchParams: PageSearchParams;
-}) {
+};
+
+const View = async ({ searchParams }: SignInPageProps) => {
   const returnUrlHash = (await searchParams)[QS_RETURN_URL] as string;
   const returnUrl = decryptReturnUrlHash(returnUrlHash);
 
-  return <View returnUrl={returnUrl} />;
+  return <SignInView returnUrl={returnUrl} />;
+};
+
+export default async function Signin(props: SignInPageProps) {
+  return (
+    <Suspense>
+      <View {...props} />
+    </Suspense>
+  );
 }

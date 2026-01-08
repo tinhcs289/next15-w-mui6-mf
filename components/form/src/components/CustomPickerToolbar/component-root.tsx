@@ -3,7 +3,7 @@
 import DialogTitle from "@mui/material/DialogTitle";
 import type { DialogTitleProps } from "@mui/material/DialogTitle"
 import Typography from "@mui/material/Typography";
-import formatMoment from "@shared/utils/moment/formatMoment";
+import formatMoment from "@packages/utils/moment/formatMoment";
 import moment from "moment";
 import { useMemo } from "react";
 import type { CustomPickerToolbarProps } from "./types";

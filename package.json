@@ -25,14 +25,14 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.7",
-    "@types/node": "24.9.2",
-    "npm-check-updates": "19.1.2",
-    "prettier": "3.6.2",
-    "turbo": "2.5.8",
+    "@changesets/cli": "2.29.8",
+    "@types/node": "25.0.3",
+    "npm-check-updates": "19.2.0",
+    "prettier": "3.7.4",
+    "turbo": "2.7.1",
     "typescript": "5.9.3"
   },
-  "packageManager": "pnpm@10.20.0",
+  "packageManager": "pnpm@10.26.1",
   "engines": {
     "node": ">=22",
     "pnpm": ">=9"

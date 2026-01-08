@@ -5,8 +5,8 @@ import type {
   UseGetState,
   UseInitState,
   UseSetState,
-} from "@shared/states-context";
-import { createStatesContext } from "@shared/states-context";
+} from "@packages/states-context";
+import { createStatesContext } from "@packages/states-context";
 import type {
   Any,
   PaginatedListStates
@@ -25,7 +25,7 @@ const {
   },
   idField: "id",
   selectable: true,
-  typeOfSelection: "over-all-pages",
+  typeOfSelection: "only-on-page",
   totalCount: 0,
   items: [],
   itemsInPage: [],

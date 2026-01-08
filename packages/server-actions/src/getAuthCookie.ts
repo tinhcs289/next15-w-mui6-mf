@@ -1,7 +1,7 @@
 "use server";
 
-import { AuthPlainData, authCookie, authDataSchema, authDataUtils } from "@shared/auth";
-import matchesSchema from "@shared/utils/data-validate/matchesSchema";
+import { AuthPlainData, authCookie, authDataSchema, authDataUtils } from "@packages/auth";
+import matchesSchema from "@packages/utils/data-validate/matchesSchema";
 import { cookies } from "next/headers";
 
 function parseAuthCookie(value?: string): AuthPlainData | null {

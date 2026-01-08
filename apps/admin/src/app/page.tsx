@@ -2,8 +2,9 @@
 
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { STATIC_MEDIA } from "@/constants/media";
-import { getUserLocale } from "@shared/server-actions";
+import { getUserLocale } from "@packages/server-actions";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -15,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function RootPage() {
+const View = async () => {
   const locale = await getUserLocale();
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -31,5 +32,13 @@ export default async function RootPage() {
         <div>Hello</div>
       </body>
     </html>
+  );
+};
+
+export default async function RootPage() {
+  return (
+    <Suspense>
+      <View />
+    </Suspense>
   );
 }

@@ -1,11 +1,11 @@
 "use client";
 
-import { useGetAuthState } from "@shared/auth";
+import { useGetAuthState } from "@packages/auth";
 import {
   AuthContentCard,
   AuthContentHeading,
 } from "@shared/layouts/AuthLayout";
-import wait from "@shared/utils/async/wait";
+import wait from "@packages/utils/async/wait";
 import { useEffect } from "react";
 
 export default function View() {

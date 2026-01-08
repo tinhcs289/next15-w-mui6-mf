@@ -1,5 +1,5 @@
 {
-  "name": "@shared/use-watch-element-dimensions",
+  "name": "@packages/use-watch-element-dimensions",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -22,15 +22,15 @@
   },
   "dependencies": {
     "lodash": "4.17.21",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@types/lodash": "4.17.20",
-    "@types/node": "24.9.2",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "tsup": "8.5.0",
+    "@types/lodash": "4.17.21",
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "tsup": "8.5.1",
     "typescript": "5.9.3"
   }
 }

@@ -76,23 +76,8 @@ export type PaginatedListStates<
   fixedFilter?: ListFilter<Filter>;
   advanceFilter?: ListFilter<Filter>;
   sortBy?: SortOperator[];
-  selectable?: boolean;
+  // request data
   requestState?: "none" | "fetching" | "success" | "fail";
-  /**
-   * @default 'over-all-pages'
-   */
-  typeOfSelection?: "only-on-page" | "over-all-pages";
-  selectedItems?: Item[];
-  isSelectedAll?: boolean;
-  itemToInteract?: Item | null;
-  itemInteractAction?: string;
-  itemInteractAnchor?: Element | HTMLElement | null;
-  //
-  isSelected?: (item: Item) => boolean;
-  checkAllItems?: (checked: boolean) => void;
-  checkOrUnCheckItem?: (item: Item) => void;
-  setInteraction?: (interaction: Interaction<Item>) => void;
-  clearInteraction?: () => void;
   refresh?: () => void;
   fetchData?: FetchData<Filter>;
   updatePaging?: (page: number, size?: number) => void;
@@ -101,4 +86,22 @@ export type PaginatedListStates<
     filter: ListFilter<Filter>,
     keepCurrentFilter?: boolean
   ) => void;
+  // selection
+  selectable?: boolean;
+  /**
+   * @default 'over-all-pages'
+   */
+  typeOfSelection?: "only-on-page" | "over-all-pages";
+  selectedItems?: Item[];
+  isSelectedAll?: boolean;
+  isSelected?: (item: Item) => boolean;
+  checkAllItems?: (checked: boolean) => void;
+  checkOrUnCheckItem?: (item: Item) => void;
+  clearSelection?: () => void;
+  // interaction
+  itemToInteract?: Item | null;
+  itemInteractAction?: string;
+  itemInteractAnchor?: Element | HTMLElement | null;
+  setInteraction?: (interaction: Interaction<Item>) => void;
+  clearInteraction?: () => void;
 } & ExtendedStates;

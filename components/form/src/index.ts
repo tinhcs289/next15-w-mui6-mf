@@ -16,18 +16,7 @@ export type {
 
 export { FormGrid, FormGroupCommon, useFormContext };
 
-export {
-  max,
-  maxLength,
-  min,
-  minLength,
-  pattern,
-  required,
-  shouldBeEmail,
-  shouldBePhoneNumber,
-  shouldBeUrl,
-  shouldSlugified,
-} from "./rhf-rules";
+export { rules } from "./rhf-rules";
 
 export type {
   AnyObject,

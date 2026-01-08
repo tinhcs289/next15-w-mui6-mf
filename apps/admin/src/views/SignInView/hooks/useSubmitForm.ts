@@ -1,17 +1,17 @@
 "use client";
 
-import { ZONE_NAME } from "@/constants/zone";
-import { authDataUtils, useGetAuthState } from "@shared/auth";
+import { ENV_CONFIG } from "@/constants/environment";
+import { authDataUtils, useGetAuthState } from "@packages/auth";
 import type { FormSubmitCallback } from "@shared/form";
 import { } from "@shared/form";
-import { http } from "@shared/http-client";
-import { useZoneRouter } from "@shared/navigation";
-import tryDo from "@shared/utils/async/tryDo";
+import { http } from "@packages/http-client";
+import { useZoneRouter } from "@packages/navigation";
+import tryDo from "@packages/utils/async/tryDo";
 import { useCallback } from "react";
 import { useGetSignInViewState, useSetSignInViewState } from "../context";
 import type { FormSignInValues } from "../types";
 
-const SIGN_IN_URL = "http://localhost:4444/auth/sign-in";
+const SIGN_IN_URL = `${ENV_CONFIG.internalRestApiBaseUrl}/sign-in`;
 
 export type UseSubmitFormParams = {
   returnUrl?: string;
@@ -19,7 +19,7 @@ export type UseSubmitFormParams = {
 
 export default function useSubmitForm(args?: UseSubmitFormParams) {
   const { returnUrl } = args || {};
-  const router = useZoneRouter(ZONE_NAME);
+  const router = useZoneRouter(ENV_CONFIG.zoneName);
   const submitting = useGetSignInViewState((s) => !!s?.submitting);
 
   const saveAuthToStore = useGetAuthState((s) => s?.saveAuthToStore);

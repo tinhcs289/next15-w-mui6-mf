@@ -2,7 +2,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const { NEXT_PUBLIC_ZONE_NAME: ZONE_NAME } = process.env;
 
-const withNextInlt = createNextIntlPlugin();
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,14 +11,10 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
   productionBrowserSourceMaps: true,
-  reactCompiler: true,
   reactStrictMode: false,
   async rewrites() {
     return {
@@ -38,4 +34,4 @@ const nextConfig = {
   },
 };
 
-export default withNextInlt(nextConfig);
+export default withNextIntl(nextConfig);

@@ -2,7 +2,7 @@ import cloneDeep from "../common/cloneDeep";
 
 const ID = "_id";
 const PARENT_ID = "_parentId";
-const CHILDRENS = "_childrens";
+const CHILDREN = "_children";
 
 export default function toNestedDataArray<T>(
   flatArray: T[],
@@ -17,11 +17,11 @@ export default function toNestedDataArray<T>(
      */
     parentIdField?: string;
     /**
-     * @default '_childrens'
+     * @default '_children'
      */
-    childrensField?: string;
+    childrenField?: string;
     /**
-     * compare function for sorting childrens
+     * compare function for sorting children
      * @default undefined
      */
     sortFn?: (left: T, right: T) => number;
@@ -30,18 +30,18 @@ export default function toNestedDataArray<T>(
   const {
     idField: _id = ID,
     parentIdField: _parentId = PARENT_ID,
-    childrensField: _childrens = CHILDRENS,
+    childrenField: _children = CHILDREN,
     sortFn,
     hasParentWhen,
   } = options || {};
   const list = cloneDeep(flatArray);
 
   list.forEach((item, _, rest) => {
-    const childs = rest.filter(
+    const child = rest.filter(
       (other) => (other as any)[_parentId] === (item as any)[_id]
     );
-    if (typeof sortFn === "function") childs.sort(sortFn);
-    (item as any)[_childrens] = childs;
+    if (typeof sortFn === "function") child.sort(sortFn);
+    (item as any)[_children] = child;
   });
   const tree = list.filter((item) => !hasParentWhen(item));
   if (typeof sortFn === "function") tree.sort(sortFn);

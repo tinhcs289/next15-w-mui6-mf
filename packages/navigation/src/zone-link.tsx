@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useMemo, forwardRef } from "react";
-import type {ComponentProps} from "react";
+import type { ComponentProps } from "react";
+import { forwardRef, useMemo } from "react";
 import { Link as IntlLink } from "./intl-navigation";
 
 interface ZoneLinkProps extends ComponentProps<typeof IntlLink> {

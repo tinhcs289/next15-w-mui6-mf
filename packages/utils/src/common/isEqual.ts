@@ -6,7 +6,7 @@ const hasIterableEntries = (
 ): value is Iterable<unknown> & {
   entries(): Iterable<[unknown, unknown]>;
 } =>
-  // HACK: avoid checking entries type
+  // avoid checking entries type
   "entries" in value;
 
 const compareEntries = (

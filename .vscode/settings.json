@@ -24,5 +24,15 @@
   },
   "typescript.autoClosingTags": true,
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "typescript.tsdk": "node_modules\\typescript\\lib"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "cSpell.words": [
+    "ampm",
+    "eventsource",
+    "GAID",
+    "MUIV",
+    "Noti",
+    "rewrited",
+    "Shopee",
+    "turbopack"
+  ]
 }

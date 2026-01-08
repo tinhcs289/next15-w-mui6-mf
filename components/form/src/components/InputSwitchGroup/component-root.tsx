@@ -5,7 +5,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Switch from "@mui/material/Switch";
 import Text from "@shared/typo/Text";
 import WithRequiredMark from "@shared/typo/WithRequiredMark";
-import removeAt from "@shared/utils/array/removeAt";
+import removeAt from "@packages/utils/array/removeAt";
 import type { FocusEventHandler, JSX } from "react";
 import { forwardRef, useCallback, useMemo } from "react";
 import { Controller } from "react-hook-form";

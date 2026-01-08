@@ -89,7 +89,7 @@ export default function TopContent() {
             data-aos-easing="ease"
             data-aos-delay="400"
           >
-            <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
+            <InputLabel htmlFor="email-hero" sx={visuallyHidden as unknown as any}>
               Email
             </InputLabel>
             <TextField

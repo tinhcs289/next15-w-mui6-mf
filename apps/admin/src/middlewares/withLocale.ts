@@ -2,7 +2,7 @@
 import { ALL_PATHS } from "@/constants/paths";
 import { DEFAULT_LOCALE, INTL_LOCALE_PREFIX, LOCALE_PREFIX_PATH } from "@/i18n/config";
 import { ALL_LOCALE } from "@shared/constants/locale";
-import type { NextMiddlewareFactory } from "@shared/stack-next-middleware";
+import type { NextMiddlewareFactory } from "@packages/stack-next-middleware";
 import createMiddleware from "next-intl/middleware";
 import { NextFetchEvent, NextRequest, NextResponse } from "next/server";
 
@@ -33,6 +33,8 @@ const withLocale: NextMiddlewareFactory = (nextMiddleware) => {
     const emptyPathname = pathname === "/";
 
     const shouldApply = urlStartsWithLocale || emptyPathname;
+
+    console.log({ shouldApply, pathname });
 
     if (!shouldApply) {
       return nextMiddleware(request, event, baseResponse);

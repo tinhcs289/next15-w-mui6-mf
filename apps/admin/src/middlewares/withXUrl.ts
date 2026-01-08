@@ -1,5 +1,5 @@
 import { ALL_LOCALE } from "@shared/constants/locale";
-import type { NextMiddlewareFactory } from "@shared/stack-next-middleware";
+import type { NextMiddlewareFactory } from "@packages/stack-next-middleware";
 import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -28,11 +28,12 @@ const withXUrl: NextMiddlewareFactory = (nextMiddleware) => {
         const rewritedUrl = `${APP_MAIN_URL}/${ZONE_NAME}${request.nextUrl.pathname}`;
         request.headers.set(X_URL, rewritedUrl);
       } else {
-        const pathNameWithoutlocale = `${pathname}`.replace(localePath, "");
-        const rewritedUrl = `${APP_MAIN_URL}${localePath}/${ZONE_NAME}${pathNameWithoutlocale}`;
+        const pathNameWithoutLocale = `${pathname}`.replace(localePath, "");
+        const rewritedUrl = `${APP_MAIN_URL}${localePath}/${ZONE_NAME}${pathNameWithoutLocale}`;
         request.headers.set(X_URL, rewritedUrl);
       }
     }
+    console.log({ request });
     return nextMiddleware(request, event, response);
   };
 };

@@ -1,8 +1,14 @@
 "use client";
 
-import { useGetAuthState } from "@shared/auth";
-import { Fragment, useEffect, useState } from "react";
+import { useGetAuthState } from "@packages/auth";
+import { Fragment, Suspense, useEffect, useState } from "react";
 import type { AuthGuardClientSideProps } from "./types";
+
+
+const verifyToken = async (_accessToken: string) =>(new Promise<boolean>((resolve) => {
+  // TODO: should implement more to verify auth info
+  setTimeout(() => { resolve(true) }, 300);
+}))
 
 /**
  * Wrap your components inside AuthGuard for authentication protected.
@@ -15,22 +21,23 @@ export default function AuthGuardClientSide({
   children,
   WhenUnauthenticated = Fragment,
 }: AuthGuardClientSideProps) {
-  const [shouldShow, setShouldShow] = useState(false);
-
   const accessToken = useGetAuthState((s) => s?.auth?.accessToken);
+  const [isVerified, setVerified] = useState(false);
 
   useEffect(() => {
-    // TODO: should implment more to verify auth info
     if (!accessToken) {
-      setShouldShow(false);
+      return setVerified(false);
     } else {
-      setShouldShow(true);
+      verifyToken(accessToken)
+      .then((isValid) => {
+        setVerified(isValid);
+      }).catch(() => {
+         setVerified(false);
+      });
     }
   }, [accessToken]);
 
-  if (!shouldShow) {
-    return <WhenUnauthenticated />;
-  } else {
-    return children;
-  }
+  return (
+    !isVerified ? <WhenUnauthenticated /> : <Suspense>{children}</Suspense>
+  );
 }

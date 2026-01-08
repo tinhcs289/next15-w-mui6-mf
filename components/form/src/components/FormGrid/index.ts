@@ -1,9 +1,8 @@
-import { FormGrid } from "./component-root";
+import { FormGrid, useFormContext } from "./component-root";
 export default FormGrid;
 export type {
-  FormSubmitCallback,
-  FormType,
-  FormGridProps,
-  UseFormContextReturns,
-} from "./types";
-export { useFormContext } from "./use-form-context";
+  FormGridProps, FormSubmitCallback,
+  FormType, UseFormContextReturns
+} from "./component-root";
+export { useFormContext };
+

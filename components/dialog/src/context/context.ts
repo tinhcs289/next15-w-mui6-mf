@@ -1,6 +1,6 @@
 "use client";
 
-import { createStatesContext } from "@shared/states-context";
+import { createStatesContext } from "@packages/states-context";
 import type { DialogStates } from "../types";
 
 const {

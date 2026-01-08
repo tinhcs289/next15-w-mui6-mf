@@ -2,8 +2,8 @@
 
 import type { QueryObserverOptions } from "@tanstack/react-query";
 import { useQuery } from "@tanstack/react-query";
-import type { JSX } from "react";
-import { memo, useCallback, useEffect, useMemo } from "react";
+import type { ComponentType, JSX } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef } from "react";
 import { useGetState, useInitState, useSetState } from "./context";
 import unionBy from "./helpers/unionBy";
 import type {
@@ -23,7 +23,7 @@ function concatArray<T>(...arrs: T[][]) {
   });
 
   return result;
-};
+}
 
 export type ReactQueryInitializerProps<
   Item extends Any = Any,
@@ -31,7 +31,7 @@ export type ReactQueryInitializerProps<
 > = {
   queryKey: string;
   queryFn: GetPaginatedList<Item, Filter>;
-  fetchDataOnFirstMount?: boolean;
+  manualFirstLoad?: boolean;
   infinite?: boolean;
   queryOptions?: Partial<QueryObserverOptions<GetPaginatedListReturns<Item>>>;
 };
@@ -40,9 +40,8 @@ export const ReactQueryInitializer = memo(
   ({
     queryKey,
     queryFn,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     infinite = false,
-    fetchDataOnFirstMount = true,
+    manualFirstLoad,
     queryOptions,
   }: ReactQueryInitializerProps) => {
     const setState = useSetState();
@@ -54,23 +53,30 @@ export const ReactQueryInitializer = memo(
     const fixedFilter = useGetState((s) => s?.fixedFilter);
     const initialized = useGetState((s) => s?.initialized);
 
-    const { data, isSuccess, isLoading, isError, isFetching, isFetched } =
+    const firstQueryCall = useRef(true);
+    const { data, isSuccess, isLoading, isError, isFetching, isFetched, refetch } =
       useQuery({
         queryKey: [
-          queryKey as string,
+          queryKey,
           pageIndex,
           pageSize,
           sortBy,
           advanceFilter,
+          manualFirstLoad,
         ],
-        queryFn: () =>
-          queryFn({
+        queryFn: () => {
+          if (manualFirstLoad && firstQueryCall.current) {
+            firstQueryCall.current = false;
+            return { result: [], totalCount: 0 };
+          }
+          return queryFn({
             pageIndex,
             pageSize,
             sortBy,
             advanceFilter,
-          }),
-        enabled: fetchDataOnFirstMount,
+          });
+        },
+        enabled: true,
         ...queryOptions,
       });
 
@@ -82,14 +88,19 @@ export const ReactQueryInitializer = memo(
         ...states,
         initialized: { ...states?.initialized, request: true },
       }));
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [initialized, isFetched, isSuccess]);
-
-    const totalCount = useMemo(() => data?.totalCount || 0, [data?.totalCount]);
-    useInitState("totalCount", totalCount, { when: "whenever-value-changes" });
 
     const result = useMemo(() => data?.result || [], [data?.result]);
     useInitState("itemsInPage", result, { when: "whenever-value-changes" });
+    useInitState("totalCount", data?.totalCount || 0, {
+      when: "whenever-value-changes",
+    });
+
+    const refresh = useCallback(() => {
+      refetch();
+    }, [refetch]);
+
+    useInitState("refresh", refresh, { when: "whenever-value-changes"});
 
     useEffect(() => {
       if (!result?.length) return;
@@ -101,27 +112,23 @@ export const ReactQueryInitializer = memo(
           items: concatArray(states?.items || [], result),
         }));
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [infinite, result]);
 
     useEffect(() => {
       if (!isError) return;
       setState({ requestState: "fail" });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isError]);
 
     useEffect(() => {
       if (!isLoading) return;
       if (!isFetching) return;
       setState({ requestState: "fetching" });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoading, isFetching]);
 
     useEffect(() => {
       if (!isSuccess) return;
       if (!isFetched) return;
       setState({ requestState: "success" });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSuccess, isFetched]);
 
     const getQueryArgs = useCallback(
@@ -184,5 +191,4 @@ export const ReactQueryInitializer = memo(
 ) as <Item extends Any = Any, Filter extends Any = Any>(
   props: ReactQueryInitializerProps<Item, Filter>
 ) => JSX.Element;
-// @ts-ignore
-ReactQueryInitializer.displayName = "ReactQueryInitializer";
+(ReactQueryInitializer as ComponentType).displayName = "ReactQueryInitializer";

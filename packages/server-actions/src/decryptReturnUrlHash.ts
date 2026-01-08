@@ -1,4 +1,4 @@
-import aesCrypt from "@shared/utils/crypt/aesCrypt";
+import aesCrypt from "@packages/utils/crypt/aesCrypt";
 
 export function decryptReturnUrlHash(
   hash?: string

@@ -40,13 +40,19 @@ describe("FetchDataInitializer", () => {
     mockGetList.mockResolvedValue({ result: [], totalCount: 0 });
   });
 
-  it("should register fetchData in global state when initialized", async () => {
+  it("should register fetchData and refresh in global state when initialized", async () => {
     const { result } = renderHook(
-      () => useGetPaginatedListState((s) => s?.fetchData),
+      () => ({
+        fetchData: useGetPaginatedListState((s) => s?.fetchData),
+        refresh: useGetPaginatedListState((s) => s?.refresh),
+      }),
       { wrapper: wrapper({}) }
     );
 
-    await waitFor(() => expect(result.current).toBeTypeOf("function"));
+    await waitFor(() => {
+      expect(result.current.fetchData).toBeTypeOf("function");
+      expect(result.current.refresh).toBeTypeOf("function");
+    });
   });
 
   it("should merge sortBy correctly when using 'payload-and-current-states'", async () => {
@@ -267,5 +273,39 @@ describe("FetchDataInitializer", () => {
     });
 
     await waitFor(() => expect(result.current.requestState).toBe("none"));
+  });
+
+  it("should call 'fetchData' when 'refresh' is invoked", async () => {
+    const { result } = renderHook(
+      () => ({
+        refresh: useGetPaginatedListState((s) => s?.refresh),
+        fetchData: useGetPaginatedListState((s) => s?.fetchData),
+        setState: useSetPaginatedListState(),
+      }),
+      { wrapper: wrapper({}) }
+    );
+
+    act(() => {
+      result.current.setState({
+        sortBy: [{ by: "name", direction: "asc" }],
+        advanceFilter: { q: "Alice" },
+        pageIndex: 2,
+        pageSize: 10,
+      });
+    });
+
+    await waitFor(() => result.current.refresh);
+
+    act(() => {
+      result.current.refresh!();
+    });
+
+    await waitFor(() => expect(mockGetList).toHaveBeenCalledTimes(1));
+
+    const args = mockGetList.mock.calls.at(0)?.[0];
+    expect(args.sortBy).toEqual([{ by: "name", direction: "asc" }]);
+    expect(args.advanceFilter).toEqual({ q: "Alice" });
+    expect(args.pageIndex).toBe(2);
+    expect(args.pageSize).toBe(10);
   });
 });

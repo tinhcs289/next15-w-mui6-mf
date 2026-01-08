@@ -2,6 +2,7 @@
 
 import View from "@/views/SignOutView";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -14,5 +15,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Signout() {
-  return <View />;
+  return (
+    <Suspense>
+      <View />
+    </Suspense>
+  );
 }

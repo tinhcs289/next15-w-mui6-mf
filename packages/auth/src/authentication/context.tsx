@@ -1,6 +1,6 @@
 "use client";
 
-import { createStatesContext } from "@shared/states-context";
+import { createStatesContext } from "@packages/states-context";
 import { memo, PropsWithChildren, useCallback } from "react";
 import type { AuthData } from "./auth-data";
 import { authCookie, authDataUtils, authLocalStorage } from "./auth-data";

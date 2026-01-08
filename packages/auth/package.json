@@ -1,5 +1,5 @@
 {
-  "name": "@shared/auth",
+  "name": "@packages/auth",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -24,36 +24,33 @@
   },
   "peerDependencies": {
     "jsonwebtoken": "^8.5.1",
-    "lodash": "^4.17.0",
     "moment": "^2.24.0",
     "react": ">=18.0.0 <20.0.0",
     "react-dom": ">=18.0.0 <20.0.0",
     "yup": "^0.32.0 || ^1.0.0"
   },
   "dependencies": {
-    "@shared/browser-storage": "workspace:*",
-    "@shared/states-context": "workspace:*"
+    "@packages/browser-api": "workspace:*",
+    "@packages/states-context": "workspace:*"
   },
   "devDependencies": {
     "@shared/types": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",
-    "@testing-library/react": "16.3.0",
+    "@testing-library/react": "16.3.1",
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "14.6.1",
-    "@turbo/gen": "2.5.8",
+    "@turbo/gen": "2.7.1",
     "@types/jsonwebtoken": "9.0.10",
-    "@types/lodash": "4.17.20",
-    "@types/node": "24.9.2",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "@vitejs/plugin-react": "5.1.0",
-    "@vitest/ui": "4.0.5",
-    "jsonwebtoken": "9.0.2",
-    "lodash": "4.17.21",
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "5.1.2",
+    "@vitest/ui": "4.0.16",
+    "jsonwebtoken": "9.0.3",
     "moment": "2.30.1",
-    "tsup": "8.5.0",
+    "tsup": "8.5.1",
     "typescript": "5.9.3",
     "yup": "1.7.1",
-    "vitest": "4.0.5"
+    "vitest": "4.0.16"
   }
 }

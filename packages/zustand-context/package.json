@@ -21,12 +21,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "react": "19.2.0",
-    "zustand": "5.0.8"
+    "react": "19.2.3",
+    "zustand": "5.0.9"
   },
   "devDependencies": {
-    "@types/react": "19.2.2",
-    "tsup": "8.5.0",
+    "@types/react": "19.2.7",
+    "tsup": "8.5.1",
     "typescript": "5.9.3"
   }
 }

@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import type { AppLocale } from "@shared/types/locale";
-import { InitAOS } from "@shared/animate-on-scroll";
+import { InitAOS } from "@packages/aos";
 import Content from "./components/Content";
 import StackRoot from "./components/StackRoot";
 import {

@@ -12,7 +12,7 @@ import { ComponentType, forwardRef, Ref, useCallback, useMemo } from "react";
 import { Controller } from "react-hook-form";
 import CustomPickerActionBar from "../CustomPickerActionBar";
 import CustomPickerToolbar from "../CustomPickerToolbar";
-import Text from "../InputText";
+import InputText from "../text/InputText";
 import type { RHFRenderInput } from "../../types";
 import { DEFAULT_FORMAT } from "./constants";
 import type { InputDateTimePickerProps, RHFDateTimeProps } from "./types";
@@ -76,7 +76,7 @@ export const InputDateTimePicker = forwardRef<
         slots={{
           toolbar: CustomPickerToolbar,
           actionBar: CustomPickerActionBar,
-          textField: Text as any,
+          textField: InputText as any,
           ...slots,
         }}
         slotProps={{

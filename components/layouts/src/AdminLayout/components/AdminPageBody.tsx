@@ -3,7 +3,7 @@
 import { styled } from "@mui/material";
 import type { BoxProps } from "@mui/material/Box";
 import Box from "@mui/material/Box";
-import useWatchElementDimensions from "@shared/use-watch-element-dimensions";
+import useWatchElementDimensions from "@packages/use-watch-element-dimensions";
 import type { ComponentType } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { HeightInitializer, WidthInitializer } from "../context";

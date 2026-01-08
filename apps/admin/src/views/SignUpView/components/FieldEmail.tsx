@@ -1,6 +1,6 @@
 "use client";
 
-import { required, shouldBeEmail, useFormContext } from "@shared/form";
+import { rules, useFormContext } from "@shared/form";
 import { RHFText } from "@shared/form/inputs/text";
 import type { FormSignUpValues } from "../types";
 
@@ -15,8 +15,8 @@ export default function FieldEmail() {
       autoComplete="email"
       variant="bootstrap"
       rules={{
-        ...required("Please enter"),
-        ...shouldBeEmail("Email are invalid format"),
+        ...rules.required("Please enter"),
+        ...rules.shouldBeEmail("Email are invalid format"),
       }}
     />
   );

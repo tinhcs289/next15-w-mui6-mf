@@ -1,5 +1,5 @@
 import { ALL_LOCALE } from "@shared/constants/locale";
-import { getUserLocale } from "@shared/server-actions";
+import { getUserLocale } from "@packages/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import { getRequestConfig } from "next-intl/server";
 import { LOCALE_KEYS } from "./config";

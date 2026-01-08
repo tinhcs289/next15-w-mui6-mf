@@ -1,7 +1,7 @@
 "use client";
 
-import { required, useFormContext } from "@shared/form";
-import { RHFRadioWithLabel } from "@shared/form/inputs/radio-with-label";
+import { rules, useFormContext } from "@shared/form";
+import { RHFRadioWithLabel } from "@shared/form/inputs/radio";
 import type { FormSignInValues } from "../types";
 
 export default function FieldKeepMeSigned2() {
@@ -10,7 +10,7 @@ export default function FieldKeepMeSigned2() {
     <RHFRadioWithLabel
       control={control}
       name="keepMeSigned"
-      rules={required("Please select")}
+      rules={rules.required("Please select")}
       label="Keep me signed-in"
     />
   );

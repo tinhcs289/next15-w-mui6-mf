@@ -1,25 +1,13 @@
 "use client";
 
-import { required, useFormContext } from "@shared/form";
-import type { RHFTextProps } from "@shared/form/inputs/text";
+import { rules, useFormContext } from "@shared/form";
 import { RHFText } from "@shared/form/inputs/text";
-import { useMemo } from "react";
 import { useWatch } from "react-hook-form";
 import type { FormSignUpValues } from "../types";
 
 export default function FieldPassword() {
   const { control } = useFormContext<FormSignUpValues>();
   const password = useWatch<FormSignUpValues>({ control, name: "password" });
-
-  const rules: Required<RHFTextProps>["rules"] = useMemo(() => ({
-    ...required("Please enter"),
-    validate: {
-      shouldBeTheSameAsPassword: (value: string) => {
-        if (value === password) return true;
-        return "text should be same as Password";
-      }
-    }
-  }), [password]);
 
   return (
     <RHFText
@@ -29,7 +17,15 @@ export default function FieldPassword() {
       type="password"
       variant="bootstrap"
       autoComplete="password"
-      rules={rules}
+      rules={{
+        ...rules.required("Please enter"),
+        validate: {
+          shouldBeTheSameAsPassword: (value: string) => {
+            if (value === password) return true;
+            return "text should be same as Password";
+          },
+        },
+      }}
     />
   );
 }

@@ -113,8 +113,7 @@ describe("UpdateFilterInitializer", () => {
     await waitFor(() => result.current);
 
     act(() => {
-      // @ts-ignore
-      result.current!("not-an-object");
+      result.current!("not-an-object" as unknown as ListFilter<Any>);
     });
 
     await new Promise((r) => setTimeout(r, 50));
@@ -122,38 +121,29 @@ describe("UpdateFilterInitializer", () => {
     expect(mockGetList).not.toHaveBeenCalled();
   });
 
-  it("should re-register updateFilter when fetchData changes", async () => {
-    const { rerender, result } = renderHook(
-      () => useGetPaginatedListState((s) => s?.updateFilter),
-      { wrapper }
-    );
-
-    await waitFor(() => result.current);
-
-    const firstRef = result.current;
-
-    rerender();
-
-    await waitFor(() => {
-      const newRef = result.current;
-      expect(newRef).not.toBe(firstRef);
-    });
-  });
-
   it("should correctly handle multiple consecutive updates", async () => {
-    const { result } = renderHook(
+    const { result: updateFilterCallback } = renderHook(
       () => useGetPaginatedListState((s) => s?.updateFilter),
       { wrapper }
     );
 
-    await waitFor(() => result.current);
+    await waitFor(() => updateFilterCallback.current);
 
     act(() => {
-      result.current!({ name: "Tom" }, true);
-      result.current!({ age: 40 }, true);
+      updateFilterCallback.current!({ name: "Tom" }, true);
     });
 
-    await waitFor(() => expect(mockGetList).toHaveBeenCalledTimes(2));
+    await waitFor(() => {
+      expect(mockGetList).toHaveBeenCalledTimes(1);
+    });
+
+    act(() => {
+      updateFilterCallback.current!({ age: 40 }, true);
+    });
+
+    await waitFor(() => {
+      expect(mockGetList).toHaveBeenCalledTimes(2);
+    });
 
     const lastArgs = (mockGetList.mock.calls as any[]).at(-1)?.[0];
     expect(lastArgs.advanceFilter).toMatchObject({

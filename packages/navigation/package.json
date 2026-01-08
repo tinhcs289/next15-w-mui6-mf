@@ -1,5 +1,5 @@
 {
-  "name": "@shared/navigation",
+  "name": "@packages/navigation",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -22,16 +22,16 @@
   },
   "dependencies": {
     "@shared/constants": "workspace:*",
-    "next": "16.0.1",
-    "next-intl": "4.4.0",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "next": "16.1.1",
+    "next-intl": "4.6.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@turbo/gen": "2.5.8",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "tsup": "8.5.0",
+    "@turbo/gen": "2.7.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "tsup": "8.5.1",
     "typescript": "5.9.3"
   }
 }

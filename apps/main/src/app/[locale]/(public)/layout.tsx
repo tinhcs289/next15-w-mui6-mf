@@ -2,17 +2,16 @@
 
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { STATIC_MEDIA } from "@/constants/media";
-import { ZONE_NAME } from "@/constants/zone";
 import { ALL_LOCALE } from "@shared/constants/locale";
 import MainLayout from "@shared/layouts/MainLayout";
-import { getRequestUrl, getUserLocale } from "@shared/server-actions";
+import { getRequestUrl, getUserLocale } from "@packages/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import type { PropsWithChildren } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStatesProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@packages/auth";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, {
   InitColorScheme,
@@ -40,10 +39,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: LocaleLayoutProps) {
+async function AsyncRootLayout({ children, params }: LocaleLayoutProps) {
   let { locale } = await params;
 
   if (!ALL_LOCALE.includes(locale as AppLocale)) {
@@ -70,11 +66,7 @@ export default async function RootLayout({
                 <NotiStackProvider>
                   <AuthStatesProvider>
                     <InitColorScheme />
-                    <MainLayout
-                      locale={locale}
-                      zoneName={ZONE_NAME}
-                      currentUrl={currentUrl}
-                    >
+                    <MainLayout locale={locale} currentUrl={currentUrl}>
                       {children}
                     </MainLayout>
                   </AuthStatesProvider>
@@ -86,5 +78,13 @@ export default async function RootLayout({
         {/* <GoogleAnalytics gaId="YOUR GAID GOES HERE" /> */}
       </body>
     </html>
+  );
+}
+
+export default async function RootLayout(props: LocaleLayoutProps) {
+  return (
+    <Suspense>
+      <AsyncRootLayout {...props} />
+    </Suspense>
   );
 }

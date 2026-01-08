@@ -3,11 +3,13 @@ import type { ListProps } from "@mui/material/List";
 import type { ListItemButtonProps } from "@mui/material/ListItemButton";
 import type { TextProps } from "@shared/typo/Text";
 import type { ReactNode } from "react";
+import type { Option, RHFInputProps } from "../../types";
 import type { FormGroupCommonProps } from "../FormGroupCommon";
 import type { InputErrorProps } from "../InputError";
-import type { AnyObject, Option, RHFInputProps } from "../../types";
 
-export type CheckGroupOption<T extends AnyObject = AnyObject> = Option<
+type OptionData = { [x: string]: any };
+
+export type CheckGroupOption<T extends OptionData = OptionData> = Option<
   T & {
     InputProps?: Partial<
       Omit<
@@ -18,7 +20,7 @@ export type CheckGroupOption<T extends AnyObject = AnyObject> = Option<
   }
 >;
 
-export type InputCheckGroupProps<T extends AnyObject = AnyObject> = Omit<
+export type InputCheckGroupProps<T extends OptionData = OptionData> = Omit<
   FormGroupCommonProps,
   "onChange" | "slotProps"
 > & {
@@ -46,7 +48,7 @@ export type InputCheckGroupProps<T extends AnyObject = AnyObject> = Omit<
   };
 };
 
-export type RHFCheckGroupProps<T extends AnyObject = AnyObject> = RHFInputProps &
+export type RHFCheckGroupProps<T extends OptionData = OptionData> = RHFInputProps &
   Omit<
   InputCheckGroupProps<T>,
     "errorText" | "error" | "onChange" | "value" | "name" | "defaultValue"

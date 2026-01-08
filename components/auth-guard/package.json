@@ -1,5 +1,5 @@
 {
-  "name": "@shared/auth-guard",
+  "name": "@packages/auth-guard",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -21,18 +21,18 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@shared/auth": "workspace:*",
-    "@shared/navigation": "workspace:*",
-    "@shared/server-actions": "workspace:*",
-    "@shared/utils": "workspace:*",
-    "next-intl": "4.4.0",
-    "react": "19.2.0"
+    "@packages/auth": "workspace:*",
+    "@packages/navigation": "workspace:*",
+    "@packages/server-actions": "workspace:*",
+    "@packages/utils": "workspace:*",
+    "next-intl": "4.6.1",
+    "react": "19.2.3"
   },
   "devDependencies": {
-    "@turbo/gen": "2.5.8",
-    "@types/node": "24.9.2",
-    "@types/react": "19.2.2",
-    "tsup": "8.5.0",
+    "@turbo/gen": "2.7.1",
+    "@types/node": "25.0.3",
+    "@types/react": "19.2.7",
+    "tsup": "8.5.1",
     "typescript": "5.9.3"
   }
 }

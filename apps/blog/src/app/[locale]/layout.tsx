@@ -1,17 +1,17 @@
 "use server";
 
 import { FONT_CLASS_NAMES } from "@/app/fonts";
+import { ENV_CONFIG } from "@/constants/environment";
 import { STATIC_MEDIA } from "@/constants/media";
-import { ZONE_NAME } from "@/constants/zone";
 import { ALL_LOCALE } from "@shared/constants/locale";
 import MainLayout from "@shared/layouts/MainLayout";
-import { getUserLocale } from "@shared/server-actions";
+import { getUserLocale } from "@packages/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStatesProvider } from "@shared/auth";
+import { AuthStatesProvider } from "@packages/auth";
 import AssetPrefixFix from "@shared/layouts/AssetPrefixFix";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, {
@@ -19,11 +19,11 @@ import MUIV6ThemeProvider, {
 } from "@shared/providers/MUIV6ThemeProvider";
 import NotiStackProvider from "@shared/providers/NotiStackProvider";
 import ReactQueryProvider from "@shared/providers/ReactQueryProvider";
-import type { PropsWithChildren } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 
 type Params = Promise<{ locale: string }>;
 
-type LocaleLayoutProps = PropsWithChildren<{
+type RootLayoutProps = PropsWithChildren<{
   params: Params;
 }>;
 
@@ -41,10 +41,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function RootLayout({
-  children,
-  params,
-}: LocaleLayoutProps) {
+async function AsyncRootLayout({ children, params }: RootLayoutProps) {
   let { locale } = await params;
 
   if (!ALL_LOCALE.includes(locale as AppLocale)) {
@@ -62,7 +59,7 @@ export default async function RootLayout({
         <link rel="icon" href={STATIC_MEDIA.favicon} sizes="any" />
       </head>
       <body className={`${FONT_CLASS_NAMES}`}>
-        <AssetPrefixFix zoneName={ZONE_NAME} />
+        <AssetPrefixFix zoneName={ENV_CONFIG.zoneName} />
         <NextIntlClientProvider locale={locale}>
           <ReactQueryProvider>
             <MUIV6ThemeProvider locale={locale}>
@@ -70,7 +67,7 @@ export default async function RootLayout({
                 <NotiStackProvider>
                   <AuthStatesProvider>
                     <InitColorScheme />
-                    <MainLayout locale={locale} zoneName={ZONE_NAME}>
+                    <MainLayout locale={locale} zoneName={ENV_CONFIG.zoneName}>
                       {children}
                     </MainLayout>
                   </AuthStatesProvider>
@@ -82,5 +79,13 @@ export default async function RootLayout({
         {/* <GoogleAnalytics gaId="YOUR GAID GOES HERE" /> */}
       </body>
     </html>
+  );
+}
+
+export default async function RootLayout(props: RootLayoutProps) {
+  return (
+    <Suspense>
+      <AsyncRootLayout {...props} />
+    </Suspense>
   );
 }

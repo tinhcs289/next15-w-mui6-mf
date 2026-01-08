@@ -1,4 +1,4 @@
-import type { NextMiddlewareFactory } from "@shared/stack-next-middleware";
+import type { NextMiddlewareFactory } from "@packages/stack-next-middleware";
 import type { NextFetchEvent, NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 

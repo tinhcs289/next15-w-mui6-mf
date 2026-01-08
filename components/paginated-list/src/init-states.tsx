@@ -51,12 +51,12 @@ export const ListStatesInitializer = memo(
     const setState = useSetState();
 
     useEffect(() => {
-      const hasUninitialized =
+      const allStatesAreInitialized =
         [init1, init2, init3, init4, init5, init6, init7].findIndex(
           (i) => !i
         ) !== -1;
 
-      if (!hasUninitialized) return;
+      if (!allStatesAreInitialized) return;
       setState((states) => ({
         ...states,
         initialized: { ...states?.initialized, states: true },

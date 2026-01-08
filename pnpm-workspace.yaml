@@ -2,4 +2,5 @@ packages:
   - "apps/*"
   - "components/*"
   - "packages/*"
+  - "shared/*"
   - "services/*"

@@ -1,8 +1,8 @@
 "use server";
 
-import { AuthStatesProvider } from "@shared/auth";
-import { redirect } from "@shared/navigation";
-import { createReturnUrlHash, getAuthCookie } from "@shared/server-actions";
+import { AuthStatesProvider } from "@packages/auth";
+import { redirect } from "@packages/navigation";
+import { createReturnUrlHash, getAuthCookie } from "@packages/server-actions";
 import { getLocale } from "next-intl/server";
 import AuthChangeHandler from "./AuthChangeHandler";
 import type { AuthGuardServerSideProps } from "./types";

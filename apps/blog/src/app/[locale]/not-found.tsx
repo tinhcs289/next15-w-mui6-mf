@@ -1,8 +1,9 @@
 "use server";
 
 import NotFoundView from "@/views/NotFoundView";
-import { getUserLocale } from "@shared/server-actions";
+import { getUserLocale } from "@packages/server-actions";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -12,11 +13,17 @@ export async function generateMetadata(): Promise<Metadata> {
       charset: "utf-8",
     },
   };
+}
+
+const View = async () => {
+  const locale = await getUserLocale();
+  return <NotFoundView locale={locale} />;
 };
 
 export default async function LocaleNotFound() {
-  const locale = await getUserLocale();
   return (
-    <NotFoundView locale={locale} />
+    <Suspense>
+      <View />
+    </Suspense>
   );
-};
+}

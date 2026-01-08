@@ -76,7 +76,7 @@ setState(states => ({ ...states, someState: 'red' }));
 ####  option 1:
 You can pass default values to the states at the time that the context is created.
 ``` typescript
-import  { createStatesContext } from "@shared/states-context";
+import  { createStatesContext } from "@packages/states-context";
 const { ... } = createStatesContext<StatesData>({
   // put default values here
 });
@@ -132,7 +132,7 @@ import {
   UseInitState,
   UseSetState,
   UseSetStateReturns,
-} from "@shared/states-context";
+} from "@packages/states-context";
 
 const {
   Provider,

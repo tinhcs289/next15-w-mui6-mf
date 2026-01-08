@@ -1,7 +1,7 @@
+import { ENV_CONFIG } from "@/constants/environment";
 import PATHS from "@/constants/paths";
-import { ZONE_NAME } from "@/constants/zone";
 import Box from "@mui/material/Box";
-import { ZoneLink } from "@shared/navigation";
+import { ZoneLink } from "@packages/navigation";
 import Text from "@shared/typo/Text";
 
 export default function LinkSignIn() {
@@ -10,7 +10,7 @@ export default function LinkSignIn() {
       Already have an account?{" "}
       <Box component="span">
         <ZoneLink
-         currentZone={ZONE_NAME}
+         currentZone={ENV_CONFIG.zoneName}
           href={PATHS.signIn}
           title="sign in"
           style={{

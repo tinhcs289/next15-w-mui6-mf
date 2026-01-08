@@ -1,5 +1,5 @@
 {
-  "name": "@shared/utils",
+  "name": "@packages/utils",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -7,6 +7,7 @@
   "exports": {
     "./array/*": "./src/array/*.ts",
     "./async/*": "./src/async/*.ts",
+    "./common/*": "./src/common/*.ts",
     "./crypt/*": "./src/crypt/*.ts",
     "./data-validate/*": "./src/data-validate/*.ts",
     "./file/*": "./src/file/*.ts",
@@ -20,6 +21,9 @@
       ],
       "async/*": [
         "./src/async/*.ts"
+      ],
+      "common/*": [
+        "./src/common/*.ts"
       ],
       "crypt/*": [
         "./src/crypt/*.ts"
@@ -60,17 +64,17 @@
     "@shared/types": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "14.6.1",
-    "@turbo/gen": "2.5.8",
+    "@turbo/gen": "2.7.1",
     "@types/crypto-js": "4.2.2",
     "@types/jsonwebtoken": "9.0.10",
-    "@types/lodash": "4.17.20",
-    "@types/node": "24.9.2",
+    "@types/lodash": "4.17.21",
+    "@types/node": "25.0.3",
     "@types/numeral": "2.0.5",
     "@types/qs": "6.14.0",
-    "@vitest/ui": "4.0.5",
-    "tsup": "8.5.0",
+    "@vitest/ui": "4.0.16",
+    "tsup": "8.5.1",
     "typescript": "5.9.3",
-    "vitest": "4.0.5",
+    "vitest": "4.0.16",
     "yup": "1.7.1"
   }
 }

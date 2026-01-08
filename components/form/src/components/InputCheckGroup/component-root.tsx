@@ -5,12 +5,12 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Text from "@shared/typo/Text";
 import WithRequiredMark from "@shared/typo/WithRequiredMark";
-import removeAt from "@shared/utils/array/removeAt";
-import type { FocusEventHandler, JSX, MouseEventHandler } from "react";
+import removeAt from "@packages/utils/array/removeAt";
+import type { FocusEventHandler, JSX, MouseEventHandler, ComponentType } from "react";
 import { forwardRef, useCallback, useMemo } from "react";
 import { Controller } from "react-hook-form";
-import FormGroupCommon from "../FormGroupCommon";
 import type { AnyObject, RHFRenderInput } from "../../types";
+import FormControl from "../FormControl";
 import ErrorText from "./components/ErrorText";
 import ListItemButtonStyled from "./components/ListItemButtonStyled";
 import ListStyled from "./components/ListStyled";
@@ -206,7 +206,7 @@ const InputCheckGroup = forwardRef<HTMLElement, InputCheckGroupProps>(
     );
 
     return (
-      <FormGroupCommon
+      <FormControl
         onChange={handleOnchange}
         onFocus={handleFocus}
         {...formControlProps}
@@ -223,15 +223,13 @@ const InputCheckGroup = forwardRef<HTMLElement, InputCheckGroupProps>(
         error={error}
       >
         {$Options}
-      </FormGroupCommon>
+      </FormControl>
     );
   }
 ) as <T extends AnyObject = AnyObject>(
   props: InputCheckGroupProps<T>
 ) => JSX.Element;
-
-// @ts-ignore
-InputCheckGroup.displayName = "InputCheckGroup";
+(InputCheckGroup as ComponentType).displayName = "InputCheckGroup";
 
 function RHFCheckGroup<T extends AnyObject = AnyObject>(
   props: RHFCheckGroupProps<T>

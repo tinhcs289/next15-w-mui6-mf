@@ -1,6 +1,6 @@
 "use client";
 
-import { required, useFormContext } from "@shared/form";
+import { rules, useFormContext } from "@shared/form";
 import { RHFText } from "@shared/form/inputs/text";
 import type { FormSignUpValues } from "../types";
 
@@ -12,7 +12,7 @@ export default function FieldFullName() {
       name="fullname"
       label="Full name"
       variant="bootstrap"
-      rules={required("Please enter")}
+      rules={rules.required("Please enter")}
     />
   );
 }

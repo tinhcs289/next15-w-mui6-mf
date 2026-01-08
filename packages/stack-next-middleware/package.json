@@ -1,5 +1,5 @@
 {
-  "name": "@shared/stack-next-middleware",
+  "name": "@packages/stack-next-middleware",
   "version": "0.0.0",
   "type": "module",
   "private": true,
@@ -20,11 +20,11 @@
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
-  "dependencies": {
-    "next": "16.0.1"
+  "peerDependencies": {
+    "next": ">=13.0.0 <17.0.0"
   },
   "devDependencies": {
-    "tsup": "8.5.0",
+    "tsup": "8.5.1",
     "typescript": "5.9.3"
   }
 }

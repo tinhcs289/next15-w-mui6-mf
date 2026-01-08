@@ -11,17 +11,21 @@ export const InteractionInitializer = memo(() => {
   const setInteraction = useCallback(
     (interaction: Interaction) => {
       const { action, item, element, keepAnchor, keepInteract } = interaction;
+
       if (!action) return;
       setState({ itemInteractAction: action });
+
+
       if (!!item) setState({ itemToInteract: item as any });
       else {
         if (!keepInteract) setState({ itemToInteract: null });
       }
-      if (!!element) setState({ itemInteractAnchor: element });
+
+
+      if (!!element) setState({ itemInteractAnchor: element })
       else {
         if (!keepAnchor) setState({ itemInteractAnchor: null });
       }
-      return;
     },
     [setState]
   );

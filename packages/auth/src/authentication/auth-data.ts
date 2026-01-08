@@ -1,12 +1,12 @@
 "use client";
 
-import { CookieItem } from "@shared/browser-storage/cookie-item";
-import { yupMigration as cookieItemMigration } from "@shared/browser-storage/cookie-item/adapters/yup";
-import { LocalStorageItem } from "@shared/browser-storage/local-storage-item";
-import { yupMigration as localStorageItemMigration } from "@shared/browser-storage/local-storage-item/adapters/yup";
+import { CookieItem } from "@packages/browser-api/cookie-item";
+import { yupMigration as cookieItemMigration } from "@packages/browser-api/cookie-item/adapters/yup";
+import { LocalStorageItem } from "@packages/browser-api/local-storage-item";
+import { yupMigration as localStorageItemMigration } from "@packages/browser-api/local-storage-item/adapters/yup";
 import type { JwtPayload } from "jsonwebtoken";
 import { decode } from "jsonwebtoken";
-import { cloneDeep } from "lodash";
+import cloneDeep from "../helpers/cloneDeep";
 import type { Moment } from "moment";
 import moment from "moment";
 import * as y from "yup";

@@ -32,7 +32,7 @@
     "sourceMap": true,
     "strict": true,
     "target": "ESNext",
-    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
   "exclude": [
     "node_modules",
@@ -44,5 +44,5 @@
     "src",
     "vitest.config.ts",
     "vitest.setup.ts"
-  ],
+  ]
 }

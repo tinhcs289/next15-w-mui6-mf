@@ -1,5 +1,6 @@
 import MainView from "@/views/MainView/component-root";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -10,5 +11,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <MainView />;
+  return (
+    <Suspense>
+      <MainView />
+    </Suspense>
+  );
 }

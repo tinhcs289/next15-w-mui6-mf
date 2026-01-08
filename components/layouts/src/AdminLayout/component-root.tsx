@@ -1,7 +1,7 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import type { AppLocale } from "@shared/types/locale";
-import { InitAOS } from "@shared/animate-on-scroll";
+import { InitAOS } from "@packages/aos";
 import AppBar from "./AppBar";
 import Header from "./Header";
 import SideMenu from "./SideMenu";

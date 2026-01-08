@@ -1,6 +1,6 @@
-import { http } from "@shared/http-client";
+import { http } from "@packages/http-client";
 import type { GetPaginatedList } from "@shared/paginated-list";
-import tryDo from "@shared/utils/async/tryDo";
+import tryDo from "@packages/utils/async/tryDo";
 import type { RowData } from "./types";
 
 export const queryFn: GetPaginatedList<RowData> = async ({ pageIndex = 1 }) => {

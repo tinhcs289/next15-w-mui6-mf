@@ -38,7 +38,7 @@ const FEATURE_MAP = {
 ```
 You can extend this object depending on the features of your application by using the function `defineFeaturePermisson`
 ``` typescript
-import { defineFeaturePermisson } from "@shared/auth";
+import { defineFeaturePermisson } from "@packages/auth";
 ```
 ``` typescript
 defineFeaturePermisson(
@@ -65,7 +65,7 @@ This is a list of permission values. But in case you want to combine conditions,
 
 ## The hook function for authorization
 ``` typescript
-import { usePermissions } from "@shared/auth";
+import { usePermissions } from "@packages/auth";
 ```
 use this to know the current use can perform a feature or not
 ``` typescript
@@ -74,7 +74,7 @@ const { isAllowed } = usePermissions("Feature1")
 
 ## The component for authorization
 ``` typescript
-import { WithPermissions } from "@shared/auth";
+import { WithPermissions } from "@packages/auth";
 ```
 use this to know the current use can perform a feature or not
 ``` typescript
@@ -89,7 +89,7 @@ use this to know the current use can perform a feature or not
 ## Custom rules of authorization
 If there is some advance condition of authorization that do not follow the feature map, or If you need check authorization from outside of the closure of component tree, You can you these functions to build the condition:
 ``` typescript
-import { isAllowedIf, matchAll, oneOf } from "@shared/auth";
+import { isAllowedIf, matchAll, oneOf } from "@packages/auth";
 ```
 ``` typescript
 const isAllowed = isAllowedIf(currentUserPolicies).matchesWith(

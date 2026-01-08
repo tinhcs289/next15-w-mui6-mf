@@ -1,15 +1,10 @@
-import { InputSelect } from "./component-root";
+import { InputSelect, RHFSelect } from "./component-root";
 export default InputSelect;
-export { RHFSelect } from "./component-root";
+export { RHFSelect };
 export type {
-  BaseSelectProps,
-  OnChange,
-  OnChangeValue,
-  OptionComponentProps,
-  OwnerState,
-  RenderSelectOptionCallback,
-  RenderTags,
+  InputSelectProps,
   RHFSelectProps,
   SelectOption,
-  InputSelectProps,
-} from "./types";
+  RenderSelectOption,
+  RenderSelectedValuesAsTags,
+} from "./component-root";

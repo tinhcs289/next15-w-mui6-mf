@@ -10,7 +10,7 @@ import Menu from "@mui/material/Menu";
 import MuiMenuItem from "@mui/material/MenuItem";
 import { paperClasses } from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { useZoneRouter } from "@shared/navigation";
+import { useZoneRouter } from "@packages/navigation";
 import type { MouseEvent } from "react";
 import { useCallback, useState } from "react";
 import MenuButton from "./MenuButton";

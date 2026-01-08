@@ -1,6 +1,6 @@
 "use server";
 
-import aesCrypt from "@shared/utils/crypt/aesCrypt";
+import aesCrypt from "@packages/utils/crypt/aesCrypt";
 import last from "lodash/last";
 import { headers } from "next/headers";
 import { stringify } from "qs";

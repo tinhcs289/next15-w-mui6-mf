@@ -2,7 +2,7 @@
 
 import type { ComponentType, JSX } from "react";
 import { memo, useCallback, useEffect } from "react";
-import { useGetState, useInitState, useSetState } from "./context";
+import { useGetState, useInitState, useSetState, useCallbackState } from "./context";
 import cloneDeep from "./helpers/cloneDeep";
 import omit from "./helpers/omit";
 import unionBy from "./helpers/unionBy";
@@ -11,8 +11,7 @@ import type {
   FetchData,
   FetchDataOptions,
   FetchDataPayload,
-  GetPaginatedList,
-  SortOperator,
+  GetPaginatedList
 } from "./types";
 
 function concatArray<T>(...arrs: T[][]) {
@@ -140,6 +139,14 @@ export const FetchDataInitializer = memo(
     );
 
     useInitState("fetchData", fetchData, {
+      when: "whenever-value-changes",
+    });
+
+    const refresh = useCallback(() => {
+      fetchData?.({}, { by: "payload-and-current-states" });
+    }, [fetchData]);
+
+    useInitState("refresh", refresh, {
       when: "whenever-value-changes",
     });
 

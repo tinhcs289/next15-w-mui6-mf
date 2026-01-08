@@ -42,7 +42,6 @@ This turborepo has some additional tools and libraries already setup for you:
 
 ### React/Next libraries
 
-- [@uidotdev/usehooks](https://usehooks.com/) common useful react hooks functions.
 - [@mui/material](https://mui.com/material-ui/getting-started/) UI Framework 
 - [react-hook-form](https://www.react-hook-form.com/) For handling form states and form validation.
 that implements Google's Material Design.

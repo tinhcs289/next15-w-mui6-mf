@@ -1,5 +1,6 @@
 import View from "@/views/SignUpView";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -12,6 +13,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 export default function SignupPage() {
   return (
-    <View />
+    <Suspense>
+      <View />
+    </Suspense>
   );
 }

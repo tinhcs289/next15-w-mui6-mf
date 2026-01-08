@@ -1,5 +1,5 @@
 {
-  "name": "@shared/http-client",
+  "name": "@packages/http-client",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -26,18 +26,18 @@
     "axios": "^1.3.0"
   },
   "dependencies": {
-    "@shared/auth": "workspace:*"
+    "@packages/auth": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/user-event": "14.6.1",
     "@shared/types": "workspace:*",
-    "@turbo/gen": "2.5.8",
-    "@types/node": "24.9.2",
-    "axios": "1.13.1",
+    "@turbo/gen": "2.7.1",
+    "@types/node": "25.0.3",
+    "axios": "1.13.2",
     "axios-mock-adapter": "2.1.0",
-    "tsup": "8.5.0",
+    "tsup": "8.5.1",
     "typescript": "5.9.3",
-    "vitest": "4.0.5"
+    "vitest": "4.0.16"
   }
 }
