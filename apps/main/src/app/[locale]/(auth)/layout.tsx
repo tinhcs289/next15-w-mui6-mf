@@ -8,7 +8,7 @@ import { getRequestUrl, getUserLocale } from "@packages/server-actions";
 import type { AppLocale } from "@shared/types/locale";
 import { NextIntlClientProvider } from "next-intl";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStatesProvider } from "@packages/auth";
+import { AuthStatesProvider, VerifyAuthCallbackInitializer } from "@packages/auth";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, {
   InitColorScheme,
@@ -50,6 +50,7 @@ async function AsyncAuthPagesLayout({
               <DateTimeAndNumeralProvider locale={locale}>
                 <NotiStackProvider>
                   <AuthStatesProvider>
+                    <VerifyAuthCallbackInitializer />
                     <InitColorScheme />
                     <AuthLayout locale={locale} currentUrl={currentUrl}>
                       {children}

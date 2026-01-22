@@ -11,7 +11,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Suspense, type PropsWithChildren } from "react";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStatesProvider } from "@packages/auth";
+import { AuthStatesProvider, VerifyAuthCallbackInitializer } from "@packages/auth";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, {
   InitColorScheme,
@@ -65,6 +65,7 @@ async function AsyncRootLayout({ children, params }: LocaleLayoutProps) {
               <DateTimeAndNumeralProvider locale={locale}>
                 <NotiStackProvider>
                   <AuthStatesProvider>
+                    <VerifyAuthCallbackInitializer />
                     <InitColorScheme />
                     <MainLayout locale={locale} currentUrl={currentUrl}>
                       {children}

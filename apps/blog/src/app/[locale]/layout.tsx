@@ -11,7 +11,7 @@ import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 // import { GoogleAnalytics } from "@next/third-parties/google";
-import { AuthStatesProvider } from "@packages/auth";
+import { AuthStatesProvider, VerifyAuthCallbackInitializer } from "@packages/auth";
 import AssetPrefixFix from "@shared/layouts/AssetPrefixFix";
 import DateTimeAndNumeralProvider from "@shared/providers/DateTimeAndNumeralProvider";
 import MUIV6ThemeProvider, {
@@ -66,6 +66,7 @@ async function AsyncRootLayout({ children, params }: RootLayoutProps) {
               <DateTimeAndNumeralProvider locale={locale}>
                 <NotiStackProvider>
                   <AuthStatesProvider>
+                    <VerifyAuthCallbackInitializer />
                     <InitColorScheme />
                     <MainLayout locale={locale} zoneName={ENV_CONFIG.zoneName}>
                       {children}

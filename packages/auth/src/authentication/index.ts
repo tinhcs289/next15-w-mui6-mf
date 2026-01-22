@@ -10,7 +10,9 @@ export {
   useCallbackAuthState,
   useGetAuthState,
   useInitAuthState,
-  useSetAuthState
+  useSetAuthState,
+  VerifyAuthCallbackInitializer,
+  VerifyAuthOnMount,
 } from "./context";
 export type { AuthStates } from "./context";
 

@@ -3,7 +3,7 @@
 import { FONT_CLASS_NAMES } from "@/app/fonts";
 import { ENV_CONFIG } from "@/constants/environment";
 import { STATIC_MEDIA } from "@/constants/media";
-import { AuthStatesProvider } from "@packages/auth";
+import { AuthStatesProvider, VerifyAuthCallbackInitializer } from "@packages/auth";
 import { ALL_LOCALE } from "@shared/constants/locale";
 import AuthLayout from "@shared/layouts/AuthLayout";
 import { getRequestUrl, getUserLocale } from "@packages/server-actions";
@@ -54,6 +54,7 @@ async function AsyncAuthPagesLayout({
                 <NotiStackProvider>
                   <InitColorScheme />
                   <AuthStatesProvider>
+                    <VerifyAuthCallbackInitializer />
                     <AuthLayout
                       locale={locale}
                       zoneName={ENV_CONFIG.zoneName}

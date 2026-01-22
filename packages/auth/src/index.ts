@@ -7,7 +7,8 @@ export {
   AuthTypeEnum,
   useGetAuthState,
   useInitAuthState,
-  useSetAuthState
+  useSetAuthState,
+  VerifyAuthCallbackInitializer,
 } from "./authentication";
 export type {
   AuthData,
