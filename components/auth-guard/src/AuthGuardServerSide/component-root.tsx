@@ -1,6 +1,6 @@
 "use server";
 
-import { AuthStatesProvider } from "@packages/auth";
+import { AuthStatesProvider, VerifyAuthCallbackInitializer } from "@packages/auth";
 import { redirect } from "@packages/navigation";
 import { createReturnUrlHash, getAuthCookie } from "@packages/server-actions";
 import { getLocale } from "next-intl/server";
@@ -50,6 +50,7 @@ export default async function AuthGuardServerSide({
 
   return (
     <AuthStatesProvider>
+      <VerifyAuthCallbackInitializer />
       {children}
       <AuthChangeHandler />
     </AuthStatesProvider>

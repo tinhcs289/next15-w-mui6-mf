@@ -4,6 +4,8 @@ import { useGetAuthState } from "@packages/auth";
 import { Fragment, Suspense, useEffect } from "react";
 import type { AuthGuardClientSideProps } from "./types";
 
+const VerifyAuthOnMount
+
 /**
  * Wrap your components inside AuthGuard for authentication protected.
  * @example

@@ -46,7 +46,6 @@
   ],
   "types": [
     "jsdom",
-    "@testing-library/jest-dom",
     "vitest",
     "node"
   ]

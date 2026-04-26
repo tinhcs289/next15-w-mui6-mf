@@ -99,6 +99,19 @@ type FocusHandler = (
   e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>
 ) => void;
 
+type MuiTextFieldProps<V extends TextInputVariants> = TextFieldProps<
+  MuiVariant<V>
+>;
+
+export type InputTextProps<V extends TextInputVariants> = Omit<
+  MuiTextFieldProps<V>,
+  "variant"
+> & {
+  variant?: V;
+  errorText?: ReactNode;
+  StyledComponent?: ComponentType<MuiTextFieldProps<V>>;
+};
+
 const calcShrink = ({
   inputLabelProps,
   focused,
@@ -122,17 +135,70 @@ const calcShrink = ({
   );
 };
 
-type MuiTextFieldProps<V extends TextInputVariants> = TextFieldProps<
-  MuiVariant<V>
->;
+// this will avoid label overlap issue
+const useFixOverlapLabel = ({
+  onFocus,
+  onBlur,
+  inputLabelProps,
+  placeholder,
+  value,
+  defaultValue,
+}: {
+  onFocus?: FocusHandler;
+  onBlur?: FocusHandler;
+  placeholder?: string;
+  value?: any;
+  defaultValue?: any;
+  inputLabelProps?: object | ((ownerState: any) => object);
+}) => {
+  const [focused, setFocused] = useState(false);
 
-export type InputTextProps<V extends TextInputVariants> = Omit<
-  MuiTextFieldProps<V>,
-  "variant"
-> & {
-  variant?: V;
-  errorText?: ReactNode;
-  StyledComponent?: ComponentType<MuiTextFieldProps<V>>;
+  const handleFocus: FocusHandler = useCallback(
+    (...args) => {
+      setFocused(true);
+      onFocus?.(...args);
+    },
+    [onFocus]
+  );
+
+  const handleOutFocus: FocusHandler = useCallback(
+    (...args) => {
+      setFocused(false);
+      onBlur?.(...args);
+    },
+    [onBlur]
+  );
+
+  const shrink = useMemo(
+    () =>
+      calcShrink({
+        focused,
+        placeholder: placeholder,
+        value: value ?? defaultValue,
+        inputLabelProps,
+      }),
+    [
+      focused,
+      inputLabelProps,
+      placeholder,
+      value,
+      defaultValue,
+    ]
+  );
+
+  const getInputLabelProps = useCallback((ownerState: any) => {
+      let props = { shrink };
+      if (typeof inputLabelProps === "function") {
+        props = { ...inputLabelProps(ownerState), shrink };
+      }
+      if (typeof inputLabelProps === "object") {
+        props = { ...inputLabelProps, shrink };
+      }
+      return props;
+    }, [shrink, inputLabelProps]);
+
+
+  return { focused, handleFocus, handleOutFocus, getInputLabelProps };
 };
 
 const InputText = forwardRef(
@@ -166,41 +232,15 @@ const InputText = forwardRef(
         typeof slotProps.input.endAdornment !== "undefined",
     };
 
-    const [focused, setFocused] = useState(false);
-
-    const handleFocus: FocusHandler = useCallback(
-      (...args) => {
-        setFocused(true);
-        onFocus?.(...args);
-      },
-      [onFocus]
-    );
-
-    const handleOutFocus: FocusHandler = useCallback(
-      (...args) => {
-        setFocused(false);
-        onBlur?.(...args);
-      },
-      [onBlur]
-    );
-
-    // this will avoid label overlap issue
-    const shrink = useMemo(
-      () =>
-        calcShrink({
-          focused,
-          placeholder: otherProps?.placeholder,
-          value: otherProps?.value ?? otherProps?.defaultValue,
-          inputLabelProps: slotProps?.inputLabel,
-        }),
-      [
-        focused,
-        slotProps?.inputLabel,
-        otherProps?.placeholder,
-        otherProps?.value,
-        otherProps?.defaultValue,
-      ]
-    );
+    const { focused, handleFocus, handleOutFocus, getInputLabelProps } =
+      useFixOverlapLabel({
+        onFocus,
+        onBlur,
+        defaultValue: otherProps.defaultValue,
+        value: otherProps.value,
+        placeholder: otherProps.placeholder,
+        inputLabelProps: slotProps?.inputLabel,
+      });
 
     const className = useMemo(
       () =>
@@ -241,10 +281,7 @@ const InputText = forwardRef(
           onBlur={handleOutFocus}
           slotProps={{
             ...slotProps,
-            inputLabel: {
-              ...(slotProps?.inputLabel || {}),
-              shrink,
-            },
+            inputLabel: getInputLabelProps,
             htmlInput: {
               ...(slotProps?.htmlInput || {}),
               notched: String(false), // avoid HTML Error
