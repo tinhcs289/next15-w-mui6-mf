@@ -24,15 +24,15 @@
     "@packages/utils": "workspace:*",
     "@packages/auth": "workspace:*",
     "@shared/constants": "workspace:*",
-    "lodash": "4.17.21",
-    "next": "16.1.1",
-    "qs": "6.14.0"
+    "lodash": "4.18.1",
+    "next": "16.2.6",
+    "qs": "6.15.1"
   },
   "devDependencies": {
     "@shared/types":  "workspace:*",
-    "@types/lodash": "4.17.21",
-    "@types/qs": "6.14.0",
+    "@types/lodash": "4.17.24",
+    "@types/qs": "6.15.1",
     "tsup": "8.5.1",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

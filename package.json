@@ -25,12 +25,12 @@
     "version-packages": "changeset version"
   },
   "devDependencies": {
-    "@changesets/cli": "2.29.8",
-    "@types/node": "25.0.3",
-    "npm-check-updates": "19.2.0",
-    "prettier": "3.7.4",
-    "turbo": "2.7.1",
-    "typescript": "5.9.3"
+    "@changesets/cli": "2.31.0",
+    "@types/node": "25.8.0",
+    "npm-check-updates": "22.2.0",
+    "prettier": "3.8.3",
+    "turbo": "2.9.14",
+    "typescript": "6.0.3"
   },
   "packageManager": "pnpm@10.26.1",
   "engines": {

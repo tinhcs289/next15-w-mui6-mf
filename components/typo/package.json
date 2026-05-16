@@ -21,17 +21,17 @@
     "check-types": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@mui/icons-material": ">=7.0.0 <8.0.0",
-    "@mui/material": ">=7.0.0 <8.0.0",
+    "@mui/icons-material": ">=7.0.0 <10.0.0",
+    "@mui/material": ">=7.0.0 <10.0.0",
     "react": ">=18.0.0 <20.0.0",
     "react-dom": ">=18.0.0 <20.0.0"
   },
   "devDependencies": {
-    "@turbo/gen": "2.7.1",
-    "@types/node": "25.0.3",
-    "@types/react": "19.2.7",
+    "@turbo/gen": "2.9.14",
+    "@types/node": "25.8.0",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "tsup": "8.5.1",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

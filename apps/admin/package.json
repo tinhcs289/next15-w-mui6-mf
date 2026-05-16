@@ -21,11 +21,11 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@mui/icons-material": "7.3.6",
-    "@mui/material": "7.3.6",
-    "@mui/system": "7.3.6",
-    "@mui/utils": "7.3.6",
-    "@next/third-parties": "16.1.1",
+    "@mui/icons-material": "9.0.1",
+    "@mui/material": "9.0.1",
+    "@mui/system": "9.0.1",
+    "@mui/utils": "9.0.1",
+    "@next/third-parties": "16.2.6",
     "@packages/aos": "workspace:*",
     "@packages/auth": "workspace:*",
     "@packages/auth-guard": "workspace:*",
@@ -45,27 +45,27 @@
     "@shared/svg": "workspace:*",
     "@shared/typo": "workspace:*",
     "@packages/utils": "workspace:*",
-    "lodash": "4.17.21",
+    "lodash": "4.18.1",
     "moment": "2.30.1",
-    "next": "16.1.1",
-    "next-intl": "4.6.1",
+    "next": "16.2.6",
+    "next-intl": "4.12.0",
     "notistack": "3.0.2",
     "numeral": "2.0.6",
-    "qs": "6.14.0",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-hook-form": "7.69.0"
+    "qs": "6.15.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "react-hook-form": "7.76.0"
   },
   "devDependencies": {
     "@shared/types": "workspace:*",
-    "@types/lodash": "4.17.21",
-    "@types/node": "25.0.3",
+    "@types/lodash": "4.17.24",
+    "@types/node": "25.8.0",
     "@types/numeral": "2.0.5",
-    "@types/qs": "6.14.0",
-    "@types/react": "19.2.7",
+    "@types/qs": "6.15.1",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "cross-env": "10.1.0",
     "env-cmd": "11.0.0",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

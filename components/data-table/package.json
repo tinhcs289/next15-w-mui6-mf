@@ -27,29 +27,29 @@
     "@dnd-kit/utilities": "3.2.2",
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@mui/icons-material": "7.3.6",
-    "@mui/material": "7.3.6",
-    "@mui/material-nextjs": "7.3.6",
-    "@mui/system": "7.3.6",
-    "@mui/utils": "7.3.6",
+    "@mui/icons-material": "9.0.1",
+    "@mui/material": "9.0.1",
+    "@mui/material-nextjs": "9.0.1",
+    "@mui/system": "9.0.1",
+    "@mui/utils": "9.0.1",
     "@shared/constants": "workspace:*",
     "@packages/utils": "workspace:*",
-    "lodash": "4.17.21",
+    "lodash": "4.18.1",
     "numeral": "2.0.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "react-lazy-load-image-component": "1.6.3",
-    "react-virtuoso": "4.17.0"
+    "react-virtuoso": "4.18.7"
   },
   "devDependencies": {
-    "@turbo/gen": "2.7.1",
-    "@types/lodash": "4.17.21",
-    "@types/node": "25.0.3",
+    "@turbo/gen": "2.9.14",
+    "@types/lodash": "4.17.24",
+    "@types/node": "25.8.0",
     "@types/numeral": "2.0.5",
-    "@types/react": "19.2.7",
+    "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@types/react-lazy-load-image-component": "1.6.5",
     "tsup": "8.5.1",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }

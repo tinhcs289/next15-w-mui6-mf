@@ -25,14 +25,14 @@
     "@packages/navigation": "workspace:*",
     "@packages/server-actions": "workspace:*",
     "@packages/utils": "workspace:*",
-    "next-intl": "4.6.1",
-    "react": "19.2.3"
+    "next-intl": "4.12.0",
+    "react": "19.2.6"
   },
   "devDependencies": {
-    "@turbo/gen": "2.7.1",
-    "@types/node": "25.0.3",
-    "@types/react": "19.2.7",
+    "@turbo/gen": "2.9.14",
+    "@types/node": "25.8.0",
+    "@types/react": "19.2.14",
     "tsup": "8.5.1",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   }
 }
